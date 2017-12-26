@@ -1,0 +1,38 @@
+\newcommand{\term}[1]{\textit{#1}}
+\newcommand{\bydef}{\ensuremath{\stackrel{\text{\upshape df}}{=}}}
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+\newcommand{\includechapter}[1]{\subimport{chapter_#1/}{chapter_#1}}
+
+
+
+\newcommand{\jointitles}{\vspace{-1.0\baselineskip}}
+
+\newcommand{\imref}[1]{Рис.~\ref{#1}}
+\newcommand{\fmref}[1]{(\ref{#1})}
+\newcommand{\todo}[1]{\textcolor{red}{#1}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\NN}{\mathbb{N}}
+\renewcommand{\Prob}[1]{\mathsf{P}\left\{#1\right\}}
+\newcommand{\Lapl}[1]{\mathcal{L}\left\{#1\right\}}
+
+\newtheoremstyle{note}% <name>
+{3pt}% <Space above>
+{3pt}% <Space below>
+{}% <Body font>
+{}% <Indent amount>
+{\upshape}% <Theorem head font>
+{:}% <Punctuation after theorem head>
+{.5em}% <Space after theorem headi>
+{}% <Theorem head spec (can be left empty, meaning `normal')>
+%\renewcommand{\proofname}{\textrm{Доведення.~}}
+\renewenvironment{proof}{{\noindent\proofname.~}}{\hfill \qedsymbol \linebreak}
+\theoremstyle{note}
+\newtheorem{thm}{Теорема}[section]
+\newtheorem{lem}{Лема}[section]
+\newtheorem{stmt}{Твердження}[section]
+\newtheorem{defin}{Означення}[section]
+%\newcommand{\todo}[1]{#1}

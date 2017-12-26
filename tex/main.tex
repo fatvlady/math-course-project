@@ -1,0 +1,27 @@
+\documentclass[a4paper,14pt]{extreport}
+
+\input{packages}
+\input{newcommands}
+
+\setcounter{page}{4} % задаємо початок нумерації сторінок
+
+\begin{document}
+\include{abstract_ua}			%,
+\include{abstract_en}			%,
+
+\tableofcontents
+\include{shortcuts}				% Список використаних скорочень
+\include{intro}					% Вступ
+\includechapter{Application}		% Застосування
+\includechapter{Theory}			% Розділ Теоретичний
+\includechapter{Practice}			% Розділ Практичний
+\includechapter{Economics}		% Розділ економічний
+\include{work_conclusion}		% Висновок до роботи
+\include{bibliography}			% Бібліографія
+
+\addtocounter{totfigures}{\value{figure}}
+\addtocounter{tottables}{\value{table}}
+
+\ifoptionfinal{\include{appendicies/appendicies}}{} % Додатки
+
+\end{document}

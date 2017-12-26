@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<model repeat_count="100" parking_length="100000">
+  <uniform p="0.5"/>
+  <left p="0.5"/>
+</model>

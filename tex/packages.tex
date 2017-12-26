@@ -1,0 +1,233 @@
+\usepackage{ifdraft}
+
+\usepackage{fontspec}
+\usepackage{xltxtra} 
+\usepackage{polyglossia}   %% загружает пакет многоязыковой вёрстки
+
+\setdefaultlanguage{ukrainian}  %% устанавливает главный язык документа
+\setotherlanguage{english} %% объявляет второй язык документа
+\setotherlanguage{russian} %% третий язык документа - для библиографии
+\defaultfontfeatures{Ligatures=TeX,Mapping=tex-text}
+
+%% Виставлення шрифт\UTF{0456}в документу
+\newfontfamily{\cyrillicfont}{Times New Roman}
+\newfontfamily{\cyrillicfontsf}{Arial}
+\newfontfamily{\cyrillicfonttt}[Scale=0.95]{Courier New}
+
+\usepackage{extsizes}
+\usepackage{titlesec}
+\usepackage{geometry}
+	\geometry{left=3cm}
+	\geometry{right=1.5cm}
+	\geometry{top=2.4cm}
+	\geometry{bottom=2.4cm}
+
+\usepackage{fancyhdr}
+	\pagestyle{fancy}
+	\fancyhf{}
+	\fancyhead[R]{\thepage}
+	\fancyheadoffset{0mm}
+	\fancyfootoffset{0mm}
+	\setlength{\headheight}{17pt}
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0pt}
+	\fancypagestyle{plain}{
+		\fancyhf{}
+		\rhead{\thepage}}
+
+\usepackage{setspace}%[nodisplayskipstretch]
+	\onehalfspacing
+	\frenchspacing
+
+%%% Вир\UTF{0456}внювання та переноси %%%
+\sloppy
+\clubpenalty=10000
+\widowpenalty=10000
+
+\usepackage{textcomp}
+\usepackage{gensymb}
+
+\usepackage{graphicx} 	% для вставки картинок
+
+
+\usepackage{amsfonts,amsmath,amsthm} % математические дополнения от АМС
+\usepackage{unicode-math}
+\usepackage{indentfirst} % отделять первую строку раздела абзацным отступом тоже
+\usepackage[usenames,dvipsnames]{color} % названия цветов
+\usepackage{ulem} % подчеркивания
+\usepackage{tocloft}
+\usepackage{import}
+\usepackage{lastpage} % знаходить номер останньо\UTF{0457} стор\UTF{0456}нки за \pageref*{LastPage}~с.
+\usepackage{etoolbox}
+\usepackage[title,titletoc]{appendix}
+\usepackage{pdfpages}
+
+
+\usepackage{listings}
+\lstset{
+	basicstyle=\footnotesize\ttfamily,        % the size of the fonts that are used for the code
+	breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+	breaklines=true,                 % sets automatic line breaking
+	commentstyle=\color{Green},	    % comment style
+	%	extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+	keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+	keywordstyle=\color{Blue},       % keyword style
+	language=C++, 	                % the language of the code 
+	%TODO:add c++11
+	numbers=left,                 	   % where to put the line-numbers; possible values are (none, left, right)
+	numbersep=7pt,                  	 % how far the line-numbers are from the code
+	numberstyle=\tiny\color{Gray}, 		% the style that is used for the line-numbers
+	showtabs=false,                  % show tabs within strings adding particular underscores
+	stepnumber=5,                    % the step between two line-numbers. 
+	stringstyle=\color{OliveGreen},     % string literal style
+	tabsize=2,                       % sets default tabsize to 2 spaces
+	title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+%%% Форматування п\UTF{0456}дпис\UTF{0456}в таблиць та рисунк\UTF{0456}в %%%
+\usepackage{ragged2e}
+\usepackage{caption}
+\usepackage{subcaption}
+	\DeclareCaptionLabelFormat{gostfigure}{Рисунок #2}
+	\DeclareCaptionLabelFormat{gosttable}{Таблиця #2}
+	\DeclareCaptionLabelSeparator{gost}{~--~}
+	\captionsetup{labelsep=gost}
+	\captionsetup[table]{position=top,labelformat=gosttable,justification=justified,singlelinecheck=false, margin={1.25cm,0cm}}
+	\captionsetup[figure]{position=bottom, labelformat=gostfigure,justification=centering}
+	\renewcommand{\thesubfigure}{\asbuk{subfigure}}
+
+%пакети для таблиць
+\usepackage{array}
+\usepackage{tabulary}
+\usepackage{tabularx}
+\usepackage{float} 		% пакет для [H]-положення ф\UTF{0456}гур
+\usepackage{rotating}	% пакет для перевертання блок\UTF{0456}в
+\usepackage{makecell}
+\usepackage{multirow} % улучшенное форматирование таблиц
+
+%пакет для налаштування стор\UTF{0456}нки
+
+\titleformat{\chapter}
+{\filcenter}
+{\MakeUppercase{\bfseries\chaptertitlename} \thechapter}
+{8pt}
+{\bfseries}{}
+
+\titleformat{\section}
+{\normalsize\bfseries}
+{\thesection}
+{1em}{}
+
+\titleformat{\subsection}
+{\normalsize\bfseries}
+{\thesubsection}
+{1em}{}
+
+\titleformat{\subsubsection}
+{\normalsize\bfseries}
+{\thesubsubsection}
+{1em}{}
+
+\titleformat{\paragraph}
+{\normalsize\bfseries}
+{\thesubsubsection}
+{1em}{}
+
+\titleformat{\subparagraph}
+{\filcenter}
+{\MakeUppercase{\chaptertitlename} \thechapter.}
+{0.5em}
+{\bfseries}{}
+
+\titlespacing*{\chapter}{0pt}{0pt}{8pt}
+\titlespacing*{\section}{\parindent}{*4}{*4}
+\titlespacing*{\subsection}{\parindent}{*4}{*4}
+\titlespacing*{\subsubsection}{\parindent}{*4}{*4}
+\titlespacing*{\paragraph}{\parindent}{*1}{*1}
+\titlespacing*{\subparagraph}{\parindent}{*4}{*2}
+
+\setlength{\parindent}{1.25cm} 
+
+\renewcommand{\cfttoctitlefont}{\hspace{0.38\textwidth} \bfseries\MakeUppercase}
+\renewcommand{\cftbeforetoctitleskip}{-1em}
+\renewcommand{\cftaftertoctitle}{\mbox{}\hfill \\ \mbox{}\hfill{\footnotesize Ст.}\vspace{-2.5em}}
+\renewcommand{\cftchapfont}{\normalsize\bfseries \MakeUppercase{\chaptername} }
+\renewcommand{\cftsecfont}{\hspace{31pt}}
+\renewcommand{\cftsubsecfont}{\hspace{11pt}}
+\renewcommand{\cftbeforechapskip}{1em}
+\renewcommand{\cftparskip}{-1mm}
+\renewcommand{\cftdotsep}{1}
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{5}
+
+\usepackage[square,numbers,sort&compress]{natbib}
+\renewcommand{\bibnumfmt}[1]{#1.\hfill}
+\renewcommand{\bibsection}{\likechapter{Список літератури}}
+\setlength{\bibsep}{0pt}
+
+%% блок роботи з к\UTF{0456}льк\UTF{0456}стю рисунк\UTF{0456}в, таблиць \UTF{0456} книжок
+\providecommand\totfig{} 
+\providecommand\tottab{}
+
+\newcounter{totfigures}
+\newcounter{tottables}
+\newcounter{totreferences}
+\makeatletter
+\renewcommand{\@dotsep}{2}
+\newcommand{\l@likechapter}[2]{{\bfseries\@dottedtocline{0}{0pt}{0pt}{#1}{#2}}}
+\AtEndDocument{%
+	\addtocounter{totfigures}{\value{figure}}%
+	\addtocounter{tottables}{\value{table}}%
+	\immediate\write\@mainaux{%
+		\string\gdef\string\totfig{\number\value{totfigures}}%
+		\string\gdef\string\tottab{\number\value{tottables}}%
+		\string\gdef\string\totref{\number\value{totreferences}}%
+	}%
+}
+\makeatother
+\pretocmd{\chapter}{\addtocounter{totfigures}		{\value{figure}}}	{}{}
+\pretocmd{\chapter}{\addtocounter{tottables}		{\value{table}}}	{}{}
+\pretocmd{\bibitem}{\addtocounter{totreferences}	{1}}				{}{}
+
+\usepackage{totcount} 	% робота з п\UTF{0456}драхунком б\UTF{0456}бл\UTF{0456}ограф\UTF{0456}чних посилань
+	\newtotcounter{citenum}
+	\def\oldcite{}
+	\let\oldcite=\bibcite
+	\def\bibcite{\stepcounter{citenum}\oldcite}
+
+\newcommand{\likechapterheading}[1]{
+	\begin{center}
+		\par\textbf{\MakeUppercase{#1}}
+	\end{center}
+	\noindent\ignorespaces
+}
+\newcommand{\likechapter}[1]{	
+	\phantomsection
+	\likechapterheading{#1}	
+	\addcontentsline{toc}{likechapter}{\texorpdfstring{\MakeUppercase{#1}}{#1}}}
+\newcommand{\likechapternotoc}[1]{
+	\phantomsection
+	\likechapterheading{#1}}
+
+
+\newcommand{\empline}{\mbox{}\newline}
+
+\newcommand{\append}[1]{
+	\clearpage
+	\stepcounter{chapter}	
+	\subparagraph{\MakeUppercase{#1}}
+	\addcontentsline{toc}{likechapter}{\texorpdfstring{\MakeUppercase{\chaptertitlename~\Asbuk{chapter}\;#1}}{\chaptertitlename~\Asbuk{chapter}:~#1}}}
+
+
+
+\usepackage{enumitem}
+	\makeatletter
+	\AddEnumerateCounter{\asbuk}{\@asbuk}{м)}
+	\makeatother
+	\setlist{nolistsep}
+	\renewcommand{\labelitemi}{-}
+	\renewcommand{\labelenumi}{\asbuk{enumi})}
+	\renewcommand{\labelenumii}{\arabic{enumii})}
+
+\usepackage[xetex,bookmarks=true,colorlinks=true,linkcolor=MidnightBlue,citecolor=Green,linktoc=none,urlcolor=Green]{hyperref}
+	\renewcommand\UrlFont{\ttfamily}%

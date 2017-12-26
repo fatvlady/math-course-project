@@ -1,0 +1,26 @@
+\usetheme{Darmstadt}
+\usecolortheme{crane}
+
+\defbeamertemplate*{footline}{shadow theme}{
+	\leavevmode%
+	\hbox{
+		\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fil,rightskip=.3cm]{author in head/foot}%
+			\usebeamerfont{author in head/foot}
+			\insertframenumber\,/\,\inserttotalframenumber\hfill\insertshortauthor
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.49\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+			\usebeamerfont{title in head/foot}
+			\insertshorttitle%
+		\end{beamercolorbox}
+	}
+	\vskip0pt
+}
+
+\newfontfamily{\cyrillicfont}{Times New Roman}
+\newfontfamily{\cyrillicfontsf}{Arial}
+\newfontfamily{\cyrillicfonttt}[Scale=0.95]{Courier New}
+
+
+%\addtobeamertemplate{background canvas}{\transfade[duration=2]}{}
+\setbeamercovered{transparent} 
+%\setbeamertemplate{navigation symbols}{} 

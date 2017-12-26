@@ -1,0 +1,90 @@
+\section{Аналіз роботи алгоритму}
+\jointitles
+\subsection{Алгоритм чисельного вирахування інтегралів}
+
+У \ref{sec:uniform_base} розділу \ref{chapter:theory} було виведено формулу \eqref{eq:uniform_base_final}.
+Для визначення середнього значення максимальної кількості автомобілів на парковці, керуючись отриманою формулою, необхідно чисельно визначити наступну константу:
+\begin{equation}
+\kappa =  \int\limits_0^\infty \exp\left( -2\int\limits_0^s \frac{1 - e^{-\tau}}{\tau} d\tau  \right) ds
+\end{equation}
+
+Оскільки чисельно рахувати інтеграл від експоненти від інтегралу незручно, неоптимально та це дасть досить велику похибку, треба звести інтеграл під експонентою до відомих функцій.
+\begin{lem}
+\begin{equation}
+\label{eq:inner_integral}
+\int\limits_0^s \frac{1 - e^{-\tau}}{\tau} d\tau = \ln s + \Gamma(0, s) + \gamma,
+\end{equation}
+де $\gamma=0.5772156649$ – константа Ейлера-Маскероні, $\Gamma(0,s)$ – неповна гамма-функція.
+\end{lem}
+\begin{proof}
+\begin{align*}
+	\int\limits_0^s \frac{1 - e^{-\tau}}{\tau} d\tau &= \int\limits_0^1 \frac{1 - e^{-\tau}}{\tau} d\tau  + \int\limits_1^s \frac{1}{\tau} d\tau + \int\limits_s^\infty \frac{e^{-\tau}}{\tau} d\tau - \int\limits_1^\infty \frac{e^{-\tau}}{\tau} d\tau = \\
+	&= \int\limits_0^1 \frac{1 - e^{-\tau}}{\tau} d\tau  + \ln s + \Gamma(0,s) -\int\limits_1^\infty \frac{e^{-\tau}}{\tau} d\tau = \\
+	&= \ln s + \Gamma(0,s) + \lim\limits_{a \rightarrow 0} \left. (1-e^{-\tau}) \ln \tau \right|_0^1  - \int\limits_0^1 e^{-\tau} \ln \tau d\tau - \\
+	&- \underbrace{\left. e^{-\tau} \ln \tau \right|_1^\infty}_0 - \int\limits_1^\infty e^{-\tau} \ln \tau d\tau = \ln s + \Gamma(0,s) +  \\
+	&+ \lim\limits_{a \rightarrow 0} \left. (1-e^{-\tau}) \ln \tau \right|_0^1 - \int\limits_0^\infty e^{-\tau} \ln \tau d\tau = \lim\limits_{a \rightarrow 0} \left. (1-e^{-\tau}) \ln \tau \right|_0^1 + \\
+	&+ \ln s + \Gamma(0,s) + \gamma
+\end{align*}
+Останній перехід випливає з тотожності
+$$
+\gamma = - \int\limits_0^\infty e^{-\tau} \ln \tau d\tau
+$$
+Якщо довести, що $\lim\limits_{a \rightarrow 0} \left. (1-e^{-\tau}) \ln \tau \right|_0^1 = 0$, то лему доведено.
+
+З озкладу у ряд Тейлора випливає, що
+$$
+	\lim\limits_{\tau \rightarrow 0}  \frac{1-e^{-\tau}}{ \tau} = 1.
+$$
+Тому 
+$$
+	\lim\limits_{\tau \rightarrow 0} (1-e^{-\tau}) \ln \tau = \lim\limits_{\tau \rightarrow 0} \frac{1-e^{-\tau}}{ \tau} \cdot \frac{\ln u}{u^{-1}} = \<\text{правило Лопіталя}\> = 1 \cdot \lim\limits_{\tau \rightarrow 0} \frac{u^{-1}}{-u^{-2}} = 0
+$$
+Тому $\lim\limits_{a \rightarrow 0} \left. (1-e^{-\tau}) \ln \tau \right|_0^1 = 0$, а отже, лему доведено.
+\end{proof}
+
+Таким чином отримали, що
+\begin{equation}
+\kappa = e^{-2\gamma} \int\limits_0^\infty \frac{\exp(-2\Gamma(0,s))}{s^2} ds
+\end{equation}
+
+Для підрахунку невласного інтегралу можна оцінити його залишок, і знайти такі межі інтегрування, щоб залишок не перевищував деякого $\varepsilon$.
+
+Тобто необхідно знайти таке $\delta$, щоб виконувалось
+$$
+	e^{-2\gamma} \int\limits_\delta^\infty \frac{\exp(-2\Gamma(0,s))}{s^2} ds < \varepsilon.
+$$
+
+Оскільки $\exp(-2\Gamma(0,s)) < 1$, то достатньо знайти таке $\delta$, щоб виконувалось
+$$
+	\int\limits_\delta^\infty \frac{1}{s^2} < \varepsilon e^{2\gamma}.
+$$
+
+Оскілки беремо $\delta \geq 0$, то
+\begin{align*}
+	\int\limits_\delta^\infty \frac{1}{s^2} &< \varepsilon e^{2\gamma}\\
+	-\left. \frac{1}{s} \right|_\delta^\infty &< \varepsilon e^{2\gamma} \\
+	\delta^{-1} &< \varepsilon e^{2\gamma}  \\
+	\varepsilon^{-1} e^{-2\gamma} &< \delta.
+\end{align*}
+
+Тобто, щоб отримати результат з точністю $10^{-6}$, треба взяти  $\delta > 10^6 e^{-2\gamma} \approx 315236$. Це і реалізовано в додатку "integral".
+
+\subsection{Алгоритм моделювання на одновимірній парковці}
+
+Для моделювання одновимірної парковки виконується наступний алгоритм дій:
+\begin{enumerate}
+\item Створюється вектор довжин вільних проміжків, який ініціалізується однією довжиною – довжиною парковки. 
+\item Допоки вектор не пустий, виконується: 
+\subitem Вибирається поведінка водія використовуючи рандомізатор.
+\subitem Дістається остання довжина з вектору, і ділиться на частини відповідно до моделі поведінки водія.
+\subitem Кожна з частин додається до вектору, якщо її довжина не менша 1, тобто, довжини автомобіля.
+\subitem Інкрементується поточна кількість автомобілів.
+\end{enumerate}
+
+Цей процес повторюється задану кількість разів, і в кінці програма видає середнє значення автомобілів з усіх ітерацій, а також відношення до довжини парковки.
+
+\subsection{Алгоритм моделювання на двовимірній парковці}
+
+Двовимірний алгоритм працює аналогічно одновимірному, тільки розглядаються не проміжки, а прямокутники. А саме, створюється список вільних прямокутників. Під вільним розуміється прямокутник, в якому будь-яка точка може бути потенційним центром автомобіля.
+
+Ініціалізується цей список початковим прямокутником – $(\frac{1}{2}, \frac{1}{2}, a - \frac{1}{2}, b - \frac{1}{2})$, де $a,~b$ – задані лінійні розміри парковки. Спираючись на площі поточних прямокутників, обирається один з ймовірністю рівною відношенню його площі до сумарної площі усіх вільних прямокутників. Після цього всередині обраного прямокутника обирається за рівномірним розподілом точка, навколо якої будується квадратний окіл розміру 2x2, і перевіряється на перетин з усіма поточними вільними прямокутниками. Якщо перетинається, то вільний прямокутник ділиться на менші прямокутники, при чому один із прямокутників – область перетину. Усі менші прямокутники, окрім перетину, додаються в список.
