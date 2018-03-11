@@ -55,155 +55,155 @@ $$\int\limits_0^{X-1} m(X − t − 1) dt = \< u=X - t - 1 \> = - \int\limits_{X
 Спробуємо розв'язати \eqref{eq:uniform_equation} за допомогою перетворення Лапласа.
 
 Оскільки виконується \eqref{eq:bounds}, то зображення Лапласа для $m(X)$ існує. До того ж, за властивістю \eqref{eq:laplace_lag}:
-$$\Lapl{m(X+1)}=\<\eqref{eq:zero_state}\>=\Lapl{m(X+1)\eta(X+1)}=e^p M(p).$$
+$$\Lapl{m(X+1)}=\<\eqref{eq:zero_state}\>=\Lapl{m(X+1)\eta(X+1)}=e^s M(s).$$
 
 Оскільки $m(X) \leq X$, то $\int\limits_0^X m(t) dt < X^2$, тобто для інтегралу від $m(X)$ зображення також існує, за властивістю \eqref{eq:laplace_int_origin}:
-$$\Lapl{\int\limits_0^X m(t) dt} = \frac{M(p)}{p}.$$
+$$\Lapl{\int\limits_0^X m(t) dt} = \frac{M(s)}{s}.$$
 
 Аналогічно доводиться, що $\frac{1}{X}\int\limits_0^X m(t) dt < X$ при $X>0$, а тому зображення Лапласа для цього виразу також існує. Тоді за властивістю \eqref{eq:laplace_int_image}:
-$$\Lapl{\frac{2}{X}\int\limits_0^X m(t) dt} = 2 \int\limits_p^\infty \frac{M(s)}{s} ds.$$
+$$\Lapl{\frac{2}{X}\int\limits_0^X m(t) dt} = 2 \int\limits_s^\infty \frac{M(u)}{u} du.$$
 
 Таким чином, отримали інтегральне рівняння в термінах зображення Лапласа, яке вже можна розв'язати, адже нема зсуву:
 \begin{equation}
 	\label{eq:uniform_laplace_integral}
-	e^p M(p) = 2 \int\limits_p^\infty \frac{M(s)}{s} ds + \frac{1}{p}
+	e^s M(s) = 2 \int\limits_s^\infty \frac{M(u)}{u} du + \frac{1}{s}
 \end{equation}
 
-Продиференціюємо обидві частини рівняння за $p$:
+Продиференціюємо обидві частини рівняння за $s$:
 \begin{equation}
-	e^p M(p) + e^p \dot M(p) = - 2\frac{M(p)}{p}  - \frac1{p^2}
+	e^s M(s) + e^s \dot M(s) = - 2\frac{M(s)}{s}  - \frac1{s^2}
 \end{equation}
 
-Виразимо $\dot M(p)$ з цього рівняння:
+Виразимо $\dot M(s)$ з цього рівняння:
 \begin{equation}
 	\label{eq:uniform_laplace_diff}
-	\dot M(p) = -M(p) - \frac{2M(p)}{pe^p} - \frac{1}{p^2 e^p} = - M(p)\left(1 + \frac{2e^{-p}}{p}\right) - \frac{e^{-p}}{p^2}
+	\dot M(s) = -M(s) - \frac{2M(s)}{se^s} - \frac{1}{s^2 e^s} = - M(s)\left(1 + \frac{2e^{-s}}{s}\right) - \frac{e^{-s}}{s^2}
 \end{equation}
 
 Розв'яжемо отримане диференційне рівняння. Спочатку розв'яжемо однорідну частину:
 \begin{align*}
-	\dot M_h (p) &= - M_h (p)\left(1 + \frac{2e^{-p}}{p}\right) \\
-	\frac{\dot M_h (p)}{M_h (p)} &= -\left(1 + \frac{2e^{-p}}{p}\right) \\
-	\int\limits_1^p \frac{\dot M_h (s)}{M_h (s)} ds &= -\int\limits_1^p \left(1 + \frac{2e^{-s}}{s}\right) ds \\
-	\left. \ln{M_h (s)}\right|_1^p &= - (p - 1) - 2 \int\limits_1^p \frac{e^{-s}}{s} ds
+	\dot M_h (s) &= - M_h (s)\left(1 + \frac{2e^{-s}}{s}\right) \\
+	\frac{\dot M_h (s)}{M_h (s)} &= -\left(1 + \frac{2e^{-s}}{s}\right) \\
+	\int\limits_1^s \frac{\dot M_h (u)}{M_h (u)} du &= -\int\limits_1^s \left(1 + \frac{2e^{-u}}{u}\right) du \\
+	\left. \ln{M_h (u)}\right|_1^s &= - (s - 1) - 2 \int\limits_1^s \frac{e^{-u}}{u} du
 \end{align*}
 
 Позначимо
 \begin{equation}
 	\label{eq:almost_li}
-	Q(p) := \int\limits_1^p \frac{e^{-s}}{s} ds
+	Q(s) := \int\limits_1^s \frac{e^{-u}}{u} du
 \end{equation}
 
 Тоді маємо
 \begin{align*}
-	\ln{M_h (p)} &= \ln{M_h (1)} + 1 - p - 2Q(p) \\
-	M_h (p) &= M_h (1) \cdot e^{1 - p - 2Q(p)} \cdot const
+	\ln{M_h (s)} &= \ln{M_h (1)} + 1 - s - 2Q(s) \\
+	M_h (s) &= M_h (1) \cdot e^{1 - s - 2Q(s)} \cdot const
 \end{align*}
 
 Оскільки $M(1)$ можна включити в константу, то маємо розв'язок
 \begin{equation}
 	\label{eq:uniform_laplace_homogen_sol}
-	M_h (p) = C \cdot e^{1 - p - 2Q(p)}, \quad \forall C \in \RR
+	M_h (s) = C \cdot e^{1 - s - 2Q(s)}, \quad \forall C \in \RR
 \end{equation}
 
 Дійсно, перевіримо цей розв'язок:
 \[
 \begin{split}
-	&\dot M_h (p) = C \cdot e^{1 - p - 2Q(p)} \cdot (-1 - 2 \dot Q(p)) =\\
-	 &=C \cdot e^{1 - p - 2Q(p)} \cdot \left(-1 - 2\frac{e^{-p}}{p}\right)=
-	- M_h (p) \cdot \left(1 + 2\frac{e^{-p}}{p}\right)
+	&\dot M_h (s) = C \cdot e^{1 - s - 2Q(s)} \cdot (-1 - 2 \dot Q(s)) =\\
+	 &=C \cdot e^{1 - s - 2Q(s)} \cdot \left(-1 - 2\frac{e^{-s}}{s}\right)=
+	- M_h (s) \cdot \left(1 + 2\frac{e^{-s}}{s}\right)
 \end{split}
 \]
 
 Нескладно помітити, що отримали вихідне рівняння. Тепер застосуємо метод варіації довільних сталих:
 \begin{align*}
-	M(p) &= C(p) \cdot e^{1 - p - 2Q(p)} \\
-	\dot M(p) &= \dot C(p) \cdot e^{1 - p - 2Q(p)} - C(p) \cdot (e^{1 - p - 2Q(p)}) \cdot \left(1 + 2 \frac{e^{-p}}{p}\right) \\
+	M(s) &= C(s) \cdot e^{1 - s - 2Q(s)} \\
+	\dot M(s) &= \dot C(s) \cdot e^{1 - s - 2Q(s)} - C(s) \cdot (e^{1 - s - 2Q(s)}) \cdot \left(1 + 2 \frac{e^{-s}}{s}\right) \\
 	&\text{з іншої сторони, з \eqref{eq:uniform_laplace_diff} маємо} \\
-	 \dot M(p) &= - C(p) \cdot e^{1 - p - 2Q(p)} \left(1 + 2 \frac{e^{-p}}{p}\right) - \frac{e^{-p}}{p^2} \quad	\\
+	 \dot M(s) &= - C(s) \cdot e^{1 - s - 2Q(s)} \left(1 + 2 \frac{e^{-s}}{s}\right) - \frac{e^{-s}}{s^2} \quad	\\
 	 &\text{тому} \\
-	 \dot C(p) &= -\frac{e^{-p}}{p^2} e^{p+2Q(p) - 1} = -e^{-1}\frac{e^{2Q(p)}}{p^2} \\
+	 \dot C(s) &= -\frac{e^{-s}}{s^2} e^{s+2Q(s) - 1} = -e^{-1}\frac{e^{2Q(s)}}{s^2} \\
 \end{align*}
 
-Тоді простим інтегруванням в межах від 1 до $p$ отримуємо:
+Тоді простим інтегруванням в межах від 1 до $s$ отримуємо:
 \begin{equation}
-	C(p) = - \exp(-1) \cdot \int\limits_1^p \frac{e^{2Q(s)}}{s^2} ds + const
+	C(s) = - \exp(-1) \cdot \int\limits_1^s \frac{e^{2Q(u)}}{u^2} du + const
 \end{equation}
 
-І тоді отримуємо вираз для $M(p)$:
+І тоді отримуємо вираз для $M(s)$:
 \begin{equation}
 \begin{split}
-	M(p)=- \left( \exp(-1) \cdot \int\limits_1^p \frac{e^{2Q(s)}}{s^2} ds + const \right) e^{1 - p - 2Q(p)} =\\
-	= - \left( \int\limits_1^p \frac{e^{2Q(s)}}{s^2} ds + K \right) e^{- p - 2Q(p)}, \quad K \in \RR
+	M(s)=- \left( \exp(-1) \cdot \int\limits_1^s \frac{e^{2Q(u)}}{u^2} du + const \right) e^{1 - s - 2Q(s)} =\\
+	= - \left( \int\limits_1^s \frac{e^{2Q(u)}}{u^2} du + K \right) e^{- s - 2Q(s)}, \quad K \in \RR
 \end{split}
 \end{equation}
 
 Перевіримо отриманий результат:
 \begin{equation*}
 \begin{split}
-	&\dot M(p) = -\left( \int\limits_1^p \frac{e^{2Q(s)}}{s^2} ds + K \right)' e^{- p - 2Q(p)} -\left( \int\limits_1^p \frac{e^{2Q(s)}}{s^2} ds + K \right)\cdot \\ 
-	&\cdot \left(e^{- p - 2Q(p)}\right)' = -\frac{e^{2Q(p)}}{p^2} e^{- p - 2Q(p)}  + \left( \int\limits_1^p \frac{e^{2Q(s)}}{s^2} ds + K \right) \cdot \\
-	& \cdot e^{- p - 2Q(p)} \left(1 + 2 \frac{e^{-p}}{p}\right) = -\frac{e^{-p}}{p^2} - M(p)\left(1 + 2 \frac{e^{-p}}{p}\right)
+	&\dot M(s) = -\left( \int\limits_1^s \frac{e^{2Q(u)}}{u^2} du + K \right)' e^{- s - 2Q(s)} -\left( \int\limits_1^s \frac{e^{2Q(u)}}{u^2} du + K \right)\cdot \\ 
+	&\cdot \left(e^{- s - 2Q(s)}\right)' = -\frac{e^{2Q(s)}}{s^2} e^{- s - 2Q(s)}  + \left( \int\limits_1^s \frac{e^{2Q(u)}}{u^2} du + K \right) \cdot \\
+	& \cdot e^{- s - 2Q(s)} \left(1 + 2 \frac{e^{-s}}{s}\right) = -\frac{e^{-s}}{s^2} - M(s)\left(1 + 2 \frac{e^{-s}}{s}\right)
 \end{split}
 \end{equation*}
 
 Перевірено. Тоді остаточний результат без вирахування константи:
 \begin{equation}
 	\label{eq:uniform_laplace_sol_initial}
-	M(p)= \left( \int\limits_p^1 \frac{e^{2Q(s)}}{s^2} ds + K \right) e^{- p - 2Q(p)}
+	M(s)= \left( \int\limits_s^1 \frac{e^{2Q(u)}}{u^2} du + K \right) e^{- s - 2Q(s)}
 \end{equation}
 
 \subsection{Визначення константи у розв'язку}
 
 У \ref{sec:uniform_integral_laplace} було доведено, що зображення Лапласа існує не тільки для $m(X)$, а і для $m(X+1)$, до того ж,
 \begin{equation}
-	\Lapl{m(X+1)} = e^p M(p).
+	\Lapl{m(X+1)} = e^s M(s).
 \end{equation}
 
 Таким чином, маємо
 \begin{equation}
-	\Lapl{m(X+1)} =\tilde M(p)= \left( \int\limits_p^1 \frac{e^{2Q(s)}}{s^2} ds + K \right) e^{- 2Q(p)}.
+	\Lapl{m(X+1)} =\tilde M(s)= \left( \int\limits_s^1 \frac{e^{2Q(u)}}{u^2} du + K \right) e^{- 2Q(s)}.
 \end{equation}
 
-Оскільки зображення Лапласа – аналітична функція в деякій правій півплощині комплексного простору, то $\tilde M(p) \rightarrow 0,\; p \rightarrow +\infty$.
+Оскільки зображення Лапласа – аналітична функція в деякій правій півплощині комплексного простору, то $\tilde M(s) \rightarrow 0,\; s \rightarrow +\infty$.
 
-Розглянемо $Q(p)$ ($p$ розглядаємо на дійсній вісі):
+Розглянемо $Q(s)$ ($s$ розглядаємо на дійсній вісі):
 \begin{equation}
 \begin{split}
-	&Q(p) = \int\limits_1^p \frac{e^{-s}}{s} ds <  \int\limits_1^\infty \frac{e^{-s}}{s} ds < 
-	\int\limits_1^\infty e^{-s} ds=\\
+	&Q(s) = \int\limits_1^s \frac{e^{-u}}{u} du <  \int\limits_1^\infty \frac{e^{-u}}{u} du < 
+	\int\limits_1^\infty e^{-u} du=\\
 	&= \exp(-1) - \exp(-\infty) = \exp(-1)
 \end{split}
 \end{equation}
 
-Тобто $Q(p)$ - обмежена на $[1; \infty]$. Тому обмеженими на цій вісі будуть і $e^{\pm 2Q(p)}$. Також зрозуміло, що якщо інтегрувати по дійсній вісі, то $Q(p)$ – монотонно зростаюча за $p$. Тому
+Тобто $Q(s)$ - обмежена на $[1; \infty]$. Тому обмеженими на цій вісі будуть і $e^{\pm 2Q(s)}$. Також зрозуміло, що якщо інтегрувати по дійсній вісі, то $Q(s)$ – монотонно зростаюча за $s$. Тому
 \begin{equation}
-	0 = \tilde M(\infty) = \lim_{p\rightarrow \infty} \tilde M(p) = \left( \int\limits_\infty^1 \frac{e^{2Q(s)}}{s^2} ds + K \right) \lim_{p\rightarrow \infty} e^{- 2Q(p)}
+	0 = \tilde M(\infty) = \lim_{s\rightarrow \infty} \tilde M(s) = \left( \int\limits_\infty^1 \frac{e^{2Q(u)}}{u^2} du + K \right) \lim_{s\rightarrow \infty} e^{- 2Q(s)}
 \end{equation}
 
-Тут $\lim\limits_{p\rightarrow \infty} e^{- 2Q(p)} = const > 0$, тому маємо, що
+Тут $\lim\limits_{s\rightarrow \infty} e^{- 2Q(s)} = const > 0$, тому маємо, що
 \begin{equation}
-	K = -  \int\limits_\infty^1 \frac{e^{2Q(s)}}{s^2} ds =  \int\limits_1^\infty \frac{e^{2Q(s)}}{s^2} ds.
+	K = -  \int\limits_\infty^1 \frac{e^{2Q(u)}}{u^2} du =  \int\limits_1^\infty \frac{e^{2Q(u)}}{u^2} du.
 \end{equation}
 
-Таким чином, отримали нову версію $M(p)$:
+Таким чином, отримали нову версію $M(s)$:
 \begin{equation}
 	\label{eq:uniform_laplace_sol}
-	M(p)= \left( \int\limits_p^1 \frac{e^{2Q(s)}}{s^2} ds + K \right) e^{- p - 2Q(p)} = 
-	e^{- p - 2Q(p)} \int\limits_p^\infty \frac{e^{2Q(s)}}{s^2} ds
+	M(s)= \left( \int\limits_s^1 \frac{e^{2Q(u)}}{u^2} du + K \right) e^{- s - 2Q(s)} = 
+	e^{- s - 2Q(s)} \int\limits_s^\infty \frac{e^{2Q(u)}}{u^2} du
 \end{equation}
 
 \subsection{Застосування теореми Таубера}
 
-Для знаходження асимптотики $m(X)$ на нескінченності, за теоремою Таубера \eqref{eq:tauber_thm} необхідно визначити асимптотику $M(p)$ при $p \rightarrow 0$.
+Для знаходження асимптотики $m(X)$ на нескінченності, за теоремою Таубера \eqref{eq:tauber_thm} необхідно визначити асимптотику $M(s)$ при $s \rightarrow 0$.
 
-Якщо знайти такі $C \in \RR$ та $\alpha \in \RR^+$, що $M(p) \sim C \cdot p^{-\alpha}, \; p \rightarrow 0$, то можна стверджувати, що $\int\limits_0^X m(x) dx \sim \frac{1}{\Gamma(\alpha + 1)} C X^\alpha, \; X \rightarrow \infty$. Вже зараз зрозуміло, що $\alpha = 2$, адже теорема справедлива в обидва боки і виконується \eqref{eq:bounds_inference}.
+Якщо знайти такі $C \in \RR$ та $\alpha \in \RR^+$, що $M(s) \sim C \cdot s^{-\alpha}, \; s \rightarrow 0$, то можна стверджувати, що $\int\limits_0^X m(x) dx \sim \frac{1}{\Gamma(\alpha + 1)} C X^\alpha, \; X \rightarrow \infty$. Вже зараз зрозуміло, що $\alpha = 2$, адже теорема справедлива в обидва боки і виконується \eqref{eq:bounds_inference}.
 
-Для цього розглянему поведінку в нулі трьох множників, з яких складається $M(p)$, а саме:
+Для цього розглянему поведінку в нулі трьох множників, з яких складається $M(s)$, а саме:
 \begin{enumerate}
-	\item $e^{-p}$;
-	\item $e^{-2Q(p)}$;
-	\item $\int\limits_p^\infty \frac{e^{2Q(s)}}{s^2} ds$,
+	\item $e^{-s}$;
+	\item $e^{-2Q(s)}$;
+	\item $\int\limits_s^\infty \frac{e^{2Q(u)}}{u^2} du$,
 \end{enumerate}
 
 Щодо першого множнику, то в 0 він прямує до 1, тож ні на що не впливає, і його можна не розглядати.
@@ -211,102 +211,102 @@ $$\Lapl{\frac{2}{X}\int\limits_0^X m(t) dt} = 2 \int\limits_p^\infty \frac{M(s)}
 Для наступного аналізу доведемо деякі леми.
 
 \begin{lem}
-	\label{eq:exp_q_p_asymptotics}
-	$e^{-2Q(p)}$ поводиться як $p^{-2}$ в 0, з точністю до константи, а саме:
+	\label{eq:exp_q_s_asymptotics}
+	$e^{-2Q(s)}$ поводиться як $s^{-2}$ в 0, з точністю до константи, а саме:
 	\begin{equation}
-		\lim\limits_{p \rightarrow 0} \frac{e^{-2Q(p)}}{p^{-2}} = \exp\left(-2\int\limits_0^1 \frac{1-e^{-s}}{s} ds\right)
+		\lim\limits_{s \rightarrow 0} \frac{e^{-2Q(s)}}{s^{-2}} = \exp\left(-2\int\limits_0^1 \frac{1-e^{-u}}{u} du\right)
 	\end{equation}
 \end{lem}
 \begin{proof}
 	Для знаходження ліміту прологарифмуємо вираз. Отримаємо:
 	\[
 	\begin{split}
-	2 \ln p - 2 Q(p) = 2 \ln p - 2 \int\limits_1^p \frac{e^{-s}}{s} ds &= 2 \int\limits_1^p \frac{1}{s} ds - 2 \int\limits_1^p \frac{e^{-s}}{s} ds = \\
-		= 2  \int\limits_1^p \frac{1 - e^{-s}}{s} ds &= -2 \int\limits_p^1 \frac{1 - e^{-s}}{s} ds
+	2 \ln s - 2 Q(s) = 2 \ln s - 2 \int\limits_1^s \frac{e^{-u}}{u} du &= 2 \int\limits_1^s \frac{1}{u} du - 2 \int\limits_1^s \frac{e^{-u}}{u} du = \\
+		= 2  \int\limits_1^s \frac{1 - e^{-u}}{u} du &= -2 \int\limits_s^1 \frac{1 - e^{-u}}{u} du
 	\end{split}
 	\]
 	Тепер, підвівши до експоненти обидві частини, отримаємо:
 	$$
-		\frac{e^{-2Q(p)}}{p^{-2}} = \exp\left(-2 \int\limits_p^1 \frac{1 - e^{-s}}{s} ds\right)
+		\frac{e^{-2Q(s)}}{s^{-2}} = \exp\left(-2 \int\limits_s^1 \frac{1 - e^{-u}}{u} du\right)
 	$$
 	Якщо довести, що інтеграл
 	$$
-		-2 \int\limits_0^1 \frac{1 - e^{-s}}{s} ds
+		-2 \int\limits_0^1 \frac{1 - e^{-u}}{u} du
 	$$
 	збігається, то лему буде доведено, адже експонента – неперервна функція, і можна переходити до ліміту під експонентою.
 	Зрозуміло, що
 	$$
-		-2 \int\limits_p^1 \frac{1 - e^{-s}}{s} ds
+		-2 \int\limits_s^1 \frac{1 - e^{-u}}{u} du
 	$$
-	збігається для $\forall p \in (0;~1]$. Дійсно, підінтегральна функція $ \frac{1 - e^{-s}}{s}$ мажорується $\frac{1}{s}$, яка, в свою чергу, має скінченне значення інтегралу:
+	збігається для $\forall s \in (0;~1]$. Дійсно, підінтегральна функція $ \frac{1 - e^{-u}}{u}$ мажорується $\frac{1}{u}$, яка, в свою чергу, має скінченне значення інтегралу:
 	$$
-		\int\limits_p^1 \frac{1}{s} ds = \ln 1 - \ln p = -\ln p,\quad p > 0
+		\int\limits_s^1 \frac{1}{u} du = \ln 1 - \ln s = -\ln s,\quad s > 0
 	$$
 	Невизначеність виникає лише в точці 0. Знайдемо ліміт підінтегральної функції в точці 0:
 	$$
-		\lim\limits_{p\rightarrow 0} \frac{1 - e^{-s}}{s} = \<\text{правило Лопіталя для невизначенності 0/0}\> = \lim\limits_{p\rightarrow 0} \frac{e^{-s}}{1} = 1
+		\lim\limits_{s\rightarrow 0} \frac{1 - e^{-u}}{u} = \<\text{правило Лопіталя для невизначенності 0/0}\> = \lim\limits_{s\rightarrow 0} \frac{e^{-u}}{1} = 1
 	$$
 	Таким чином, підінтегральна функція обмежена в деякому $\varepsilon$-околі 0, тому інтеграл також збіжний, і лему доведено.
 \end{proof}
 
 \begin{lem}
-	\label{eq:q_p_limited}
+	\label{eq:q_s_limited}
 	Функція
 	$$
-		Q(p) = \int\limits_1^p \frac{e^{-s}}{s} ds
+		Q(s) = \int\limits_1^s \frac{e^{-u}}{u} du
 	$$
 	  – обмежена на $[w; ~\infty], \; w>0$.
 \end{lem}
 \begin{proof}
-	На проміжку $[1; ~\infty]$ підінтегральна функція мажорується функцією $e^{-s}$, а на проміжку $[w; ~1]$ – функцією $\frac{1}{s}$, тому, аналогічно доведенню попередньої леми, інтеграл буде збіжний, і:
+	На проміжку $[1; ~\infty]$ підінтегральна функція мажорується функцією $e^{-u}$, а на проміжку $[w; ~1]$ – функцією $\frac{1}{u}$, тому, аналогічно доведенню попередньої леми, інтеграл буде збіжний, і:
 	\begin{align*}
-		Q(p) \leq \int\limits_1^\infty e^{-s} ds = \exp(-1) &,\quad p \geq 1 \\
-		Q(p) \leq \int\limits_w^1 \frac{1}{s} ds = - \ln w &, \quad p \in [w;~1]
+		Q(s) \leq \int\limits_1^\infty e^{-u} du = \exp(-1) &,\quad s \geq 1 \\
+		Q(s) \leq \int\limits_w^1 \frac{1}{u} du = - \ln w &, \quad s \in [w;~1]
 	\end{align*}
-	Таким чином, $Q(p) \leq \max\{-\ln w, \exp(-1)\}$.
+	Таким чином, $Q(s) \leq \max\{-\ln w, \exp(-1)\}$.
 \end{proof}
 
 \begin{lem}
 	Інтеграл
 	$$
-		\int\limits_0^\infty \frac{e^{2Q(s)}}{s^2} ds
+		\int\limits_0^\infty \frac{e^{2Q(u)}}{u^2} du
 	$$
 	– збіжний.
 \end{lem}
 \begin{proof}
-	Спираючись на лему \eqref{eq:exp_q_p_asymptotics}, маємо, що підінтегральна функція прямує до деякої константи при $s \rightarrow 0$, оскільки є обернено пропорційною до функції з тої леми. Тому в деякому проколотому $\varepsilon$-околі точки 0 підінтегральна функція буде обмежена. На інтервалі $[\varepsilon; ~\infty]$ за лемою \eqref{eq:q_p_limited}, $Q(s)$ – обмежена, а тому і $\exp(2Q(s))$ також. Тому збіжність на інтервалі $[\varepsilon; ~\infty]$ виконується, якщо збігається інтеграл
+	Спираючись на лему \eqref{eq:exp_q_s_asymptotics}, маємо, що підінтегральна функція прямує до деякої константи при $u \rightarrow 0$, оскільки є обернено пропорційною до функції з тої леми. Тому в деякому проколотому $\varepsilon$-околі точки 0 підінтегральна функція буде обмежена. На інтервалі $[\varepsilon; ~\infty]$ за лемою \eqref{eq:q_s_limited}, $Q(u)$ – обмежена, а тому і $\exp(2Q(u))$ також. Тому збіжність на інтервалі $[\varepsilon; ~\infty]$ виконується, якщо збігається інтеграл
 	\[
-		\int\limits_\varepsilon^\infty \frac{1}{s^2} ds.
+		\int\limits_\varepsilon^\infty \frac{1}{u^2} du.
 	\]
 	А його збіжність – відомий факт.
 \end{proof}
 		
 Таким чином, спираючись на доведені леми, маємо:
 \begin{align*}
-&M(p) \sim p^{-2} \cdot \exp\left(-2\int\limits_0^1 \frac{1-e^{-s}}{s} ds\right) \int\limits_0^\infty \frac{e^{2Q(s)}}{s^2} ds = \\
-& = p^{-2} \cdot \exp\left(-2\int\limits_0^1 \frac{1-e^{-s}}{s} ds\right) \int\limits_0^\infty \exp\left(2\int\limits_1^s \frac{e^{-\tau}}{\tau} d\tau - 2 \ln s\right) ds = \\
-& = p^{-2} \cdot \exp\left(-2\int\limits_0^1 \frac{1-e^{-s}}{s} ds\right) \int\limits_0^\infty \exp\left(2\int\limits_1^s \frac{e^{-\tau}}{\tau} d\tau - 2  \int\limits_1^s  \frac{1}{\tau} d\tau \right) ds = \\
-& = p^{-2} \cdot \exp\left(-2\int\limits_0^1 \frac{1-e^{-s}}{s} ds\right) \int\limits_0^\infty \exp\left(-2\int\limits_1^s \frac{1 - e^{-\tau}}{\tau} d\tau  \right) ds = \\
-& = p^{-2} \cdot \int\limits_0^\infty \exp\left( -2\int\limits_0^1 \frac{1-e^{-\tau}}{\tau} ds -2\int\limits_1^s \frac{1 - e^{-\tau}}{\tau} d\tau  \right) ds 
+&M(s) \sim s^{-2} \cdot \exp\left(-2\int\limits_0^1 \frac{1-e^{-u}}{u} du\right) \int\limits_0^\infty \frac{e^{2Q(u)}}{u^2} du = \\
+& = s^{-2} \cdot \exp\left(-2\int\limits_0^1 \frac{1-e^{-u}}{u} du\right) \int\limits_0^\infty \exp\left(2\int\limits_1^u \frac{e^{-\tau}}{\tau} d\tau - 2 \ln u\right) du = \\
+& = s^{-2} \cdot \exp\left(-2\int\limits_0^1 \frac{1-e^{-u}}{u} du\right) \int\limits_0^\infty \exp\left(2\int\limits_1^u \frac{e^{-\tau}}{\tau} d\tau - 2  \int\limits_1^u  \frac{1}{\tau} d\tau \right) du = \\
+& = s^{-2} \cdot \exp\left(-2\int\limits_0^1 \frac{1-e^{-u}}{u} du\right) \int\limits_0^\infty \exp\left(-2\int\limits_1^u \frac{1 - e^{-\tau}}{\tau} d\tau  \right) du = \\
+& = s^{-2} \cdot \int\limits_0^\infty \exp\left( -2\int\limits_0^1 \frac{1-e^{-\tau}}{\tau} du -2\int\limits_1^u \frac{1 - e^{-\tau}}{\tau} d\tau  \right) du 
 \end{align*}
 
 Склавши інтеграли під експонентою, отримаємо:
 \begin{equation}
-	M(p) \sim p^{-2} \cdot \int\limits_0^\infty \exp\left( -2\int\limits_0^s \frac{1 - e^{-\tau}}{\tau} d\tau  \right) ds, \quad p \rightarrow 0.
+	M(s) \sim s^{-2} \cdot \int\limits_0^\infty \exp\left( -2\int\limits_0^u \frac{1 - e^{-\tau}}{\tau} d\tau  \right) du, \quad s \rightarrow 0.
 \end{equation}
 
 Тепер, за теоремою Таубера маємо при $X \rightarrow \infty$:
 \begin{equation}
-	\int\limits_0^X m(x) dx \sim \frac{1}{\Gamma(2 + 1)} \int\limits_0^\infty \exp\left( -2\int\limits_0^s \frac{1 - e^{-\tau}}{\tau} d\tau  \right) ds \cdot X^2.
+	\int\limits_0^X m(x) dx \sim \frac{1}{\Gamma(2 + 1)} \int\limits_0^\infty \exp\left( -2\int\limits_0^u \frac{1 - e^{-\tau}}{\tau} d\tau  \right) du \cdot X^2.
 \end{equation}
 
 Або, продиференціювавши обидві частини,  отримаємо:
 \begin{equation}
-	m(X) \sim \frac{2}{\Gamma(2 + 1)} \int\limits_0^\infty \exp\left( -2\int\limits_0^s \frac{1 - e^{-\tau}}{\tau} d\tau  \right) ds \cdot X.
+	m(X) \sim \frac{2}{\Gamma(2 + 1)} \int\limits_0^\infty \exp\left( -2\int\limits_0^u \frac{1 - e^{-\tau}}{\tau} d\tau  \right) du \cdot X.
 \end{equation}
 \begin{equation}
 	\label{eq:uniform_base_final}
-	m(X) \sim  \int\limits_0^\infty \exp\left( -2\int\limits_0^s \frac{1 - e^{-\tau}}{\tau} d\tau  \right) ds \cdot X, \quad X \rightarrow \infty.
+	m(X) \sim  \int\limits_0^\infty \exp\left( -2\int\limits_0^u \frac{1 - e^{-\tau}}{\tau} d\tau  \right) du \cdot X, \quad X \rightarrow \infty.
 \end{equation}
 
 Тут ми мали право диференціювати обидві частини за правилом Лопіталя, адже має місце невизначеність $\infty / \infty$.
