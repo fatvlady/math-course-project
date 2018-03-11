@@ -301,7 +301,7 @@ $$
 
 Склавши інтеграли під експонентою, отримаємо:
 \begin{equation}
-	M_p(s) \sim s^{-2} \cdot \frac{1}{1-p} \int\limits_0^\infty \exp\left( -2\int\limits_0^u \frac{e^{\tau} - 1}{\tau(e^\tau - p)} d\tau  \right) du, \quad s \rightarrow 0.
+	M_p(s) \sim s^{-2} \cdot \underbrace{\frac{1}{1-p} \int\limits_0^\infty \exp\left( -2\int\limits_0^u \frac{e^{\tau} - 1}{\tau(e^\tau - p)} d\tau  \right) du}_{\text{збігається, не залежить від } s}, \quad s \rightarrow 0.
 \end{equation}
 
 Тепер, за теоремою Таубера маємо при $X \rightarrow \infty$:
@@ -327,16 +327,16 @@ C_{p} = \frac{1}{1-p} \int\limits_0^\infty \exp\left( -2\int\limits_0^u \frac{e^
 
 \subsection{Уточнення асимптотики $m(x)$}
 
-Нескладно помітити, що $\mu_{p}(X) = C X - \frac{1-C}{p}$ є розв'язком рівняння \eqref{eq:uniform_right_equation} $\forall C \in \RR$:
+Нескладно помітити, що $\mu_{p}(X) = C X - \frac{1-C}{1 - p}$ є розв'язком рівняння \eqref{eq:uniform_right_equation} $\forall C \in \RR$:
 \begin{align*}
-&1 + \frac{2 p}{X} \int_{0}^{X} \mu_{p}(t) dt + (1 - p)\mu_{p}(X) = \\
-&=1 + \frac{2 p}{X} \int_{0}^{X} \left\{C t - \frac{1 - C}{p} \right\} dt + (1 - p) \left( C X - \frac{1 - C}{p}\right) = \\
-&=1 + p C X - 2(1 - C) + (1 - p) C X - (\frac{1}{p} - 1)(1 - C) = \\
-&= C(X + 1) - \frac{1}{p}(1-C) = \mu_{p}(X+1)
+&1 + \frac{2 (1-p)}{X} \int_{0}^{X} \mu_{p}(t) dt + p\mu_{p}(X) = \\
+&=1 + \frac{2 (1-p)}{X} \int_{0}^{X} \left\{C t - \frac{1 - C}{1 - p} \right\} dt + p \left( C X - \frac{1 - C}{1 - p}\right) = \\
+&=1 + (1 - p) C X - 2(1 - C) + p C X - (\frac{1}{1 - p} - 1)(1 - C) = \\
+&= C(X + 1) - \frac{1 - C}{1 - p} = \mu_{p}(X+1)
 \end{align*}
 
 Тому резонно апроксимувати досліджувану функцію $m_{p}(X)$ використовуючи функцію $\mu$. Далі буде доведено наступне твердження:
 \begin{equation}
-\lim\limits_{X \rightarrow \infty} \left( m(X) - C_{p} X - \frac{1 - C_{p}}{p} \right) = 0
+\lim\limits_{X \rightarrow \infty} \left( m(X) - C_{p} X - \frac{1 - C_{p}}{1 - p} \right) = 0
 \end{equation}
 
