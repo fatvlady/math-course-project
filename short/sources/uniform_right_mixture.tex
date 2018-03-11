@@ -4,8 +4,8 @@
 
 В цій моделі водії вибирають місце для автомобіля, керуючись наступним правилом
 \begin{itemize}
-\item з ймовірністю $\alpha$ водій ставить автомобіль в правому кінці вільного проміжку, 
-\item з ймовірністю $\beta = 1 - \alpha$ водій вибирає місце керуючись рівномірним розподілом, аналогічно тому, як це робилося у главі \ref{sec:uniform_base}.
+\item з ймовірністю $p$ водій ставить автомобіль в правому кінці вільного проміжку, 
+\item з ймовірністю $q = 1 - p$ водій вибирає місце керуючись рівномірним розподілом, аналогічно тому, як це робилося у главі \ref{sec:uniform_base}.
 \end{itemize}
 
 \subsection{Виведення інтегрального рівняння}
@@ -15,8 +15,8 @@
 Необхідно визначити $m(X)=\EE F(X)$. Нехай $\xi \sim Uniform(0, X - 1)$ – випадкова величина, що визначає положення лівого краю першого автомобіля на парковці у випадку вибору місця за рівномірним розподілом. Тоді маємо наступну тотожність:
 \[
 \begin{split}
-	m(X) = \alpha(1+ m(X-1)) + \beta(1+ \EE(\EE(F(\xi) + F(X - 1 - \xi)  | \xi))) =\\
-	=1 + \alpha m(X-1) + \beta \int\limits_0^{X-1} m(t) \frac{1}{X − 1} dt + \beta \int\limits_0^{X-1} m(X − t − 1) \frac{1}{X − 1} dt 
+	m(X) = p(1+ m(X-1)) + \beta(1+ \EE(\EE(F(\xi) + F(X - 1 - \xi)  | \xi))) =\\
+	=1 + p m(X-1) + \beta \int\limits_0^{X-1} m(t) \frac{1}{X − 1} dt + \beta \int\limits_0^{X-1} m(X − t − 1) \frac{1}{X − 1} dt 
 \end{split}
 \]
 
@@ -28,7 +28,7 @@
 
 \begin{equation}
 	\label{eq:uniform_right_equation}
-	m(X + 1) = 1 + \alpha m(X) + \frac{2\beta}{X} \int\limits_0^{X} m(t) dt,\quad \forall X > 0
+	m(X + 1) = 1 + p m(X) + \frac{2\beta}{X} \int\limits_0^{X} m(t) dt,\quad \forall X > 0
 \end{equation}
 
 Аналогічно діям в главі \ref{sec:uniform_base}, маємо, що виконується \eqref{eq:zero_state}, \eqref{eq:bounds} та \eqref{eq:bounds_inference}.
@@ -43,114 +43,114 @@
 Таким чином, отримали інтегральне рівняння в термінах зображення Лапласа, яке вже можна розв'язати, адже нема зсуву:
 \begin{equation}
 	\label{eq:uniform_right_laplace_integral}
-	e^s M(s) = \alpha M(s) + 2\beta \int\limits_s^\infty \frac{M(u)}{u} du + \frac{1}{s}
+	e^s M(s) = p M(s) + 2\beta \int\limits_s^\infty \frac{M(u)}{u} du + \frac{1}{s}
 \end{equation}
 
 Продиференціюємо обидві частини рівняння за $s$:
 \begin{equation}
-	e^s M(s) + e^s \dot M(s) =\alpha \dot M(s) - 2 \beta \frac{M(s)}{s}  - \frac1{s^2}
+	e^s M(s) + e^s \dot M(s) =p \dot M(s) - 2 \beta \frac{M(s)}{s}  - \frac1{s^2}
 \end{equation}
 
 Виразимо $\dot M(s)$ з цього рівняння:
 \begin{equation}
 	\label{eq:uniform_right_laplace_diff}
-	\dot M(s) = - M(s)\left(\frac{e^s}{e^s - \alpha} + \frac{2\beta}{s(e^s - \alpha)}\right) - \frac{1}{s^2(e^s - \alpha)}
+	\dot M(s) = - M(s)\left(\frac{e^s}{e^s - p} + \frac{2\beta}{s(e^s - p)}\right) - \frac{1}{s^2(e^s - p)}
 \end{equation}
 
 Розв'яжемо отримане диференційне рівняння. Спочатку розв'яжемо однорідну частину:
 \begin{align*}
-	\dot M_h (s) &= - M_h (s)\left(\frac{e^s}{e^s - \alpha} + \frac{2\beta}{s(e^s - \alpha)}\right) \\
-	\frac{\dot M_h (s)}{M_h (s)} &= -\left(\frac{e^s}{e^s - \alpha} + \frac{2\beta}{s(e^s - \alpha)}\right) \\
-	\int\limits_1^s \frac{\dot M_h (u)}{M_h (u)} du &= -\int\limits_1^s \left(\frac{e^u}{e^u - \alpha} + \frac{2\beta}{u(e^u - \alpha)}\right) du \\
-	\left. \ln{M_h (u)}\right|_1^s &= - \int\limits_1^s \frac{e^u}{e^u - \alpha} du  - 2 \int\limits_1^s \frac{\beta}{u(e^u - \alpha)} du
+	\dot M_h (s) &= - M_h (s)\left(\frac{e^s}{e^s - p} + \frac{2\beta}{s(e^s - p)}\right) \\
+	\frac{\dot M_h (s)}{M_h (s)} &= -\left(\frac{e^s}{e^s - p} + \frac{2\beta}{s(e^s - p)}\right) \\
+	\int\limits_1^s \frac{\dot M_h (u)}{M_h (u)} du &= -\int\limits_1^s \left(\frac{e^u}{e^u - p} + \frac{2\beta}{u(e^u - p)}\right) du \\
+	\left. \ln{M_h (u)}\right|_1^s &= - \int\limits_1^s \frac{e^u}{e^u - p} du  - 2 \int\limits_1^s \frac{\beta}{u(e^u - p)} du
 \end{align*}
 
 Позначимо
 \begin{equation}
 	\label{eq:almost_li_alpha}
-	Q_\alpha(s) := \int\limits_1^s \frac{\beta}{u(e^u - \alpha)} du
+	Q_p(s) := \int\limits_1^s \frac{\beta}{u(e^u - p)} du
 \end{equation}
 
 Оскільки
 \begin{align*}
-	\int\limits_1^s \frac{e^u}{e^u - \alpha} du &= \< u = e^u - \alpha,~ du = e^u du = (u+\alpha) du \> = \\
-	&= \int\limits_{e-\alpha}^{e^s -\alpha} \frac{u + \alpha}{u} (u+\alpha)^{-1} du = 
-	\int\limits_{e-\alpha}^{e^s -\alpha} \frac{du}{u} = \\
-	&= \log(e^s - \alpha) - \log(e-\alpha) = \log \frac{e^s - \alpha}{e - \alpha} \text{,}
+	\int\limits_1^s \frac{e^u}{e^u - p} du &= \< u = e^u - p,~ du = e^u du = (u+p) du \> = \\
+	&= \int\limits_{e-p}^{e^s -p} \frac{u + p}{u} (u+p)^{-1} du = 
+	\int\limits_{e-p}^{e^s -p} \frac{du}{u} = \\
+	&= \log(e^s - p) - \log(e-p) = \log \frac{e^s - p}{e - p} \text{,}
 \end{align*}
 
 то
 \begin{align*}
-	\ln{M_h (s)} &= \ln{M_h (1)} - \log \frac{e^s - \alpha}{e - \alpha} - 2Q_\alpha(s) \\
-	M_h (s) &= M_h (1) \cdot \frac{e - \alpha}{e^s - \alpha} \cdot e^{- 2Q_\alpha(s)} \cdot const
+	\ln{M_h (s)} &= \ln{M_h (1)} - \log \frac{e^s - p}{e - p} - 2Q_p(s) \\
+	M_h (s) &= M_h (1) \cdot \frac{e - p}{e^s - p} \cdot e^{- 2Q_p(s)} \cdot const
 \end{align*}
 
-Оскільки $M(1)$ та $(e-\alpha)$ можна включити в константу, то маємо розв'язок
+Оскільки $M(1)$ та $(e-p)$ можна включити в константу, то маємо розв'язок
 \begin{equation}
 	\label{eq:uniform_right_laplace_homogen_sol}
-	M_h (s) = C \cdot \left((e^s - \alpha)  e^{2Q_\alpha(s)}\right)^{-1}, \quad \forall C \in \RR
+	M_h (s) = C \cdot \left((e^s - p)  e^{2Q_p(s)}\right)^{-1}, \quad \forall C \in \RR
 \end{equation}
 
 Дійсно, перевіримо цей розв'язок:
 \[
 \begin{split}
-	\dot M_h (s) &= C \cdot \left(\frac{1}{(e^s - \alpha)  e^{2Q_\alpha(s)}}\right)'=\\
-	 &= - C \cdot \left(\frac{1}{(e^s - \alpha)  e^{2Q_\alpha(s)}}\right)^2 \cdot \left(e^s  + (e^s - \alpha) \frac{2\beta}{s(e^s - \alpha)}   \right) e^{2Q_\alpha(s)} =\\
-	 &= -C \left((e^s - \alpha)  e^{2Q_\alpha(s)}\right)^{-1} \cdot \left(\frac{e^s}{e^s - \alpha}  + \frac{2\beta}{s(e^s - \alpha)}   \right) =\\
-	 &= - M(s) \cdot \left(\frac{e^s}{e^s - \alpha}  + \frac{2\beta}{s(e^s - \alpha)}   \right)
+	\dot M_h (s) &= C \cdot \left(\frac{1}{(e^s - p)  e^{2Q_p(s)}}\right)'=\\
+	 &= - C \cdot \left(\frac{1}{(e^s - p)  e^{2Q_p(s)}}\right)^2 \cdot \left(e^s  + (e^s - p) \frac{2\beta}{s(e^s - p)}   \right) e^{2Q_p(s)} =\\
+	 &= -C \left((e^s - p)  e^{2Q_p(s)}\right)^{-1} \cdot \left(\frac{e^s}{e^s - p}  + \frac{2\beta}{s(e^s - p)}   \right) =\\
+	 &= - M(s) \cdot \left(\frac{e^s}{e^s - p}  + \frac{2\beta}{s(e^s - p)}   \right)
 \end{split}
 \]
 
 Нескладно помітити, що отримали вихідне рівняння. Тепер застосуємо метод варіації довільних сталих:
 $$
-	M(s) = C(s) \cdot \left((e^s - \alpha)  e^{2Q_\alpha(s)}\right)^{-1} 
+	M(s) = C(s) \cdot \left((e^s - p)  e^{2Q_p(s)}\right)^{-1} 
 $$
 
 Продиференціювавши за $s$, отримаємо:
 \begin{align*}
-	\dot M(s) &= \dot C(s) \cdot \left((e^s - \alpha)  e^{2Q_\alpha(s)}\right)^{-1} -C(s) \left((e^s - \alpha)  e^{2Q_\alpha(s)}\right)^{-1} \cdot \\
-	&\cdot \left(\frac{e^s}{e^s - \alpha}  + \frac{2\beta}{s(e^s - \alpha)}   \right) 
+	\dot M(s) &= \dot C(s) \cdot \left((e^s - p)  e^{2Q_p(s)}\right)^{-1} -C(s) \left((e^s - p)  e^{2Q_p(s)}\right)^{-1} \cdot \\
+	&\cdot \left(\frac{e^s}{e^s - p}  + \frac{2\beta}{s(e^s - p)}   \right) 
 \end{align*}
 
 З іншої сторони, з \eqref{eq:uniform_right_laplace_diff} маємо
 $$
-	 \dot M(s) = - C(s) \left((e^s - \alpha)  e^{2Q_\alpha(s)}\right)^{-1}  \left(\frac{e^s}{e^s - \alpha} + \frac{2\beta}{s(e^s - \alpha)}\right) - \frac{1}{s^2(e^s - \alpha)} \quad	
+	 \dot M(s) = - C(s) \left((e^s - p)  e^{2Q_p(s)}\right)^{-1}  \left(\frac{e^s}{e^s - p} + \frac{2\beta}{s(e^s - p)}\right) - \frac{1}{s^2(e^s - p)} \quad	
 $$
 Тому
 $$
-	\dot C(s) = - \left((e^s - \alpha)  e^{2Q_\alpha(s)}\right) \cdot  \frac{1}{s^2(e^s - \alpha)} =  - \frac{e^{2Q_\alpha(s)}}{s^2}
+	\dot C(s) = - \left((e^s - p)  e^{2Q_p(s)}\right) \cdot  \frac{1}{s^2(e^s - p)} =  - \frac{e^{2Q_p(s)}}{s^2}
 $$
 
 Тоді простим інтегруванням в межах від 1 до $s$ отримуємо:
 \begin{equation}
-	C(s) = -  \int\limits_1^s \frac{e^{2Q_\alpha(u)}}{u^2} du + const
+	C(s) = -  \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + const
 \end{equation}
 
 І тоді отримуємо вираз для $M(s)$:
 \begin{equation}
 \begin{split}
-	M(s)=- \left( \int\limits_1^s \frac{e^{2Q_\alpha(u)}}{u^2} du + const \right) \left((e^s - \alpha)  e^{2Q_\alpha(s)}\right)^{-1}  =\\
-	= - \left( \int\limits_1^s \frac{e^{2Q_\alpha(u)}}{u^2} du + K \right) \frac{1}{(e^s - \alpha)  e^{2Q_\alpha(s)}}, \quad K \in \RR
+	M(s)=- \left( \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + const \right) \left((e^s - p)  e^{2Q_p(s)}\right)^{-1}  =\\
+	= - \left( \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + K \right) \frac{1}{(e^s - p)  e^{2Q_p(s)}}, \quad K \in \RR
 \end{split}
 \end{equation}
 
 Перевіримо отриманий результат:
 \begin{equation*}
 \begin{split}
-	&\dot M(s) = -\left( \int\limits_1^s \frac{e^{2Q_\alpha(u)}}{u^2} du + K \right)' \frac{1}{(e^s - \alpha)  e^{2Q_\alpha(s)}} -\left( \int\limits_1^s \frac{e^{2Q_\alpha(u)}}{u^2} du + K \right)\cdot \\ 
-	&\cdot \left(\frac{1}{(e^s - \alpha)  e^{2Q_\alpha(s)}}\right)' = -\frac{e^{2Q_\alpha(s)}}{s^2} \frac{1}{(e^s - \alpha)  e^{2Q_\alpha(s)}}  + \left( \int\limits_1^s \frac{e^{2Q_\alpha(u)}}{u^2} du + K \right) \cdot \\
-	& \cdot \left((e^s - \alpha)  e^{2Q_\alpha(s)}\right)^{-1} \cdot \left(\frac{e^s}{e^s - \alpha}  + \frac{2\beta}{s(e^s - \alpha)}   \right)= -\frac{1}{s^2(e^s - \alpha)} -\\
-	&- M(s)\left(\frac{e^s}{e^s - \alpha}  + \frac{2\beta}{s(e^s - \alpha)}   \right)
+	&\dot M(s) = -\left( \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + K \right)' \frac{1}{(e^s - p)  e^{2Q_p(s)}} -\left( \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + K \right)\cdot \\ 
+	&\cdot \left(\frac{1}{(e^s - p)  e^{2Q_p(s)}}\right)' = -\frac{e^{2Q_p(s)}}{s^2} \frac{1}{(e^s - p)  e^{2Q_p(s)}}  + \left( \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + K \right) \cdot \\
+	& \cdot \left((e^s - p)  e^{2Q_p(s)}\right)^{-1} \cdot \left(\frac{e^s}{e^s - p}  + \frac{2\beta}{s(e^s - p)}   \right)= -\frac{1}{s^2(e^s - p)} -\\
+	&- M(s)\left(\frac{e^s}{e^s - p}  + \frac{2\beta}{s(e^s - p)}   \right)
 \end{split}
 \end{equation*}
 
 Перевірено. Тоді остаточний результат без вирахування константи:
 \begin{equation}
 	\label{eq:uniform_right_laplace_sol_initial}
-	M_\alpha(s)= \left( \int\limits_s^1 \frac{e^{2Q_\alpha(u)}}{u^2} du + K \right) \frac{1}{(e^s - \alpha)  e^{2Q_\alpha(s)}}
+	M_p(s)= \left( \int\limits_s^1 \frac{e^{2Q_p(u)}}{u^2} du + K \right) \frac{1}{(e^s - p)  e^{2Q_p(s)}}
 \end{equation}
 
-Зазначимо, що у випадку $\alpha=0$ ми маємо випадок з глави \ref{sec:uniform_base}, тож і формула \eqref{eq:uniform_right_laplace_sol_initial} має співпадати з \eqref{eq:uniform_laplace_sol_initial} при $\alpha = 0$. Спираючись на те, що $Q_0(s) \equiv Q(s)$, отримуємо, що $M_0(s) \equiv M(s) \; \forall s > 0$.
+Зазначимо, що у випадку $p=0$ ми маємо випадок з глави \ref{sec:uniform_base}, тож і формула \eqref{eq:uniform_right_laplace_sol_initial} має співпадати з \eqref{eq:uniform_laplace_sol_initial} при $p = 0$. Спираючись на те, що $Q_0(s) \equiv Q(s)$, отримуємо, що $M_0(s) \equiv M(s) \; \forall s > 0$.
 
 \subsection{Визначення константи у розв'язку}
 
@@ -161,60 +161,60 @@ $$
 
 Аналогічно доводиться той самий факт, але для випадку суміші рівномірного розподілу та розподілу Бернулі. Таким чином, маємо
 \begin{equation}
-	\Lapl{m_\alpha(X+1)} =\tilde M_\alpha(s)= \left( \int\limits_s^1 \frac{e^{2Q_\alpha(u)}}{u^2} du + K \right) \frac{e^s}{e^s - \alpha} e^{- 2Q_\alpha(s)}.
+	\Lapl{m_p(X+1)} =\tilde M_p(s)= \left( \int\limits_s^1 \frac{e^{2Q_p(u)}}{u^2} du + K \right) \frac{e^s}{e^s - p} e^{- 2Q_p(s)}.
 \end{equation}
 
-Оскільки зображення Лапласа – аналітична функція в деякій правій півплощині комплексного простору, то $\tilde M_\alpha(s) \rightarrow 0,\; s \rightarrow +\infty$.
+Оскільки зображення Лапласа – аналітична функція в деякій правій півплощині комплексного простору, то $\tilde M_p(s) \rightarrow 0,\; s \rightarrow +\infty$.
 
-Розглянемо $Q_\alpha(s)$ ($s$ розглядаємо на дійсній вісі):
+Розглянемо $Q_p(s)$ ($s$ розглядаємо на дійсній вісі):
 \begin{equation}
 \begin{split}
 	\label{eq:q_alpha_s_major}
-	&Q_\alpha(s) = \int\limits_1^s \frac{1-\alpha}{u(e^u - \alpha)} du <  \int\limits_1^\infty \frac{1 - \alpha}{u(e^u - \alpha)} du < 
-	\int\limits_1^\infty \frac{1- \alpha}{e^u - \alpha} du<\\
+	&Q_p(s) = \int\limits_1^s \frac{1-p}{u(e^u - p)} du <  \int\limits_1^\infty \frac{1 - p}{u(e^u - p)} du < 
+	\int\limits_1^\infty \frac{1- p}{e^u - p} du<\\
 	&< \int\limits_1^\infty \frac{1}{e^u} du = \exp(-1) - \exp(-\infty) = \exp(-1)
 \end{split}
 \end{equation}
 
 Останній перехід нерівності пояснюється досить просто:
 $$
-\frac{1-\alpha}{u - \alpha} < \frac{1}{\alpha}, \; u > 1 \Leftrightarrow u - u \alpha = u(1-\alpha) < u - \alpha, \; u > 1
+\frac{1-p}{u - p} < \frac{1}{p}, \; u > 1 \Leftrightarrow u - u p = u(1-p) < u - p, \; u > 1
 $$
 
-Тобто $Q_\alpha(s)$ - обмежена на $[1; \infty]$. Тому обмеженими на цій вісі будуть і $e^{\pm 2Q_\alpha(s)}$. Також зрозуміло, що якщо інтегрувати по дійсній вісі, то $Q_\alpha(s)$ – монотонно зростаюча за $s$. Тому
+Тобто $Q_p(s)$ - обмежена на $[1; \infty]$. Тому обмеженими на цій вісі будуть і $e^{\pm 2Q_p(s)}$. Також зрозуміло, що якщо інтегрувати по дійсній вісі, то $Q_p(s)$ – монотонно зростаюча за $s$. Тому
 \begin{equation}
-	0 = \tilde M_\alpha(\infty) = \lim_{s\rightarrow \infty} \tilde M_\alpha(s) = \left( \int\limits_\infty^1 \frac{e^{2Q_\alpha(u)}}{u^2} du + K \right) \lim_{s\rightarrow \infty} e^{- 2Q_\alpha(s)}
+	0 = \tilde M_p(\infty) = \lim_{s\rightarrow \infty} \tilde M_p(s) = \left( \int\limits_\infty^1 \frac{e^{2Q_p(u)}}{u^2} du + K \right) \lim_{s\rightarrow \infty} e^{- 2Q_p(s)}
 \end{equation}
 
-Тут $\lim\limits_{s\rightarrow \infty} e^{- 2Q_\alpha(s)} = const > 0$, тому маємо, що
+Тут $\lim\limits_{s\rightarrow \infty} e^{- 2Q_p(s)} = const > 0$, тому маємо, що
 \begin{equation}
-	K = -  \int\limits_\infty^1 \frac{e^{2Q_\alpha(u)}}{u^2} du =  \int\limits_1^\infty \frac{e^{2Q_\alpha(u)}}{u^2} du.
+	K = -  \int\limits_\infty^1 \frac{e^{2Q_p(u)}}{u^2} du =  \int\limits_1^\infty \frac{e^{2Q_p(u)}}{u^2} du.
 \end{equation}
 
 Таким чином, отримали нову версію $M(s)$:
 \begin{equation}
 \begin{split}
 	\label{eq:uniform_right_laplace_sol}
-	M_\alpha(s)&= \left( \int\limits_s^1 \frac{e^{2Q_\alpha(u)}}{u^2} du + K \right) \frac{1}{(e^s - \alpha)  e^{2Q_\alpha(s)}}
+	M_p(s)&= \left( \int\limits_s^1 \frac{e^{2Q_p(u)}}{u^2} du + K \right) \frac{1}{(e^s - p)  e^{2Q_p(s)}}
  = \\
-	&=\frac{1}{(e^s - \alpha)  e^{2Q_\alpha(s)}} \int\limits_s^\infty \frac{e^{2Q_\alpha(u)}}{u^2} du
+	&=\frac{1}{(e^s - p)  e^{2Q_p(s)}} \int\limits_s^\infty \frac{e^{2Q_p(u)}}{u^2} du
 \end{split}
 \end{equation}
 
 \subsection{Застосування теореми Таубера}
 
-Для знаходження асимптотики $m_\alpha(X)$ на нескінченності, за теоремою Таубера \eqref{eq:tauber_thm} необхідно визначити асимптотику $M_\alpha(s)$ при $s \rightarrow 0$.
+Для знаходження асимптотики $m_p(X)$ на нескінченності, за теоремою Таубера \eqref{eq:tauber_thm} необхідно визначити асимптотику $M_p(s)$ при $s \rightarrow 0$.
 
-Якщо знайти такі $C \in \RR$ та $\delta \in \RR^+$, що $M_\alpha(s) \sim C \cdot s^{-\delta}, \; s \rightarrow 0$, то можна стверджувати, що $\int\limits_0^X m_\alpha(x) dx \sim \frac{1}{\Gamma(\delta + 1)} C X^\delta, \; X \rightarrow \infty$. Вже зараз зрозуміло, що $\delta = 2$, адже теорема справедлива в обидва боки і виконується \eqref{eq:bounds_inference}.
+Якщо знайти такі $C \in \RR$ та $\delta \in \RR^+$, що $M_p(s) \sim C \cdot s^{-\delta}, \; s \rightarrow 0$, то можна стверджувати, що $\int\limits_0^X m_p(x) dx \sim \frac{1}{\Gamma(\delta + 1)} C X^\delta, \; X \rightarrow \infty$. Вже зараз зрозуміло, що $\delta = 2$, адже теорема справедлива в обидва боки і виконується \eqref{eq:bounds_inference}.
 
-Для цього розглянему поведінку в нулі трьох множників, з яких складається $M_\alpha(s)$, а саме:
+Для цього розглянему поведінку в нулі трьох множників, з яких складається $M_p(s)$, а саме:
 \begin{enumerate}
-	\item $\frac{1}{e^s - \alpha}$;
-	\item $e^{-2Q_\alpha(s)}$;
-	\item $\int\limits_s^\infty \frac{e^{2Q_\alpha(u)}}{u^2} du$,
+	\item $\frac{1}{e^s - p}$;
+	\item $e^{-2Q_p(s)}$;
+	\item $\int\limits_s^\infty \frac{e^{2Q_p(u)}}{u^2} du$,
 \end{enumerate}
 
-Щодо першого множнику, то в 0 він, очевидно, прямує до $\frac{1}{1-\alpha}$,
+Щодо першого множнику, то в 0 він, очевидно, прямує до $\frac{1}{1-p}$,
 
 Для наступного аналізу доведемо деякі леми.
 
@@ -222,38 +222,38 @@ $$
 	\label{eq:exp_q_alpha_s_asymptotics}
 	$e^{-2Q(s)}$ поводиться як $s^{-2}$ в 0, з точністю до константи, а саме:
 	\begin{equation}
-		\lim\limits_{s \rightarrow 0} \frac{e^{-2Q(s)}}{s^{-2}} = \exp\left(-2\int\limits_0^1 \frac{e^u  - 1}{u(u^u - \alpha)} du\right)
+		\lim\limits_{s \rightarrow 0} \frac{e^{-2Q(s)}}{s^{-2}} = \exp\left(-2\int\limits_0^1 \frac{e^u  - 1}{u(u^u - p)} du\right)
 	\end{equation}
 \end{lem}
 \begin{proof}
 	Для знаходження ліміту прологарифмуємо вираз. Отримаємо:
 	\[
 	\begin{split}
-	2 \ln s - 2 Q_\alpha(s) = 2 \ln s &- 2 \int\limits_1^s \frac{1 - \alpha}{u(e^u - \alpha)} du = 2 \int\limits_1^s \frac{1}{u} du - \\
-	- 2 \int\limits_1^s \frac{1 - \alpha}{u(e^u - \alpha)} du &= 2  \int\limits_1^s \frac{e^u - 1}{u(e^u - \alpha)} du = -2 \int\limits_s^1 \frac{e^u - 1}{u(e^u - \alpha)} du
+	2 \ln s - 2 Q_p(s) = 2 \ln s &- 2 \int\limits_1^s \frac{1 - p}{u(e^u - p)} du = 2 \int\limits_1^s \frac{1}{u} du - \\
+	- 2 \int\limits_1^s \frac{1 - p}{u(e^u - p)} du &= 2  \int\limits_1^s \frac{e^u - 1}{u(e^u - p)} du = -2 \int\limits_s^1 \frac{e^u - 1}{u(e^u - p)} du
 	\end{split}
 	\]
 	Тепер, підвівши до експоненти обидві частини, отримаємо:
 	$$
-		\frac{e^{-2Q_\alpha(s)}}{s^{-2}} = \exp\left(-2 \int\limits_s^1 \frac{e^u - 1}{u(e^u - \alpha)} du\right)
+		\frac{e^{-2Q_p(s)}}{s^{-2}} = \exp\left(-2 \int\limits_s^1 \frac{e^u - 1}{u(e^u - p)} du\right)
 	$$
 	Якщо довести, що інтеграл
 	$$
-		-2 \int\limits_0^1 \frac{e^u - 1}{u(e^u - \alpha)} du
+		-2 \int\limits_0^1 \frac{e^u - 1}{u(e^u - p)} du
 	$$
 	збігається, то лему буде доведено, адже експонента – неперервна функція, і можна переходити до ліміту під експонентою.
 	Зрозуміло, що
 	$$
-		-2 \int\limits_s^1 \frac{e^u - 1}{u(e^u - \alpha)} du
+		-2 \int\limits_s^1 \frac{e^u - 1}{u(e^u - p)} du
 	$$
-	збігається для $\forall s \in (0;~1]$. Дійсно, оскільки $e^u - 1 < e^u - \alpha$, підінтегральна функція $ \frac{1 - e^{-u}}{u}$ мажорується $\frac{1}{u}$, яка, в свою чергу, має скінченне значення інтегралу:
+	збігається для $\forall s \in (0;~1]$. Дійсно, оскільки $e^u - 1 < e^u - p$, підінтегральна функція $ \frac{1 - e^{-u}}{u}$ мажорується $\frac{1}{u}$, яка, в свою чергу, має скінченне значення інтегралу:
 	$$
 		\int\limits_s^1 \frac{1}{u} du = \ln 1 - \ln s = -\ln s,\quad s > 0
 	$$
 	Невизначеність виникає лише в точці 0. Знайдемо ліміт підінтегральної функції в точці 0:
 \begin{align*}
-	\lim\limits_{s\rightarrow 0} \frac{e^u - 1}{u(e^u - \alpha)} = \<\text{правило Лопіталя для невизначенності 0/0}\> = \\
-	= \lim\limits_{s\rightarrow 0} \frac{e^u}{u e^u + (e^u-\alpha)} = \frac{1}{1-\alpha}
+	\lim\limits_{s\rightarrow 0} \frac{e^u - 1}{u(e^u - p)} = \<\text{правило Лопіталя для невизначенності 0/0}\> = \\
+	= \lim\limits_{s\rightarrow 0} \frac{e^u}{u e^u + (e^u-p)} = \frac{1}{1-p}
 \end{align*}
 	Таким чином, підінтегральна функція обмежена в деякому $\varepsilon$-околі 0, тому інтеграл також збіжний, і лему доведено.
 \end{proof}
@@ -262,28 +262,28 @@ $$
 	\label{eq:q_alpha_s_limited}
 	Функція
 	$$
-		Q_\alpha(s) = \int\limits_1^s \frac{1- \alpha}{u(e^u - \alpha)} du
+		Q_p(s) = \int\limits_1^s \frac{1- p}{u(e^u - p)} du
 	$$
 	  – обмежена на $[w; ~\infty], \; w>0$.
 \end{lem}
 \begin{proof}
-	На проміжку $[1; ~\infty]$ підінтегральна функція мажорується функцією $e^{-u}$ (див. \eqref{eq:q_alpha_s_major}), а на проміжку $[w; ~1]$ – функцією $\frac{1}{u}$, адже $1- \alpha < e^u - \alpha, ~ u > 0$. Тому, аналогічно доведенню попередньо леми, інтеграл буде збіжний, і:
+	На проміжку $[1; ~\infty]$ підінтегральна функція мажорується функцією $e^{-u}$ (див. \eqref{eq:q_alpha_s_major}), а на проміжку $[w; ~1]$ – функцією $\frac{1}{u}$, адже $1- p < e^u - p, ~ u > 0$. Тому, аналогічно доведенню попередньо леми, інтеграл буде збіжний, і:
 	\begin{align*}
-		Q_\alpha(s) \leq \int\limits_1^\infty e^{-u} du = \exp(-1) &,\quad s \geq 1 \\
-		Q_\alpha(s) \leq \int\limits_w^1 \frac{1}{u} du = - \ln w &, \quad s \in [w;~1]
+		Q_p(s) \leq \int\limits_1^\infty e^{-u} du = \exp(-1) &,\quad s \geq 1 \\
+		Q_p(s) \leq \int\limits_w^1 \frac{1}{u} du = - \ln w &, \quad s \in [w;~1]
 	\end{align*}
-	Таким чином, $Q_\alpha(s) \leq \max\{-\ln w, \exp(-1)\}$.
+	Таким чином, $Q_p(s) \leq \max\{-\ln w, \exp(-1)\}$.
 \end{proof}
 
 \begin{lem}
 	Інтеграл
 	$$
-		\int\limits_0^\infty \frac{e^{2Q_\alpha(u)}}{u^2} du
+		\int\limits_0^\infty \frac{e^{2Q_p(u)}}{u^2} du
 	$$
 	– збіжний.
 \end{lem}
 \begin{proof}
-	Спираючись на лему \eqref{eq:exp_q_alpha_s_asymptotics}, маємо, що підінтегральна функція прямує до деякої константи при $u \rightarrow 0$, оскільки є обернено пропорційною до функції з тої леми. Тому в деякому проколотому $\varepsilon$-околі точки 0 підінтегральна функція буде обмежена. На інтервалі $[\varepsilon; ~\infty]$ за лемою \eqref{eq:q_alpha_s_limited}, $Q_\alpha(u)$ – обмежена, а тому і $\exp(2Q_\alpha(u))$ також. Тому збіжність на інтервалі $[\varepsilon; ~\infty]$ виконується, якщо збігається інтеграл
+	Спираючись на лему \eqref{eq:exp_q_alpha_s_asymptotics}, маємо, що підінтегральна функція прямує до деякої константи при $u \rightarrow 0$, оскільки є обернено пропорційною до функції з тої леми. Тому в деякому проколотому $\varepsilon$-околі точки 0 підінтегральна функція буде обмежена. На інтервалі $[\varepsilon; ~\infty]$ за лемою \eqref{eq:q_alpha_s_limited}, $Q_p(u)$ – обмежена, а тому і $\exp(2Q_p(u))$ також. Тому збіжність на інтервалі $[\varepsilon; ~\infty]$ виконується, якщо збігається інтеграл
 	\[
 		\int\limits_\varepsilon^\infty \frac{1}{u^2} du.
 	\]
@@ -292,31 +292,32 @@ $$
 		
 Таким чином, спираючись на доведені леми, маємо при $s \rightarrow 0$:
 \begin{align*}
-&M_\alpha(s) \sim \frac{s^{-2}}{1-\alpha} \cdot \exp\left(-2\int\limits_0^1 \frac{e^u  - 1}{u(e^u - \alpha)} du\right) \int\limits_0^\infty \frac{e^{2Q_\alpha(u)}}{u^2} du = \\
-& = \frac{s^{-2}}{1-\alpha} \cdot \exp\left(-2\int\limits_0^1 \frac{e^u  - 1}{u(e^u - \alpha)} du\right) \int\limits_0^\infty \exp\left(2\int\limits_1^u \frac{1- \alpha}{\tau(e^\tau - \alpha)} d\tau - 2 \ln u\right) du = \\
-& = \frac{s^{-2}}{1-\alpha} \cdot \exp\left(-2\int\limits_0^1 \frac{e^u  - 1}{u(e^u - \alpha)} du\right) \int\limits_0^\infty \exp\left(2\int\limits_1^u \frac{1- \alpha}{\tau(e^\tau - \alpha)} d\tau - 2  \int\limits_1^u  \frac{1}{\tau} d\tau \right) du = \\
-& = \frac{s^{-2}}{1-\alpha} \cdot \exp\left(-2\int\limits_0^1 \frac{e^u  - 1}{u(e^u - \alpha)} du\right) \int\limits_0^\infty \exp\left(-2\int\limits_1^u \frac{e^{\tau} - 1}{\tau(e^\tau - \alpha)} d\tau  \right) du = \\
-& = \frac{s^{-2}}{1-\alpha} \cdot \int\limits_0^\infty \exp\left( -2\int\limits_0^1 \frac{e^{\tau} - 1}{\tau(e^\tau - \alpha)} d\tau -2\int\limits_1^u \frac{e^{\tau} - 1}{\tau(e^\tau - \alpha)} d\tau  \right) du 
+&M_p(s) \sim \frac{s^{-2}}{1-p} \cdot \exp\left(-2\int\limits_0^1 \frac{e^u  - 1}{u(e^u - p)} du\right) \int\limits_0^\infty \frac{e^{2Q_p(u)}}{u^2} du = \\
+& = \frac{s^{-2}}{1-p} \cdot \exp\left(-2\int\limits_0^1 \frac{e^u  - 1}{u(e^u - p)} du\right) \int\limits_0^\infty \exp\left(2\int\limits_1^u \frac{1- p}{\tau(e^\tau - p)} d\tau - 2 \ln u\right) du = \\
+& = \frac{s^{-2}}{1-p} \cdot \exp\left(-2\int\limits_0^1 \frac{e^u  - 1}{u(e^u - p)} du\right) \int\limits_0^\infty \exp\left(2\int\limits_1^u \frac{1- p}{\tau(e^\tau - p)} d\tau - 2  \int\limits_1^u  \frac{1}{\tau} d\tau \right) du = \\
+& = \frac{s^{-2}}{1-p} \cdot \exp\left(-2\int\limits_0^1 \frac{e^u  - 1}{u(e^u - p)} du\right) \int\limits_0^\infty \exp\left(-2\int\limits_1^u \frac{e^{\tau} - 1}{\tau(e^\tau - p)} d\tau  \right) du = \\
+& = \frac{s^{-2}}{1-p} \cdot \int\limits_0^\infty \exp\left( -2\int\limits_0^1 \frac{e^{\tau} - 1}{\tau(e^\tau - p)} d\tau -2\int\limits_1^u \frac{e^{\tau} - 1}{\tau(e^\tau - p)} d\tau  \right) du 
 \end{align*}
 
 Склавши інтеграли під експонентою, отримаємо:
 \begin{equation}
-	M_\alpha(s) \sim s^{-2} \cdot \frac{1}{1-\alpha} \int\limits_0^\infty \exp\left( -2\int\limits_0^u \frac{e^{\tau} - 1}{\tau(e^\tau - \alpha)} d\tau  \right) du, \quad s \rightarrow 0.
+	M_p(s) \sim s^{-2} \cdot \frac{1}{1-p} \int\limits_0^\infty \exp\left( -2\int\limits_0^u \frac{e^{\tau} - 1}{\tau(e^\tau - p)} d\tau  \right) du, \quad s \rightarrow 0.
 \end{equation}
 
 Тепер, за теоремою Таубера маємо при $X \rightarrow \infty$:
 \begin{equation}
-	\int\limits_0^X m_\alpha(x) dx \sim \frac{1}{(1-\alpha)\Gamma(2 + 1)} \int\limits_0^\infty \exp\left( -2\int\limits_0^u \frac{e^{\tau} - 1}{\tau(e^\tau - \alpha)} d\tau  \right) du \cdot X^2.
+	\int\limits_0^X m_p(x) dx \sim \frac{1}{(1-p)\Gamma(2 + 1)} \int\limits_0^\infty \exp\left( -2\int\limits_0^u \frac{e^{\tau} - 1}{\tau(e^\tau - p)} d\tau  \right) du \cdot X^2.
 \end{equation}
 
 Або, продиференціювавши обидві частини,  отримаємо:
 \begin{equation}
-	m_\alpha(X) \sim \frac{2}{(1- \alpha) \Gamma(2 + 1)} \int\limits_0^\infty \exp\left( -2\int\limits_0^u \frac{e^{\tau} - 1}{\tau(e^\tau - \alpha)} d\tau  \right) du \cdot X.
+	m_p(X) \sim \frac{2}{(1- p) \Gamma(2 + 1)} \int\limits_0^\infty \exp\left( -2\int\limits_0^u \frac{e^{\tau} - 1}{\tau(e^\tau - p)} d\tau  \right) du \cdot X.
 \end{equation}
 \begin{equation}
 	\label{eq:uniform_right_final}
-	m_\alpha(X) \sim \frac{1}{1-\alpha} \int\limits_0^\infty \exp\left( -2\int\limits_0^u \frac{e^{\tau} - 1}{\tau(e^\tau - \alpha)} d\tau  \right) du \cdot X, \quad X \rightarrow \infty.
+	m_p(X) \sim \frac{1}{1-p} \int\limits_0^\infty \exp\left( -2\int\limits_0^u \frac{e^{\tau} - 1}{\tau(e^\tau - p)} d\tau  \right) du \cdot X, \quad X \rightarrow \infty.
 \end{equation}
 
 Тут ми мали право диференціювати обидві частини за правилом Лопіталя, адже має місце невизначеність $\infty / \infty$.
 
+\subsection{Уточнення асимптотики $m(x)$}
