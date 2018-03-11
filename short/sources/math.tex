@@ -1,0 +1,61 @@
+\section{Опис необхідного математичного апарату для подальшого дослідження}
+%TODO:
+\jointitles
+
+\subsection{Асимптотична поведінка функції}
+
+Нехай $f$ та $g$ – дві функції, визначені в деякому проколотому околі $\dot U (x_0)$ точки $x_0$, причому в цьому околі $g$ не обертається в $0$.
+
+\begin{defin}
+	$f$ є "О" великим від $g$ \cite{AsymptoticsWiki} при $x \rightarrow x_0$, якщо
+	\begin{equation}
+		\exists C > 0\forall x \in \dot U (x_0): |f(x)| < C|g(x)|
+	\end{equation}
+\end{defin}
+
+\begin{defin}
+	$f$ є "о" малим від $g$ \cite{AsymptoticsWiki} при $x \rightarrow x_0$, якщо
+	\begin{equation}
+		\forall \varepsilon > 0 \exists \dot U_{\varepsilon} (x_0) \forall x \in \dot U_{\varepsilon} (x_0): |f(x)| < \varepsilon |g(x)|
+	\end{equation}
+\end{defin}
+
+\begin{defin}
+	$f$ є еквівалентним $g$ \cite{AsymptoticsWiki} ($f \sim g$) при $x \rightarrow x_0$, якщо
+	$$\lim_{x \rightarrow x_0} \frac{f(x)}{g(x)} = 1$$
+\end{defin}
+
+\subsection{Теорема Таубера}
+
+\begin{defin}
+Функція $L:[0, +\infty) \rightarrow \RR$ – слабо мінлива на нескінченності,
+якщо для $\forall x > 0$
+$$\lim_{t \rightarrow \infty}\frac{L(tx)}{L(t)} =1$$
+\end{defin}
+
+\begin{defin}
+Функція $L:[0, +\infty) \rightarrow \RR$ – слабо мінлива в 0,
+якщо $L(\frac{1}{x})$ – слабо мінлива на нескінченності.
+\end{defin}
+
+Нехай $u(t)$ – така функція, що має зображення Лапласа. Нехай $U(t)=\int\limits_0^t u(s) ds$ і $\Lapl{u(t)}=\omega(\tau)$.
+
+Тоді має місце наступна теорема \cite[~ст. 445]{Feller}.
+
+\begin{thm}[Теорема Абеля-Таубера]
+	\label{eq:tauber_thm}
+	Нехай $L$ – слабко мінлива на нескінченності і $0 ≤ \rho < +\infty$. Тоді наступні два твердження тотожні:
+	\begin{align}
+		\omega(\tau) \sim \tau^{-\rho} L(1/\tau),\qquad &\tau \rightarrow 0 \\
+		U(t) \sim \frac{1}{\Gamma(\rho + 1)} t^{\rho} L(t),\qquad &t \rightarrow +\infty
+	\end{align}
+\end{thm}
+
+Ця теорема має досить видатну історію. Зазвичай вона подається як 2 окремі теореми, перша являє собою перехід від асимптотики інтеграла оригінала до асимптотики зображення, і називається теоремою Абеля. Друга ж, обернена, є однією з Тауберових теорем, і була досить складно доведена в праці Харді-Літлвуда. Але в 1930 Карамата опублікував спрощене доведення, чим створив сенсацію \cite[~ст. 445]{Feller}.
+
+Досить цікавим зауваженням до цієї теореми є те, що можна змінити границі на протилежні, тобто $\tau \rightarrow \infty, ~ t \rightarrow 0$ \cite[~ст. 445]{Feller}.
+
+\begin{thm}
+	\label{eq:tauber_rev_thm}
+	Твердження теореми \eqref{eq:tauber_thm} залишається вірним, якщо поміняти місцями 0 та $\infty$, тобто $\tau \rightarrow \infty, ~ t \rightarrow 0$ (і, відповідно, L – слабко мінлива в 0).
+\end{thm}
