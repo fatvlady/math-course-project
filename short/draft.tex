@@ -3,17 +3,26 @@
 \input{packages}
 \input{newcommands}
 
-\setcounter{page}{4} % задаємо початок нумерації сторінок
+
 
 \begin{document}
-	
-\chapter*{Звіт проходження практики}
-\setcounter{chapter}{1}
 
+\include{title_page}
+
+\setcounter{page}{2} % задаємо початок нумерації сторінок
+
+\chapter{Теоретична частина}
 \input{sources/designations}
 \input{sources/math}
 \input{sources/uniform_base}
 \input{sources/uniform_right_mixture}
 \input{sources/conclusion}
+
+\chapter{Практична частина}
+			
+\input{sources/sec_algorithm}			
+\input{sources/sec_results}				
+\input{sources/sec_conclusion}			
+
 
 \end{document}

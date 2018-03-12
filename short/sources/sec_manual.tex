@@ -1,0 +1,91 @@
+\section{Керівництво користувача}
+\jointitles
+%Опишемо керівництво користувача для двох частин програмного продукту.
+
+\subsection{Основний програмний продукт}
+
+Програмний продукт розроблено як додаток консольного типу. Тобто, для оперування роботою додатка використовуються текстові команди, що вводяться в консоль операційної системи.
+
+Запуск програми "modeler" відбувається за допомогою команди:
+\begin{verbatim}
+	modeler [<model_name>.xml]
+\end{verbatim}
+
+Запуска програми "modeler2d" відбувається аналогічно:
+
+\begin{verbatim}
+	modeler2d [<model_name>.xml]
+\end{verbatim}
+
+\subsubsection{Основні параметри}
+
+Користувач задає необхідну для вивчення модель через xml-файл. Типова структура xml-файлу виглядає наступним чином:
+\begin{verbatim}
+<model repeat_count="<count>" parking_length="<length>">
+  <behaviour_1 p="<prob>"/>
+  ...
+  <behaviour_n p="<prob>"/>
+</model>
+\end{verbatim}
+
+Тобто в моделі задаються варіанти поведінки водіїв, а також відповідні ймовірності вибору поведінки. Істотним зауваженням є те, що сума ймовірностей має дорівнювати 1, інакше програма завершує роботу з ненульовим кодом.
+
+Параметри моделі для продукту "modeler" перелічені в таблиці~\ref{tab:modeler_model_params}.
+
+\begin{table}[ht]
+	\caption{Параметри моделі для продукту "modeler"}
+	\centering
+\begin{tabular}{|p{0.3\textwidth}|p{0.65\textwidth}|}
+	\hline
+	Параметр & Пояснення \\
+	\hline
+	\verb!repeat_count! & Кількість запусків моделювань для вирахування середнього значення \\
+	\hline
+	\verb!parking_length! & Довжина парковки для моделювання \\
+	\hline
+\end{tabular}	
+	\label{tab:modeler_model_params}
+\end{table}
+
+Типи дисциплін водіїв, що підтримуються продуктом "modeler" перелічені в таблиці~\ref{tab:modeler_behaviours}.
+
+\begin{table}[ht]
+	\caption{Дисципліни водіїв, що підтримуються продуктом "modeler"}
+	\centering
+\begin{tabular}{|p{0.3\textwidth}|p{0.65\textwidth}|}
+	\hline
+	Дисципліна & Пояснення \\
+	\hline
+	\verb!left! & Водій ставить свій автомобіль зліва вільного проміжку \\
+	\hline
+	\verb!right! & Водій ставить свій автомобіль справа вільного проміжку \\
+	\hline
+	\verb!center! & Водій ставить свій автомобіль по центру вільного проміжку \\
+	\hline
+	\verb!uniform! & Водій ставить свій автомобіль керуючись рівномірним розподілом \\
+	\hline
+\end{tabular}	
+	\label{tab:modeler_behaviours}
+\end{table}
+
+Для продукту "modeler2d" було підключено лише поведінку водіїв, аналогічну класичній моделі Реньї у випадку одновимірної моделі, тобто за рівномірним розподілом. Тому для цієї програми задаються лише параметри моделі, перелічені в таблиці~\ref{tab:modeler2d_model_params}.
+
+\begin{table}[ht]
+	\caption{Параметри моделі для продукту "modeler2d"}
+	\centering
+\begin{tabular}{|p{0.3\textwidth}|p{0.65\textwidth}|}
+	\hline
+	Параметр & Пояснення \\
+	\hline
+	\verb!repeat_count! & Кількість запусків моделювань для вирахування середнього значення \\
+	\hline
+	\verb!a! & Довжина парковки по вісі $0x$ \\
+	\hline
+	\verb!b! & Довжина парковки по вісі $0y$ \\
+	\hline
+\end{tabular}	
+	\label{tab:modeler2d_model_params}
+\end{table}
+
+
+
