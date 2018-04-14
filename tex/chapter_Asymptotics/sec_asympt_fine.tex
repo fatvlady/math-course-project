@@ -1,1 +1,28 @@
+% !TeX root=../main.tex
 \section{Покращення асимптотичної оцінки}
+
+Нескладно помітити, що $\mu_{p}(X) = C X - \frac{1-C}{1 - p}$ є розв'язком рівняння \eqref{eq:model_equation} $\forall C \in \RR$:
+\begin{align*}
+&1 + \frac{2 (1-p)}{X} \int_{0}^{X} \mu_{p}(t) dt + p\mu_{p}(X) = \\
+&=1 + \frac{2 (1-p)}{X} \int_{0}^{X} \left\{C t - \frac{1 - C}{1 - p} \right\} dt + p \left( C X - \frac{1 - C}{1 - p}\right) = \\
+&=1 + (1 - p) C X - 2(1 - C) + p C X - (\frac{1}{1 - p} - 1)(1 - C) = \\
+&= C(X + 1) - \frac{1 - C}{1 - p} = \mu_{p}(X+1)
+\end{align*}
+
+Тому резонно апроксимувати досліджувану функцію $m_{p}(X)$ використовуючи функцію $\mu$. Далі буде доведено наступне твердження:
+\begin{equation}
+\lim\limits_{X \rightarrow \infty} \left( m(X) - C_{p} X - \frac{1 - C_{p}}{1 - p} \right) = 0
+\end{equation}
+
+(...)
+
+Отримали, що
+\begin{equation}
+\label{eq:uniform_right_as_enhanced}
+\lim\limits_{X \rightarrow \infty} \left( m(X) - C_{p} X - \frac{1 - C_{p}}{1 - p} \right) = O\left(\frac{1}{X^{n}}\right) \qquad \forall n \in \mathbb{N}
+\end{equation}
+
+Властивість Лапласа..
+\begin{equation}
+\phi(\overline{u}) = \int_0^\infty M(x) e^{-\overline{u}x} dx = \int_0^\infty M(x) \overline{e^{-sx}} dx = \overline{\phi(u)}
+\end{equation}
