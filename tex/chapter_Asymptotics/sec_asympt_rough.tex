@@ -69,31 +69,31 @@ m_{p}(x) \sim C_{p}\cdot x \text{ при } x \rightarrow +\infty, \quad C_{p} \i
 $$\Lapl{\int\limits_0^x m_p(t) dt} = \frac{M_p(s)}{s}.$$
 
 Аналогічно доводиться, що $\frac{1}{x}\int\limits_0^x m_{p}(t) dt < x$ при $x>0$, а тому зображення Лапласа для цього виразу також існує. Тоді за властивістю \eqref{eq:laplace_int_image}:
-$$\Lapl{\frac{2}{x}\int\limits_0^x m_{p}(t) dt} = 2 \int\limits_p^\infty \frac{M(s)}{s} ds.$$
+$$\Lapl{\frac{2}{x}\int\limits_0^x m_{p}(t) dt} = 2 \int\limits_s^\infty \frac{M_{p}(u)}{u} du.$$
 
 Таким чином, отримали інтегральне рівняння в термінах зображення Лапласа, яке вже можна розв'язати, адже нема зсуву:
 \begin{equation}
 \label{eq:model_laplace_integral}
-e^s M(s) = p M(s) + 2q \int\limits_s^\infty \frac{M(u)}{u} du + \frac{1}{s}
+e^s M_{p}(s) = p M_{p}(s) + 2q \int\limits_s^\infty \frac{M_{p}(u)}{u} du + \frac{1}{s}
 \end{equation}
 
-Продиференціюємо обидві частини рівняння за $s$:
+Продиференціюємо обидві частини рівняння відносно $s$:
 \begin{equation}
-e^s M(s) + e^s \dot M(s) =p \dot M(s) - 2 q \frac{M(s)}{s}  - \frac1{s^2}
+e^s M_{p}(s) + e^s \dot M_{p}(s) =p \dot M_{p}(s) - 2 q \frac{M_{p}(s)}{s}  - \frac1{s^2}
 \end{equation}
 
-Виразимо $\dot M(s)$ з цього рівняння:
+Виразимо $\dot M_{p}(s)$ з цього рівняння:
 \begin{equation}
 \label{eq:model_laplace_diff}
-\dot M(s) = - M(s)\left(\frac{e^s}{e^s - p} + \frac{2q}{s(e^s - p)}\right) - \frac{1}{s^2(e^s - p)}
+\dot M_{p}(s) = - M_{p}(s)\left(\frac{e^s}{e^s - p} + \frac{2q}{s(e^s - p)}\right) - \frac{1}{s^2(e^s - p)}
 \end{equation}
 
 Розв'яжемо отримане диференційне рівняння. Спочатку розв'яжемо однорідну частину:
 \begin{align*}
-\dot M_h (s) &= - M_h (s)\left(\frac{e^s}{e^s - p} + \frac{2q}{s(e^s - p)}\right) \\
-\frac{\dot M_h (s)}{M_h (s)} &= -\left(\frac{e^s}{e^s - p} + \frac{2q}{s(e^s - p)}\right) \\
-\int\limits_1^s \frac{\dot M_h (u)}{M_h (u)} du &= -\int\limits_1^s \left(\frac{e^u}{e^u - p} + \frac{2q}{u(e^u - p)}\right) du \\
-\left. \ln{M_h (u)}\right|_1^s &= - \int\limits_1^s \frac{e^u}{e^u - p} du  - 2 \int\limits_1^s \frac{q}{u(e^u - p)} du
+\dot M_{p}^{h} (s) &= - M_{p}^{h} (s)\left(\frac{e^s}{e^s - p} + \frac{2q}{s(e^s - p)}\right) \\
+\frac{\dot M_{p}^{h} (s)}{M_{p}^{h} (s)} &= -\left(\frac{e^s}{e^s - p} + \frac{2q}{s(e^s - p)}\right) \\
+\int\limits_1^s \frac{\dot M_{p}^{h} (u)}{M_{p}^{h} (u)} du &= -\int\limits_1^s \left(\frac{e^u}{e^u - p} + \frac{2q}{u(e^u - p)}\right) du \\
+\left. \ln{M_{p}^{h} (u)}\right|_1^s &= - \int\limits_1^s \frac{e^u}{e^u - p} du  - 2 \int\limits_1^s \frac{q}{u(e^u - p)} du
 \end{align*}
 
 Позначимо
@@ -112,40 +112,40 @@ Q_p(s) := \int\limits_1^s \frac{q}{u(e^u - p)} du
 
 то
 \begin{align*}
-\ln{M_h (s)} &= \ln{M_h (1)} - \log \frac{e^s - p}{e - p} - 2Q_p(s) \\
-M_h (s) &= M_h (1) \cdot \frac{e - p}{e^s - p} \cdot e^{- 2Q_p(s)} \cdot const
+\ln{M_{p}^{h} (s)} &= \ln{M_{p}^{h} (1)} - \log \frac{e^s - p}{e - p} - 2Q_p(s) \\
+M_{p}^{h} (s) &= M_{p}^{h} (1) \cdot \frac{e - p}{e^s - p} \cdot e^{- 2Q_p(s)} \cdot const
 \end{align*}
 
 Оскільки $M(1)$ та $(e-p)$ можна включити в константу, то маємо розв'язок
 \begin{equation}
 \label{eq:model_laplace_homogen_sol}
-M_h (s) = C \cdot \left((e^s - p)  e^{2Q_p(s)}\right)^{-1}, \quad \forall C \in \RR
+M_{p}^{h} (s) = C \cdot \left((e^s - p)  e^{2Q_p(s)}\right)^{-1}, \quad \forall C \in \RR
 \end{equation}
 
 Дійсно, перевіримо цей розв'язок:
 \[
 \begin{split}
-\dot M_h (s) &= C \cdot \left(\frac{1}{(e^s - p)  e^{2Q_p(s)}}\right)'=\\
+\dot M_{p}^{h} (s) &= C \cdot \frac{\partial}{\partial s} \left(\frac{1}{(e^s - p)  e^{2Q_p(s)}}\right)=\\
 &= - C \cdot \left(\frac{1}{(e^s - p)  e^{2Q_p(s)}}\right)^2 \cdot \left(e^s  + (e^s - p) \frac{2q}{s(e^s - p)}   \right) e^{2Q_p(s)} =\\
 &= -C \left((e^s - p)  e^{2Q_p(s)}\right)^{-1} \cdot \left(\frac{e^s}{e^s - p}  + \frac{2q}{s(e^s - p)}   \right) =\\
-&= - M(s) \cdot \left(\frac{e^s}{e^s - p}  + \frac{2q}{s(e^s - p)}   \right)
+&= - M_{p}^{h}(s) \cdot \left(\frac{e^s}{e^s - p}  + \frac{2q}{s(e^s - p)}   \right)
 \end{split}
 \]
 
 Нескладно помітити, що отримали вихідне рівняння. Тепер застосуємо метод варіації довільних сталих:
 $$
-M(s) = C(s) \cdot \left((e^s - p)  e^{2Q_p(s)}\right)^{-1} 
+M_{p}(s) = C(s) \cdot \left((e^s - p)  e^{2Q_p(s)}\right)^{-1} 
 $$
 
-Продиференціювавши за $s$, отримаємо:
+Продиференціювавши відносно $s$, отримаємо:
 \begin{align*}
-\dot M(s) &= \dot C(s) \cdot \left((e^s - p)  e^{2Q_p(s)}\right)^{-1} -C(s) \left((e^s - p)  e^{2Q_p(s)}\right)^{-1} \cdot \\
+\dot M_{p}(s) &= \dot C(s) \cdot \left((e^s - p)  e^{2Q_p(s)}\right)^{-1} -C(s) \left((e^s - p)  e^{2Q_p(s)}\right)^{-1} \cdot \\
 &\cdot \left(\frac{e^s}{e^s - p}  + \frac{2q}{s(e^s - p)}   \right) 
 \end{align*}
 
 З іншої сторони, з \eqref{eq:model_laplace_diff} маємо
 $$
-\dot M(s) = - C(s) \left((e^s - p)  e^{2Q_p(s)}\right)^{-1}  \left(\frac{e^s}{e^s - p} + \frac{2q}{s(e^s - p)}\right) - \frac{1}{s^2(e^s - p)} \quad	
+\dot M_{p}(s) = - C(s) \left((e^s - p)  e^{2Q_p(s)}\right)^{-1}  \left(\frac{e^s}{e^s - p} + \frac{2q}{s(e^s - p)}\right) - \frac{1}{s^2(e^s - p)} \quad	
 $$
 Тому
 $$
@@ -157,10 +157,10 @@ $$
 C(s) = -  \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + const
 \end{equation}
 
-І тоді отримуємо вираз для $M(s)$:
+І тоді отримуємо вираз для $M_{p}(s)$:
 \begin{equation}
 \begin{split}
-M(s)=- \left( \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + const \right) \left((e^s - p)  e^{2Q_p(s)}\right)^{-1}  =\\
+M_{p}(s)=- \left( \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + const \right) \left((e^s - p)  e^{2Q_p(s)}\right)^{-1}  =\\
 = - \left( \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + K \right) \frac{1}{(e^s - p)  e^{2Q_p(s)}}, \quad K \in \RR
 \end{split}
 \end{equation}
@@ -168,10 +168,10 @@ M(s)=- \left( \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + const \right) \left((
 Перевіримо отриманий результат:
 \begin{equation*}
 \begin{split}
-&\dot M(s) = -\left( \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + K \right)' \frac{1}{(e^s - p)  e^{2Q_p(s)}} -\left( \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + K \right)\cdot \\ 
+&\dot M_{p}(s) = -\left( \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + K \right)' \frac{1}{(e^s - p)  e^{2Q_p(s)}} -\left( \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + K \right)\cdot \\ 
 &\cdot \left(\frac{1}{(e^s - p)  e^{2Q_p(s)}}\right)' = -\frac{e^{2Q_p(s)}}{s^2} \frac{1}{(e^s - p)  e^{2Q_p(s)}}  + \left( \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + K \right) \cdot \\
 & \cdot \left((e^s - p)  e^{2Q_p(s)}\right)^{-1} \cdot \left(\frac{e^s}{e^s - p}  + \frac{2q}{s(e^s - p)}   \right)= -\frac{1}{s^2(e^s - p)} -\\
-&- M(s)\left(\frac{e^s}{e^s - p}  + \frac{2q}{s(e^s - p)}   \right)
+&- M_{p}(s)\left(\frac{e^s}{e^s - p}  + \frac{2q}{s(e^s - p)}   \right)
 \end{split}
 \end{equation*}
 
@@ -213,7 +213,7 @@ $$
 K = -  \int\limits_\infty^1 \frac{e^{2Q_p(u)}}{u^2} du =  \int\limits_1^\infty \frac{e^{2Q_p(u)}}{u^2} du.
 \end{equation}
 
-Таким чином, отримали нову версію $M(s)$:
+Таким чином, отримали нову версію $M_{p}(s)$:
 \begin{equation}
 \begin{split}
 \label{eq:model_laplace_sol}
