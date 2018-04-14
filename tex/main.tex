@@ -2,7 +2,6 @@
 
 \input{packages}
 \input{newcommands}
-
 \setcounter{page}{4} % задаємо початок нумерації сторінок
 
 \begin{document}
@@ -13,11 +12,13 @@
 \include{shortcuts}				% Список використаних скорочень
 \include{intro}					% Вступ
 \includechapter{Literature}			% Застосування
-\includechapter{Theory}			% Розділ Теоретичний
-%\includechapter{Practice}		% Розділ Практичний
-%\includechapter{Economics}		% Розділ економічний
-%\include{work_conclusion}		% Висновок до роботи
-\include{bibliography}			% Бібліографія
+\includechapter{Asymptotics}			% Розділ Теоретичний
+\includechapter{Moments}
+\includechapter{Practice}		% Розділ Практичний
+\include{work_conclusion}		% Висновок до роботи
+
+\bibliography{bib_list}
+\label{MyLastPage}
 
 \addtocounter{totfigures}{\value{figure}}
 \addtocounter{tottables}{\value{table}}

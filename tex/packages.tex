@@ -62,6 +62,7 @@
 \usepackage[title,titletoc]{appendix}
 \usepackage{pdfpages}
 
+\usepackage{pgfplots}
 
 \usepackage{listings}
 \lstset{
@@ -189,7 +190,12 @@
 \pretocmd{\chapter}{\addtocounter{tottables}		{\value{table}}}	{}{}
 \pretocmd{\bibitem}{\addtocounter{totreferences}	{1}}				{}{}
 
-\usepackage{totcount} 	% робота з п\UTF{0456}драхунком б\UTF{0456}бл\UTF{0456}ограф\UTF{0456}чних посилань
+\makeatletter
+\bibliographystyle{gost}   % Оформляем библиографию по дсту
+\renewcommand{\@biblabel}[1]{#1.} % Заменяем библиографию с квадратных скобок на точку
+\makeatother
+
+\usepackage{totcount} 	% робота з підрахунком бібліографічних посилань
 	\newtotcounter{citenum}
 	\def\oldcite{}
 	\let\oldcite=\bibcite
