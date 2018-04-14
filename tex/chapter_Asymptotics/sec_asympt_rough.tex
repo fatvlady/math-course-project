@@ -13,45 +13,45 @@
 
 Нескладно переконатись, що порядок вибору вільних проміжків водіями не впливає на результат, тому будемо вважати, що після паркування одного автомобіля парковка розбивається на 2 частини, і після цього спочатку заповнюється ліва частина, а потім права.
 
-Необхідно визначити $m_{p}(X)=\EE F(X)$. Нехай $\xi \sim Uniform(0, X - 1)$ – випадкова величина, що визначає положення лівого краю першого автомобіля на парковці у випадку вибору місця за рівномірним розподілом. Тоді маємо наступну тотожність:
+Необхідно визначити $m_{p}(x)=\EE F(x)$. Нехай $\xi \sim Uniform(0, x - 1)$ – випадкова величина, що визначає положення лівого краю першого автомобіля на парковці у випадку вибору місця за рівномірним розподілом. Тоді маємо наступну тотожність:
 \[
 \begin{split}
-m_{p} (X) = p(1+ m_{p} (X-1)) + q(1+ \EE(\EE(F(\xi) + F(X - 1 - \xi)  | \xi))) =\\
-=1 + p m_{p} (X-1) + q \int\limits_0^{X-1} m_{p} (t) \frac{1}{X − 1} dt + q \int\limits_0^{X-1} m_{p} (X − t − 1) \frac{1}{X − 1} dt 
+m_{p} (x) = p(1+ m_{p} (x-1)) + q(1+ \EE(\EE(F(\xi) + F(x - 1 - \xi)  | \xi))) =\\
+=1 + p m_{p} (x-1) + q \int\limits_0^{x-1} m_{p} (t) \frac{1}{x − 1} dt + q \int\limits_0^{x-1} m_{p} (x − t − 1) \frac{1}{x − 1} dt 
 \end{split}
 \]
 
 Так як
-$$\int\limits_0^{X-1} m_{p} (X − t − 1) dt = \< u=X - t - 1 \> = - \int\limits_{X-1}^0 m_{p} (u) du = \int\limits_0^{X-1}  m_{p} (u) du,$$
+$$\int\limits_0^{x-1} m_{p} (x − t − 1) dt = \< u=x - t - 1 \> = - \int\limits_{x-1}^0 m_{p} (u) du = \int\limits_0^{x-1}  m_{p} (u) du,$$
 
 то
 \begin{equation}
-m_{p} (X) = 1 + p m_{p} (X - 1) + \frac{2q}{X - 1} \int\limits_0^{X - 1} m_{p} (t) d
+m_{p} (x) = 1 + p m_{p} (x - 1) + \frac{2q}{x - 1} \int\limits_0^{x - 1} m_{p} (t) d
 \end{equation}
 
-Для зручності зробимо заміну $X \rightarrow X + 1$. Отримаємо
+Для зручності зробимо заміну $x \rightarrow x + 1$. Отримаємо
 
 \begin{equation}
 \label{eq:model_equation}
-m_{p} (X + 1) = 1 + p m_{p} (X) + \frac{2q}{X} \int\limits_0^{X} m_{p} (t) dt,\quad \forall X > 0
+m_{p} (x + 1) = 1 + p m_{p} (x) + \frac{2q}{x} \int\limits_0^{x} m_{p} (t) dt,\quad \forall x > 0
 \end{equation}
 
 Таким чином, отримали інтегральне рівняння. До того ж, відомо, що
 \begin{equation}
 \label{eq:zero_state}
-m_{p}(X) \equiv 0, \quad X \in [0; 1)
+m_{p}(x) \equiv 0, \quad x \in [0; 1)
 \end{equation}
 
-Спираючись на \eqref{eq:upperbound} та \eqref{eq:lowerbound}, маємо обмеження на $m(X)$:
+Спираючись на \eqref{eq:upperbound} та \eqref{eq:lowerbound}, маємо обмеження на $m(x)$:
 \begin{equation}
 \label{eq:bounds}
-\left[\frac{X+1}{2}\right] \leq m_{p}(X) \leq \left[X\right]
+\left[\frac{x+1}{2}\right] \leq m_{p}(x) \leq \left[x\right]
 \end{equation}
 
-З цієї нерівності випливає, що якщо є якась асимптотика у функції $m_{p}(X)$, то вона порядку $X$, тобто
+З цієї нерівності випливає, що якщо є якась асимптотика у функції $m_{p}(x)$, то вона порядку $x$, тобто
 \begin{equation}
 \label{eq:bounds_inference}
-m_{p}(X) \sim C_{p}\cdot X \text{ при } x \rightarrow +\infty, \quad C_{p} \in [0.5; 1]
+m_{p}(x) \sim C_{p}\cdot x \text{ при } x \rightarrow +\infty, \quad C_{p} \in [0.5; 1]
 \end{equation}
 
 \subsection{Перехід до зображення Лапласа}
@@ -59,17 +59,17 @@ m_{p}(X) \sim C_{p}\cdot X \text{ при } x \rightarrow +\infty, \quad C_{p} \i
 
 Спробуємо розв'язати \eqref{eq:model_equation} за допомогою перетворення Лапласа.
 
-Оскільки виконується \eqref{eq:bounds}, то зображення Лапласа для $m_{p}(X)$ існує. До того ж, за властивістю \eqref{eq:laplace_lag}:
+Оскільки виконується \eqref{eq:bounds}, то зображення Лапласа для $m_{p}(x)$ існує. До того ж, за властивістю \eqref{eq:laplace_lag}:
 \begin{equation}
 \label{eq:model_shifted_laplace}
-\Lapl{m_{p}(X+1)}=\<\eqref{eq:zero_state}\>=\Lapl{m_{p}(X+1)\eta(X+1)}=e^s M_{p} (s).
+\Lapl{m_{p}(x+1)}=\<\eqref{eq:zero_state}\>=\Lapl{m_{p}(x+1)\eta(x+1)}=e^s M_{p} (s).
 \end{equation}
 
-Оскільки $m_{p}(X) \leq X$, то $\int\limits_0^X m_{p}(t) dt < X^2$, тобто для інтегралу від $m_{p}(X)$ зображення також існує, за властивістю \eqref{eq:laplace_int_origin}:
-$$\Lapl{\int\limits_0^X m_p(t) dt} = \frac{M_p(s)}{s}.$$
+Оскільки $m_{p}(x) \leq x$, то $\int\limits_0^x m_{p}(t) dt < x^2$, тобто для інтегралу від $m_{p}(x)$ зображення також існує, за властивістю \eqref{eq:laplace_int_origin}:
+$$\Lapl{\int\limits_0^x m_p(t) dt} = \frac{M_p(s)}{s}.$$
 
-Аналогічно доводиться, що $\frac{1}{X}\int\limits_0^X m_{p}(t) dt < X$ при $X>0$, а тому зображення Лапласа для цього виразу також існує. Тоді за властивістю \eqref{eq:laplace_int_image}:
-$$\Lapl{\frac{2}{X}\int\limits_0^X m_{p}(t) dt} = 2 \int\limits_p^\infty \frac{M(s)}{s} ds.$$
+Аналогічно доводиться, що $\frac{1}{x}\int\limits_0^x m_{p}(t) dt < x$ при $x>0$, а тому зображення Лапласа для цього виразу також існує. Тоді за властивістю \eqref{eq:laplace_int_image}:
+$$\Lapl{\frac{2}{x}\int\limits_0^x m_{p}(t) dt} = 2 \int\limits_p^\infty \frac{M(s)}{s} ds.$$
 
 Таким чином, отримали інтегральне рівняння в термінах зображення Лапласа, яке вже можна розв'язати, адже нема зсуву:
 \begin{equation}
@@ -183,7 +183,7 @@ M_p(s)= \left( \int\limits_s^1 \frac{e^{2Q_p(u)}}{u^2} du + K \right) \frac{1}{(
 
 Спираючись на \eqref{eq:model_shifted_laplace}, маємо
 \begin{equation}
-\Lapl{m_p(X+1)} =\tilde M_p(s)= \left( \int\limits_s^1 \frac{e^{2Q_p(u)}}{u^2} du + K \right) \frac{e^s}{e^s - p} e^{- 2Q_p(s)}.
+\Lapl{m_p(x+1)} =\tilde M_p(s)= \left( \int\limits_s^1 \frac{e^{2Q_p(u)}}{u^2} du + K \right) \frac{e^s}{e^s - p} e^{- 2Q_p(s)}.
 \end{equation}
 
 Оскільки зображення Лапласа – аналітична функція в деякій правій півплощині комплексного простору, то $\tilde M_p(s) \rightarrow 0,\; s \rightarrow +\infty$.
@@ -225,9 +225,9 @@ M_p(s)&= \left( \int\limits_s^1 \frac{e^{2Q_p(u)}}{u^2} du + K \right) \frac{1}{
 
 \subsection{Застосування теореми Таубера}
 
-Для знаходження асимптотики $m_p(X)$ на нескінченності, за теоремою Таубера \eqref{eq:tauber_thm} необхідно визначити асимптотику $M_p(s)$ при $s \rightarrow 0$.
+Для знаходження асимптотики $m_p(x)$ на нескінченності, за теоремою Таубера \eqref{eq:tauber_thm} необхідно визначити асимптотику $M_p(s)$ при $s \rightarrow 0$.
 
-Якщо знайти такі $C \in \RR$ та $\delta \in \RR^+$, що $M_p(s) \sim C \cdot s^{-\delta}, \; s \rightarrow 0$, то можна стверджувати, що $\int\limits_0^X m_p(x) dx \sim \frac{1}{\Gamma(\delta + 1)} C X^\delta, \; X \rightarrow \infty$. Вже зараз зрозуміло, що $\delta = 2$, адже теорема справедлива в обидва боки і виконується \eqref{eq:bounds_inference}.
+Якщо знайти такі $C \in \RR$ та $\delta \in \RR^+$, що $M_p(s) \sim C \cdot s^{-\delta}, \; s \rightarrow 0$, то можна стверджувати, що $\int\limits_0^x m_p(x) dx \sim \frac{1}{\Gamma(\delta + 1)} C x^\delta, \; x \rightarrow \infty$. Вже зараз зрозуміло, що $\delta = 2$, адже теорема справедлива в обидва боки і виконується \eqref{eq:bounds_inference}.
 
 Для цього розглянему поведінку в нулі трьох множників, з яких складається $M_p(s)$, а саме:
 \begin{enumerate}
@@ -326,23 +326,23 @@ M_p(s)&= \left( \int\limits_s^1 \frac{e^{2Q_p(u)}}{u^2} du + K \right) \frac{1}{
 M_p(s) \sim s^{-2} \cdot \underbrace{\frac{1}{1-p} \int\limits_0^\infty \exp\left( -2\int\limits_0^u \frac{e^{\tau} - 1}{\tau(e^\tau - p)} d\tau  \right) du}_{\text{збігається, не залежить від } s}, \quad s \rightarrow 0.
 \end{equation}
 
-Тепер, за теоремою Таубера маємо при $X \rightarrow \infty$:
+Тепер, за теоремою Таубера маємо при $x \rightarrow \infty$:
 \begin{equation}
-\int\limits_0^X m_p(x) dx \sim \frac{1}{(1-p)\Gamma(2 + 1)} \int\limits_0^\infty \exp\left( -2\int\limits_0^u \frac{e^{\tau} - 1}{\tau(e^\tau - p)} d\tau  \right) du \cdot X^2.
+\int\limits_0^x m_p(x) dx \sim \frac{1}{(1-p)\Gamma(2 + 1)} \int\limits_0^\infty \exp\left( -2\int\limits_0^u \frac{e^{\tau} - 1}{\tau(e^\tau - p)} d\tau  \right) du \cdot x^2.
 \end{equation}
 
 Або, продиференціювавши обидві частини,  отримаємо:
 \begin{equation}
-m_p(X) \sim \frac{2}{(1- p) \Gamma(2 + 1)} \int\limits_0^\infty \exp\left( -2\int\limits_0^u \frac{e^{\tau} - 1}{\tau(e^\tau - p)} d\tau  \right) du \cdot X.
+m_p(x) \sim \frac{2}{(1- p) \Gamma(2 + 1)} \int\limits_0^\infty \exp\left( -2\int\limits_0^u \frac{e^{\tau} - 1}{\tau(e^\tau - p)} d\tau  \right) du \cdot x.
 \end{equation}
 \begin{equation}
 \label{eq:model_final}
-m_p(X) \sim \frac{1}{1-p} \int\limits_0^\infty \exp\left( -2\int\limits_0^u \frac{e^{\tau} - 1}{\tau(e^\tau - p)} d\tau  \right) du \cdot X, \quad X \rightarrow \infty.
+m_p(x) \sim \frac{1}{1-p} \int\limits_0^\infty \exp\left( -2\int\limits_0^u \frac{e^{\tau} - 1}{\tau(e^\tau - p)} d\tau  \right) du \cdot x, \quad x \rightarrow \infty.
 \end{equation}
 
 Тут ми мали право диференціювати обидві частини за правилом Лопіталя, адже має місце невизначеність $\infty / \infty$.
 
-Таким чином було доведено, що $m_{p}(X) \sim C_{p} \cdot X$ при $X \rightarrow \infty$, де
+Таким чином було доведено, що $m_{p}(x) \sim C_{p} \cdot x$ при $x \rightarrow \infty$, де
 \begin{equation}
 C_{p} = \frac{1}{1-p} \int\limits_0^\infty \exp\left( -2\int\limits_0^u \frac{e^{\tau} - 1}{\tau(e^\tau - p)} d\tau  \right) du
 \end{equation}
