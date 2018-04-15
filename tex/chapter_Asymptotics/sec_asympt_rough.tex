@@ -168,7 +168,7 @@ M_{p}(s)=- \left( \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + const \right) \le
 Перевіримо отриманий результат:
 \begin{equation*}
 \begin{split}
-&\dot M_{p}(s) = -\left( \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + K \right)' \frac{1}{(e^s - p)  e^{2Q_p(s)}} -\left( \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + K \right)\cdot \\ 
+&\dot M_{p}(s) = - \frac{\partial}{\partial s}\left( \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + K \right) \frac{1}{(e^s - p)  e^{2Q_p(s)}} -\left( \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + K \right)\cdot \\ 
 &\cdot \left(\frac{1}{(e^s - p)  e^{2Q_p(s)}}\right)' = -\frac{e^{2Q_p(s)}}{s^2} \frac{1}{(e^s - p)  e^{2Q_p(s)}}  + \left( \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + K \right) \cdot \\
 & \cdot \left((e^s - p)  e^{2Q_p(s)}\right)^{-1} \cdot \left(\frac{e^s}{e^s - p}  + \frac{2q}{s(e^s - p)}   \right)= -\frac{1}{s^2(e^s - p)} -\\
 &- M_{p}(s)\left(\frac{e^s}{e^s - p}  + \frac{2q}{s(e^s - p)}   \right)
@@ -223,7 +223,7 @@ M_p(s)&= \left( \int\limits_s^1 \frac{e^{2Q_p(u)}}{u^2} du + K \right) \frac{1}{
 \end{split}
 \end{equation}
 
-\subsection{Застосування теореми Таубера}
+\subsection{Застосування тауберівської теореми}
 
 Для знаходження асимптотики $m_p(x)$ на нескінченності, за теоремою Таубера \eqref{eq:tauber_thm} необхідно визначити асимптотику $M_p(s)$ при $s \rightarrow 0$.
 
@@ -236,15 +236,15 @@ M_p(s)&= \left( \int\limits_s^1 \frac{e^{2Q_p(u)}}{u^2} du + K \right) \frac{1}{
 	\item $\int\limits_s^\infty \frac{e^{2Q_p(u)}}{u^2} du$,
 \end{enumerate}
 
-Щодо першого множнику, то в 0 він, очевидно, прямує до $\frac{1}{1-p}$,
+Щодо першого множнику, то в 0 він, очевидно, прямує до $\frac{1}{1-p}$.
 
 Для наступного аналізу доведемо деякі леми.
 
 \begin{lem}
 	\label{eq:exp_q_p_s_asymptotics}
-	$e^{-2Q(s)}$ поводиться як $s^{-2}$ в 0, з точністю до константи, а саме:
+	$e^{-2Q_{p}(s)}$ поводиться як $s^{-2}$ в 0, з точністю до константи, а саме:
 	\begin{equation}
-	\lim\limits_{s \rightarrow 0} \frac{e^{-2Q(s)}}{s^{-2}} = \exp\left(-2\int\limits_0^1 \frac{e^u  - 1}{u(u^u - p)} du\right)
+	\lim\limits_{s \rightarrow 0} \frac{e^{-2Q_{p}(s)}}{s^{-2}} = \exp\left(-2\int\limits_0^1 \frac{e^u  - 1}{u(e^u - p)} du\right)
 	\end{equation}
 \end{lem}
 \begin{proof}
