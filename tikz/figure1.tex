@@ -1,0 +1,26 @@
+\begin{tikzpicture}[thick,
+decoration={
+markings,% switch on markings
+mark=at position .75 with {\arrow{latex}}},
+every pin/.append style = {pin distance=11mm, pin edge={<-,black}}% added
+                    ]
+% Axes:
+\draw [->] (-5,0) -- (5,0) node [above left]  {$\re(p_0)$};
+\draw [->] (0,-4.7) -- (0,4.7) node [below left, pin=left: $\im(p_0)$] {};% changed
+%Grid:
+\draw[step=1.0,black,thin] (-4.5,-4.5) grid (4.5,4.5);
+% Axes labels:
+\foreach \n in {-4,...,-1,1,2,...,4}{%
+    \draw[fill] (0,\n) circle (1pt) node [right] {$i \omega_{_{\n}}$};
+}
+\draw[fill] (0,0) circle (1pt) node [above right] {0};
+% Contour line
+\draw[DarkBlue,postaction={decorate}]   ( 1,-4) -- ( 1, 4) node [below right] {$C$};
+\draw[DarkBlue,postaction={decorate}]   (-1, 4) -- (-1,-4);
+\draw[DarkBlue,dashed]                  (1,4) arc (0:180:1) (-1,4)
+                                        (-1,-4) arc (180:360:1);
+
+\draw[fill] (3, 2) circle (1pt) node[below right=2mm and 9mm] (h0) {poles of $h(p_0)$}
+            (2,-2) circle (1pt);
+\draw[thin, shorten >=1mm] (h0.west) --  (3,2) (h0.south west) -- (2,-2);
+\end{tikzpicture}
