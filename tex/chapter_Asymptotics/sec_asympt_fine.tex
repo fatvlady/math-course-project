@@ -134,7 +134,6 @@ m_{p}(x) = \frac{1}{2\pi i} \int\limits_{\delta - i\infty}^{\delta + i\infty} M_
 \begin{equation*}
 \psi_{p}(it)=M_{p}(it) + C_{p} t^{-2} - i \frac{1-C_{p}}{1 - p} t^{-1} = O\left(\frac{1}{|t|}\right)
 \end{equation*}
-\end{proof}
 Залишається показати, що для
 \begin{equation*}
 M_{p}(s) = \frac{s^{-2}}{e^s-p} \exp \left(2 \int\limits_{0}^{s} \frac{e^u -1}{u(e^u - p)} du\right) \int\limits_s^\infty \exp\left(-2 \int\limits_{0}^{u} \frac{e^\tau -1}{\tau(e^\tau - p)} d\tau\right) du 
@@ -172,6 +171,7 @@ M_{p}(it) = -\frac{i t^{-2}}{e^{it}-p} \exp \left(2 \int\limits_{0}^{t} \frac{e^
 M_{p}(it) = O(\frac{1}{|t|})
 \end{equation}
 для $t > 0$. За властивістю перетворення Лапласа $M_{p}(-it) = \overline{M_{p}(it)}$, тому \eqref{eq:model_laplace_im_ax_asympt} виконується і для $t < 0$.
+\end{proof}
 \end{lem}
 
 Отримали, що
