@@ -10,7 +10,7 @@
 
 \newcommand{\imref}[1]{Рис.~\ref{#1}}
 \newcommand{\fmref}[1]{(\ref{#1})}
-\newcommand{\todo}[1]{\textcolor{red}{#1}}
+\ifoptionfinal{\newcommand{\todo}[1]{}}{\newcommand{\todo}[1]{\textcolor{red}{#1}}}
 \newcommand{\EE}{\mathbb{E}}
 \newcommand{\DD}{\mathbb{D}}
 \newcommand{\RR}{\mathbb{R}}
@@ -36,4 +36,3 @@
 \newtheorem{lem}{Лема}[section]
 \newtheorem{stmt}{Твердження}[section]
 \newtheorem{defin}{Означення}[section]
-%\newcommand{\todo}[1]{#1}
