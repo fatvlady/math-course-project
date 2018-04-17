@@ -19,11 +19,13 @@
 
 Нескладно помітити, що
 
-\begin{align}
+\begin{equation}
 \label{eq:q_p_transform}
+\begin{split}
 Q_{p}(s) = \int\limits_{1}^{s} \frac{1-p}{u(e^u - p)} du =& \int\limits_{1}^{s} \frac{1}{u} du - \int\limits_{1}^{s} \frac{e^u -1}{u(e^u - p)} du = \\
 =& \ln(s) - \int\limits_{1}^{s} \frac{e^u -1}{u(e^u - p)} du.
-\end{align}
+\end{split}
+\end{equation}
 
 Тоді з \eqref{eq:q_p_transform} та \eqref{eq:model_laplace_sol} маємо
 
@@ -95,7 +97,7 @@ f(t) = \frac{1}{2\pi i}\int\limits_{- i\infty}^{+ i\infty} e^{st} F(s) ds.
 Тепер, оскільки $F$ --- аналітична в правій півплощині відносно $\sigma$, то за теоремою Коші \cite{lavrentiev1965}
 \begin{figure}[h]
 	\centering
-	\includegraphics{chapter_Asymptotics/img/figure1}
+	\includegraphics{chapter_Asymptotics/img/contour_bar}
 	\caption{Шлях інтегрування аналітичної функції $F(s)$}
 \end{figure}
 \begin{equation*}
@@ -121,6 +123,56 @@ $|\int\limits_{iR}^{iR + \delta} F(s) e^{st} ds| \leq \delta e^{\delta t} \max\l
 \begin{equation}
 m_{p}(x) = \frac{1}{2\pi i} \int\limits_{\delta - i\infty}^{\delta + i\infty} M_{p}(s) e^{sx} ds = C_{p} x - \frac{1 - C_p}{1-p} + \frac{1}{2\pi} \int\limits_{-R}^{R} \psi_{p}(it) e^{itx} dt.
 \end{equation}
+
+\begin{lem}
+Для $\forall p \in [0; 1)$
+\begin{equation}
+\psi_{p}(it) \sim O\left(\frac{1}{|t|}\right)
+\end{equation}
+\begin{proof}
+Якщо показати, що $M_{p}(it) = O\left(\frac{1}{|t|}\right)$, то твердження леми випливає автоматично:
+\begin{equation*}
+\psi_{p}(it)=M_{p}(it) + C_{p} t^{-2} - i \frac{1-C_{p}}{1 - p} t^{-1} = O\left(\frac{1}{|t|}\right)
+\end{equation*}
+\end{proof}
+Залишається показати, що для
+\begin{equation*}
+M_{p}(s) = \frac{s^{-2}}{e^s-p} \exp \left(2 \int\limits_{0}^{s} \frac{e^u -1}{u(e^u - p)} du\right) \int\limits_s^\infty \exp\left(-2 \int\limits_{0}^{u} \frac{e^\tau -1}{\tau(e^\tau - p)} d\tau\right) du 
+\end{equation*}
+твердження правдиве. Щоб при підрахунку $M_{p}(it)$ інтегрувати за уявною віссю, необхідно показати, що інтеграл
+\begin{equation*}
+\int\limits_{it}^{i\infty} \exp\left(-2 \int\limits_{0}^{u} \frac{e^\tau -1}{\tau(e^\tau - p)} d\tau\right) du 
+\end{equation*}
+існує. Оскільки інтеграл по контуру, зображеному на \imref{fig:contour_phi}, дорівнює 0 за теоремою Коші, то
+\begin{equation*}
+\int\limits_{it}^{iR} = -\int\limits_{K_{t}} + \int\limits_{t}^{R} + \int\limits_{K_{R}},
+\end{equation*}
+де $K_{r}$ --- інтеграл по дузі з радіусом $r$ та зміною кута відносно вісі абсцис в межах $0 \leq \varphi \leq \pi$.
+\begin{figure}[h]
+	\centering
+	\includegraphics{chapter_Asymptotics/img/contour_quarter}
+	\caption{Шлях інтегрування функції $\exp\left(-2 \int\limits_{0}^{u} \frac{e^\tau -1}{\tau(e^\tau - p)} d\tau\right)$}
+	\label{fig:contour_phi}
+\end{figure}
+
+Нескладно помітити, що для доведення існування інтегралу $\int\limits_{it}^{i\infty}$ достатньо показати, що $\lim\limits_{R \rightarrow \infty}|\int\limits_{K_{R}}| = 0$, адже інтеграл $\int\limits_{t}^{\infty}$ існує через існування $M_{p}(t)$.
+А це вже досить нескладно доводиться. \todo{add proof}
+
+Отже, при $t>0$
+\begin{equation}
+\label{eq:model_laplace_im_ax}
+\begin{split}
+M_{p}(it) = -\frac{i t^{-2}}{e^{it}-p} \exp \left(2 \int\limits_{0}^{t} \frac{e^{iu} -1}{u(e^{iu} - p)} du\right) \cdot \\
+\cdot \int\limits_t^\infty \exp\left(-2 \int\limits_{0}^{u} \frac{e^{i\tau} -1}{\tau(e^{i\tau} - p)} d\tau\right) du.
+\end{split}
+\end{equation}
+Враховуючи, що інтеграл $\int\limits_{1}^{\infty} \frac{1-p}{u(e^{iu} - p)} du$ існує, з \eqref{eq:model_laplace_im_ax} негайно випливає
+\begin{equation}
+\label{eq:model_laplace_im_ax_asympt}
+M_{p}(it) = O(\frac{1}{|t|})
+\end{equation}
+для $t > 0$. За властивістю перетворення Лапласа $M_{p}(-it) = \overline{M_{p}(it)}$, тому \eqref{eq:model_laplace_im_ax_asympt} виконується і для $t < 0$.
+\end{lem}
 
 Отримали, що
 \begin{equation}
