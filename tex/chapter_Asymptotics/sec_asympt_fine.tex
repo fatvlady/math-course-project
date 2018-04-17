@@ -155,7 +155,7 @@ M_{p}(s) = \frac{s^{-2}}{e^s-p} \exp \left(2 \int\limits_{0}^{s} \frac{e^u -1}{u
 \end{figure}
 
 Нескладно помітити, що для доведення існування інтегралу $\int\limits_{it}^{i\infty}$ достатньо показати, що $\lim\limits_{R \rightarrow \infty}|\int\limits_{K_{R}}| = 0$, адже інтеграл $\int\limits_{t}^{\infty}$ існує через існування $M_{p}(t)$.
-А це вже досить нескладно доводиться. \todo{add proof}
+А це вже досить нескладно доводиться. \todo{Add proof.}
 
 Отже, при $t>0$
 \begin{equation}
@@ -168,19 +168,15 @@ M_{p}(it) = -\frac{i t^{-2}}{e^{it}-p} \exp \left(2 \int\limits_{0}^{t} \frac{e^
 Враховуючи, що інтеграл $\int\limits_{1}^{\infty} \frac{1-p}{u(e^{iu} - p)} du$ існує, з \eqref{eq:model_laplace_im_ax} негайно випливає
 \begin{equation}
 \label{eq:model_laplace_im_ax_asympt}
-M_{p}(it) = O(\frac{1}{|t|})
+M_{p}(it) = O\left(\frac{1}{|t|}\right)
 \end{equation}
 для $t > 0$. За властивістю перетворення Лапласа $M_{p}(-it) = \overline{M_{p}(it)}$, тому \eqref{eq:model_laplace_im_ax_asympt} виконується і для $t < 0$.
 \end{proof}
 \end{lem}
 
+\todo{Finish inference}
 Отримали, що
 \begin{equation}
 \label{eq:uniform_right_as_enhanced}
 \lim\limits_{X \rightarrow \infty} \left( m(X) - C_{p} X - \frac{1 - C_{p}}{1 - p} \right) = O\left(\frac{1}{X^{n}}\right) \qquad \forall n \in \mathbb{N}
-\end{equation}
-
-Властивість Лапласа..
-\begin{equation}
-\phi(\overline{u}) = \int_0^\infty M(x) e^{-\overline{u}x} dx = \int_0^\infty M(x) \overline{e^{-sx}} dx = \overline{\phi(u)}
 \end{equation}
