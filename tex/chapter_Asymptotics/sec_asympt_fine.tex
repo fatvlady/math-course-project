@@ -62,16 +62,6 @@ M_{p}(s) = \frac{C_{p}}{s^2} + \frac{\frac{\partial}{\partial s}(s^2 M_{p}(s))}{
 \label{eq:model_laplace_taylor}
 M_{p}(s) = C_{p} s^{-2} - \frac{1 - C_{p}}{1 - p} s^{-1} + \psi_{p}(s).
 \end{equation}
-Розглянемо перетворення Лапласа від $m_{p}(x) - C_{p} x$:
-\begin{gather*}
-\Lapl{m_{p}(x) - C_{p} x}  = M_{p}(s) - C_{p} s^{-2} =  \frac{C_{p} - 1}{1 - p} s^{-1} + \psi_{p}(s), \\
-\lim\limits_{s \rightarrow 0} \frac{\Lapl{m_{p}(x) - C_{p} x}}{s^{-1}} = \frac{C_{p} - 1}{1 - p}.
-\end{gather*}
-Тоді за тауберівською теоремою \eqref{eq:tauber_thm} можна зробити висновок
-\begin{equation}
-\lim\limits_{x \rightarrow \infty} m_{p}(x) - C_{p} x = \frac{C_{p} - 1}{1 - p},
-\end{equation}
-тобто \eqref{eq:fine_asymptotics_1} доведено.
 
 \subsection{Застосування зворотної формули Фур'є-Мелліна}
 
