@@ -144,8 +144,20 @@ M_{p}(s) = \frac{s^{-2}}{e^s-p} \exp \left(2 \int\limits_{0}^{s} \frac{e^u -1}{u
 	\label{fig:contour_phi}
 \end{figure}
 
-Нескладно помітити, що для доведення існування інтегралу $\int\limits_{it}^{i\infty}$ достатньо показати, що $\lim\limits_{R \rightarrow \infty}|\int\limits_{K_{R}}| = 0$, адже інтеграл $\int\limits_{t}^{\infty}$ існує через існування $M_{p}(t)$.
-А це вже досить нескладно доводиться. \todo{Add proof.}
+Нескладно помітити, що для доведення існування інтегралу $\int\limits_{it}^{i\infty}$ достатньо показати, що $\lim\limits_{R \rightarrow \infty} \int\limits_{K_{R}}$ існує, адже інтеграл $\int\limits_{t}^{\infty}$ існує через існування $M_{p}(t)$. Інтеграл по $K_{R}$ можна розписати насутпним чином:
+\begin{gather*}
+\int\limits_{K_{R}} \exp\left(-2 \int\limits_{0}^{u} \frac{e^\tau -1}{\tau(e^\tau - p)} d\tau\right) du = 
+R \int\limits_{0}^{\frac{\pi}{2}} e^{-2 \int\limits_{0}^{Re^{i\varphi}} \frac{e^\tau -1}{\tau(e^\tau - p)} d\tau} i e^{i\varphi}  d\varphi =\\
+= R \int\limits_{0}^{\frac{\pi}{2}} e^{-2 \int\limits_{0}^{R} \frac{e^{re^{i\varphi}} -1}{r(e^{re^{i\varphi}} - p)} dr} i e^{i\varphi}  d\varphi.
+\end{gather*}
+
+Щоб довести існування, достатньо показати абсолютну збіжність інтегралу.
+
+\begin{gather*}
+R \int\limits_{0}^{\frac{\pi}{2}} \left| e^{-2 \int\limits_{0}^{R} \frac{e^{re^{i\varphi}} -1}{r(e^{re^{i\varphi}} - p)} dr} i e^{i\varphi} \right| d\varphi = R \int\limits_{0}^{\frac{\pi}{2}} \left| e^{-2 \int\limits_{0}^{R} \frac{e^{re^{i\varphi}} -1}{r(e^{re^{i\varphi}} - p)} dr} \right| d\varphi=\\
+=R \int\limits_{0}^{\frac{\pi}{2}} \left| e^{-2 \int\limits_{0}^{R} \frac{(e^{re^{i\varphi}} -1)(e^{re^{-i\varphi}} - p)}{r(e^{re^{i\varphi}} - p)(e^{re^{-i\varphi}} - p)} dr} \right| d\varphi 
+\end{gather*}
+
 
 Отже, при $t>0$
 \begin{equation}
