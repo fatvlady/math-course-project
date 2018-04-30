@@ -159,6 +159,11 @@ R \int\limits_{0}^{\frac{\pi}{2}} \left| e^{-2 \int\limits_{0}^{R} \frac{e^{re^{
 =R \int\limits_{0}^{\frac{\pi}{2}} \left| e^{-2 \int\limits_{0}^{R} \frac{1- (1+p)e^{-r \cos \varphi} \cos \theta + p e^{-2r \cos \varphi} + (1-p)ie^{-r \cos \varphi} \sin \theta}{r((\cos \theta - pe^{-r\cos \varphi})^{2} + \sin^2 \theta)} dr} \right| d\varphi.
 \end{gather*}
 
+Оскільки $\sin \theta = O(r), ~ r \rightarrow \infty$, то інтеграл
+\begin{equation*}
+i\int\limits_{0}^{R} \frac{(1-p)e^{-r \cos \varphi} \sin \theta}{r((\cos \theta - pe^{-r\cos \varphi})^{2} + \sin^2 \theta)} dr
+\end{equation*}
+існує, і уявною частиною чисельника інтеграла під експонентою можна знехтувати через модуль.
 
 Отже, при $t>0$
 \begin{equation}
