@@ -153,13 +153,15 @@ R \int\limits_{0}^{\frac{\pi}{2}} e^{-2 \int\limits_{0}^{Re^{i\varphi}} \frac{e^
 
 Щоб довести існування, достатньо показати абсолютну збіжність інтегралу.
 
-\begin{gather*}
+\begin{equation}
+\begin{gathered}
 R \int\limits_{0}^{\frac{\pi}{2}} \left| e^{-2 \int\limits_{0}^{R} \frac{e^{re^{i\varphi}} -1}{r(e^{re^{i\varphi}} - p)} dr} i e^{i\varphi} \right| d\varphi = R \int\limits_{0}^{\frac{\pi}{2}} \left| e^{-2 \int\limits_{0}^{R} \frac{e^{re^{i\varphi}} -1}{r(e^{re^{i\varphi}} - p)} dr} \right| d\varphi=\\
 =R \int\limits_{0}^{\frac{\pi}{2}} \left| e^{-2 \int\limits_{0}^{R} \frac{(e^{re^{i\varphi}} -1)(e^{re^{-i\varphi}} - p)}{r(e^{re^{i\varphi}} - p)(e^{re^{-i\varphi}} - p)} dr} \right| d\varphi = \langle \theta = r \sin \varphi \rangle = \\
 =R \int\limits_{0}^{\frac{\pi}{2}} \left| e^{-2 \int\limits_{0}^{R} \frac{1- (1+p)e^{-r \cos \varphi} \cos \theta + p e^{-2r \cos \varphi} + (1-p)ie^{-r \cos \varphi} \sin \theta}{r((\cos \theta - pe^{-r\cos \varphi})^{2} + \sin^2 \theta)} dr} \right| d\varphi.
-\end{gather*}
+\end{gathered}
+\end{equation}
 
-Оскільки $\sin \theta = O(r), ~ r \rightarrow \infty$, то інтеграл
+Оскільки $\sin \theta = \sin (r \sin \varphi)= O(r), ~ r \rightarrow 0$, то інтеграл
 \begin{equation*}
 i\int\limits_{0}^{R} \frac{(1-p)e^{-r \cos \varphi} \sin \theta}{r((\cos \theta - pe^{-r\cos \varphi})^{2} + \sin^2 \theta)} dr
 \end{equation*}
