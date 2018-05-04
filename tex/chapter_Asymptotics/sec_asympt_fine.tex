@@ -15,7 +15,7 @@
 \lim\limits_{x \rightarrow \infty} \left( m(x) - C_{p} x + \frac{1 - C_{p}}{1 - p} \right) = 0.
 \end{equation}
 
-\subsection{Застосування тауберівської теореми для покращення оцінки}
+\subsection{Виведення розкладу Тейлора для зображення Лапласа}
 
 Нескладно помітити, що
 
@@ -119,6 +119,75 @@ $|\int\limits_{iR}^{iR + \delta} F(s) e^{st} ds| \leq \delta e^{\delta t} \max\l
 m_{p}(x) = \frac{1}{2\pi i} \int\limits_{\delta - i\infty}^{\delta + i\infty} M_{p}(s) e^{sx} ds = C_{p} x - \frac{1 - C_p}{1-p} + \frac{1}{2\pi} \int\limits_{-R}^{R} \psi_{p}(it) e^{itx} dt.
 \end{equation}
 
+Для подальшого виведення знадобиться наступна лема.
+\begin{lem}
+Нехай $p \in (0,~1)$, тоді виконуються наступні твердження:
+\begin{gather}
+	\int\limits_{0}^{2\pi} \frac{\cos \theta - p}{p^2 - 2p\cos\theta + 1} d \theta = 0 \label{eq:cosine_zero}, \\
+	\int\limits_{0}^{2\pi} \frac{\sin \theta}{p^2 - 2p\cos\theta + 1} d \theta = 0 \label{eq:sine_zero}.
+\end{gather}
+\begin{proof}
+	Друге рівняння доводиться досить тривіально:
+	\begin{gather*}
+	\int\limits_{0}^{2\pi} \frac{\sin \theta}{p^2 - 2p\cos\theta + 1} d\theta = -\int\limits_{0}^{\pi} \frac{d(\cos \theta)}{p^2 - 2p\cos\theta + 1} - \int\limits_{\pi}^{2\pi} \frac{d(\cos \theta)}{p^2 - 2p\cos\theta + 1} = \\
+	=\int\limits_{-1}^{1} \frac{du}{p^2 - 2pu + 1} - \int\limits_{-1}^{1} \frac{du}{p^2 - 2pu + 1} = 0.
+	\end{gather*}
+	
+	Для доведення першого рівняння знайдемо первісну підінтегральної функції. Нескладно переконатися, що
+	\begin{equation*}
+		\int \frac{\cos \theta - p}{p^2 - 2p\cos\theta + 1} d \theta = \frac{2\arctan\left(\frac{1 + p}{1-p} \tan \frac{\theta}{2} \right) - \theta}{2p} = I(\theta), \quad -\pi < \theta < \pi.
+	\end{equation*}
+	
+	Через періодичність $\cos\theta$ визначений інтеграл на $[0,~2\pi]$ дорівнює інтегралу на $[-\pi,~\pi]$. Тоді
+	\begin{gather*}
+		\int\limits_{-\pi}^{\pi} \frac{\cos \theta - p}{p^2 - 2p\cos\theta + 1} d \theta = I(\pi-) - I(-\pi+) = \\
+		=\frac{2\arctan(+\infty) - \pi - 2\arctan(-\infty) - \pi}{2p} = 0.
+	\end{gather*} 
+\end{proof}
+\end{lem}
+
+\begin{corollary}
+\label{lem:trig_bound}
+Нехай $p \in (0,~1)$, тоді наступні інтеграли існують:
+\begin{gather*}
+	\int\limits_{1}^{\infty} \frac{\cos \theta - p}{\theta(p^2 - 2p\cos\theta + 1)} d \theta, \\
+	\int\limits_{1}^{\infty} \frac{\sin \theta}{\theta(p^2 - 2p\cos\theta + 1)} d \theta.
+\end{gather*}
+\begin{proof}
+	Наведемо доведення для інтегралу з косинусом, для другого цілком аналогічно. Розглянемо інтеграл на проміжку $[2\pi n + \arccos p,~2\pi (n + 1) + \arccos p]$:
+	\begin{equation*}
+		\int\limits_{2\pi n + \arccos p}^{2\pi (n + 1) + \arccos p} \frac{\cos \theta - p}{\theta(p^2 - 2p\cos\theta + 1)} d \theta.
+	\end{equation*}
+	
+	Оскільки на проміжку $[2\pi n + \arccos p,~2\pi (n + 1) - \arccos p]$ функція $\cos\theta - p$ -- недодатня, а на проміжку $[2\pi (n + 1) - \arccos p,~2\pi (n + 1) + \arccos p]$ -- невід'ємна, то 
+	\begin{gather*}
+	\int\limits_{2\pi n + \arccos p}^{2\pi (n + 1) + \arccos p} \frac{\cos \theta - p}{\theta(p^2 - 2p\cos\theta + 1)} d \theta \leq \\
+	\leq \frac{1}{2\pi (n + 1) - \arccos p} \int\limits_{2\pi n + \arccos p}^{2\pi (n + 1) + \arccos p} \frac{\cos \theta - p}{p^2 - 2p\cos\theta + 1} d \theta = 0.
+	\end{gather*}
+	
+	Аналогічно інтеграл на проміжку $[2\pi n - \arccos p,~2\pi (n + 1) - \arccos p]$ буде не менше 0. Таким чином,
+	\begin{equation*}
+	\int\limits_{1}^{2\pi - \arccos p} (\dots) \,d\theta \leq \int\limits_{1}^{\infty} \frac{\cos \theta - p}{\theta(p^2 - 2p\cos\theta + 1)} \, d\theta \leq \int\limits_{1}^{2\pi + \arccos p} (\dots) \,d\theta.
+	\end{equation*}
+	
+	До того ж,
+	\begin{equation*}
+	\int\limits_{1}^{\infty} \frac{\cos \theta - p}{\theta(p^2 - 2p\cos\theta + 1)} \, d\theta = \int\limits_{1}^{2\pi - \arccos p} (\dots) \,d\theta + \sum\limits_{n = 1}^{\infty} \underbrace{\int\limits_{2\pi n - \arccos p}^{2\pi (n + 1) - \arccos p} (\dots) \,d\theta}_{\geq 0}.
+	\end{equation*}
+	
+	Таким чином, маємо обмежену монотонну послідовність, і тому у неї є границя.
+\end{proof}
+\end{corollary}
+
+Існує ще один наслідок, що доводиться аналогічно попередньому. \todo{Насправді не аналогічно. Хоча це правда, але я не знаю, як довести це гарно.}
+\begin{corollary}
+	\label{lem:trig_exp_bound}
+	Нехай $p \in (0,~1)$, $\alpha \geq 0$, тоді наступний інтеграл існує:
+	\begin{equation*}
+	\int\limits_{1}^{\infty} \frac{e^{\alpha\theta}\cos \theta - p}{\theta(p^2 - 2pe^{\alpha\theta}\cos\theta + e^{2\alpha\theta})} d \theta.
+	\end{equation*}
+\end{corollary}
+
 \begin{lem}
 Для $\forall p \in [0; 1)$
 \begin{equation}
@@ -129,18 +198,22 @@ m_{p}(x) = \frac{1}{2\pi i} \int\limits_{\delta - i\infty}^{\delta + i\infty} M_
 \begin{equation*}
 \psi_{p}(it)=M_{p}(it) + C_{p} t^{-2} - i \frac{1-C_{p}}{1 - p} t^{-1} = O\left(\frac{1}{|t|}\right)
 \end{equation*}
+
 Залишається показати, що для
 \begin{equation*}
 M_{p}(s) = \frac{s^{-2}}{e^s-p} \exp \left(2 \int\limits_{0}^{s} \frac{e^u -1}{u(e^u - p)} du\right) \int\limits_s^\infty \exp\left(-2 \int\limits_{0}^{u} \frac{e^\tau -1}{\tau(e^\tau - p)} d\tau\right) du 
 \end{equation*}
+
 твердження правдиве. Щоб при підрахунку $M_{p}(it)$ інтегрувати за уявною віссю, необхідно показати, що інтеграл
 \begin{equation*}
 \int\limits_{it}^{i\infty} \exp\left(-2 \int\limits_{0}^{u} \frac{e^\tau -1}{\tau(e^\tau - p)} d\tau\right) du 
 \end{equation*}
+
 існує. Оскільки інтеграл по контуру, зображеному на \imref{fig:contour_phi}, дорівнює 0 за теоремою Коші, то
 \begin{equation*}
 \int\limits_{it}^{iR} = -\int\limits_{K_{t}} + \int\limits_{t}^{R} + \int\limits_{K_{R}},
 \end{equation*}
+
 де $K_{r}$ --- інтеграл по дузі з радіусом $r$ та зміною кута відносно вісі абсцис в межах $0 \leq \varphi \leq \pi$.
 \begin{figure}[h]
 	\centering
