@@ -1,3 +1,4 @@
+% !TeX root=main.tex
 \usepackage{ifdraft}
 
 \usepackage{fontspec}
@@ -9,7 +10,7 @@
 \setotherlanguage{russian} %% третий язык документа - для библиографии
 \defaultfontfeatures{Ligatures=TeX,Mapping=tex-text}
 
-%% Виставлення шрифт\UTF{0456}в документу
+%% Виставлення шрифтів документу
 \newfontfamily{\cyrillicfont}{Times New Roman}
 \newfontfamily{\cyrillicfontsf}{Arial}
 \newfontfamily{\cyrillicfonttt}[Scale=0.95]{Courier New}
@@ -39,7 +40,7 @@
 	\onehalfspacing
 	\frenchspacing
 
-%%% Вир\UTF{0456}внювання та переноси %%%
+%%% Вирівнювання та переноси %%%
 \sloppy
 \clubpenalty=10000
 \widowpenalty=10000
@@ -57,7 +58,7 @@
 \usepackage{ulem} % подчеркивания
 \usepackage{tocloft}
 \usepackage{import}
-\usepackage{lastpage} % знаходить номер останньо\UTF{0457} стор\UTF{0456}нки за \pageref*{LastPage}~с.
+\usepackage{lastpage} % знаходить номер останньо\UTF{0457} сторінки за \pageref*{LastPage}~с.
 \usepackage{etoolbox}
 \usepackage[title,titletoc]{appendix}
 \usepackage{pdfpages}
@@ -85,7 +86,7 @@
 	title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
 }
 
-%%% Форматування п\UTF{0456}дпис\UTF{0456}в таблиць та рисунк\UTF{0456}в %%%
+%%% Форматування підписів таблиць та рисунків %%%
 \usepackage{ragged2e}
 \usepackage{caption}
 \usepackage{subcaption}
@@ -101,14 +102,14 @@
 \usepackage{array}
 \usepackage{tabulary}
 \usepackage{tabularx}
-\usepackage{float} 		% пакет для [H]-положення ф\UTF{0456}гур
-\usepackage{rotating}	% пакет для перевертання блок\UTF{0456}в
+\usepackage{float} 		% пакет для [H]-положення фігур
+\usepackage{rotating}	% пакет для перевертання блоків
 \usepackage{makecell}
 \usepackage{multirow} % улучшенное форматирование таблиц
 
-%пакет для налаштування стор\UTF{0456}нки
+%пакет для налаштування сторінки
 
-\titleformat{\chapter}
+\titleformat{\chapter}[block]
 {\filcenter}
 {\MakeUppercase{\bfseries\chaptertitlename} \thechapter}
 {8pt}
@@ -140,18 +141,19 @@
 {0.5em}
 {\bfseries}{}
 
-\titlespacing*{\chapter}{0pt}{0pt}{8pt}
-\titlespacing*{\section}{\parindent}{*4}{*4}
-\titlespacing*{\subsection}{\parindent}{*4}{*4}
-\titlespacing*{\subsubsection}{\parindent}{*4}{*4}
+\titlespacing*{\chapter}{0pt}{0pt}{*8}
+\titlespacing*{\section}{\parindent}{*8}{*8}
+\titlespacing*{\subsection}{\parindent}{*8}{*8}
+\titlespacing*{\subsubsection}{\parindent}{*8}{*8}
 \titlespacing*{\paragraph}{\parindent}{*1}{*1}
 \titlespacing*{\subparagraph}{\parindent}{*4}{*2}
 
 \setlength{\parindent}{1.25cm} 
 
+% table of contents setup
 \renewcommand{\cfttoctitlefont}{\hspace{0.38\textwidth} \bfseries\MakeUppercase}
 \renewcommand{\cftbeforetoctitleskip}{-1em}
-\renewcommand{\cftaftertoctitle}{\mbox{}\hfill \\ \mbox{}\hfill{\footnotesize Ст.}\vspace{-2.5em}}
+\renewcommand{\cftaftertoctitle}{\vspace{2em}\mbox{}\hfill \\ \mbox{}\hfill{\footnotesize Ст.}\vspace{-2.5em}}
 \renewcommand{\cftchapfont}{\normalsize\bfseries \MakeUppercase{\chaptername} }
 \renewcommand{\cftsecfont}{\hspace{31pt}}
 \renewcommand{\cftsubsecfont}{\hspace{11pt}}
@@ -166,7 +168,7 @@
 \renewcommand{\bibsection}{\likechapter{Список літератури}}
 \setlength{\bibsep}{0pt}
 
-%% блок роботи з к\UTF{0456}льк\UTF{0456}стю рисунк\UTF{0456}в, таблиць \UTF{0456} книжок
+%% блок роботи з кількістю рисунків, таблиць і книжок
 \providecommand\totfig{} 
 \providecommand\tottab{}
 
@@ -224,8 +226,6 @@
 	\subparagraph{\MakeUppercase{#1}}
 	\addcontentsline{toc}{likechapter}{\texorpdfstring{\MakeUppercase{\chaptertitlename~\Asbuk{chapter}\;#1}}{\chaptertitlename~\Asbuk{chapter}:~#1}}}
 
-
-
 \usepackage{enumitem}
 	\makeatletter
 	\AddEnumerateCounter{\asbuk}{\@asbuk}{м)}
@@ -237,3 +237,12 @@
 
 \usepackage[xetex,bookmarks=true,colorlinks=true,linkcolor=MidnightBlue,citecolor=Green,linktoc=none,urlcolor=Green]{hyperref}
 	\renewcommand\UrlFont{\ttfamily}%
+	
+\makeatletter
+\g@addto@macro\normalsize{%
+	\setlength\abovedisplayskip{20pt plus 3pt minus 3 pt}
+	\setlength\belowdisplayskip{20pt plus 3pt minus 3 pt}
+	\setlength\abovedisplayshortskip{20pt plus 3pt minus 3 pt}
+	\setlength\belowdisplayshortskip{20pt plus 3pt minus 3 pt}
+}
+\makeatother

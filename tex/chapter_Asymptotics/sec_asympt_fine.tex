@@ -84,15 +84,20 @@ f(t) = \frac{1}{2\pi i}\int\limits_{- i\infty}^{+ i\infty} e^{st} F(s) ds.
 \begin{equation*}
 |F(s)| = \left| \int\limits_{0}^{\infty}  f(t) e^{-st} dt \right| \leq \int\limits_{0}^{\infty} \left|f(t) e^{-st} \right| dt = \int\limits_{0}^{\infty} f(t)  e^{-t\operatorname{\mathfrak{Re}} s}  dt = F(\operatorname{\mathfrak{Re}} s).
 \end{equation*}
-Тепер, оскільки $F$ --- аналітична в правій півплощині відносно $\sigma$, то за теоремою Коші \cite{lavrentiev1965}
-\begin{figure}[h]
-	\centering
-	\includegraphics{chapter_Asymptotics/img/contour_bar}
-	\caption{Шлях інтегрування аналітичної функції $F(s)$}
-\end{figure}
+Тепер, оскільки $F$ --- аналітична в правій півплощині відносно $\sigma$, то за теоремою Коші \cite{lavrentiev1965} інтеграл по контуру, зображеному на \imref{fig:contour_mellin} дорівнює нулю:
+
+
 \begin{equation*}
-\int\limits_{-i\infty}^{i\infty} F(s) e^{st} ds + \int\limits_{iR}^{iR + \delta} F(s) e^{st} ds + \int\limits_{iR + \delta}^{-iR + \delta} F(s) e^{st} ds + \int\limits_{-iR + \delta}^{-iR} F(s) e^{st} ds = 0.
+\int\limits_{-iR}^{iR} F(s) e^{st} ds + \int\limits_{iR}^{iR + \delta} F(s) e^{st} ds + \int\limits_{iR + \delta}^{-iR + \delta} F(s) e^{st} ds + \int\limits_{-iR + \delta}^{-iR} F(s) e^{st} ds = 0.
 \end{equation*}
+
+\begin{figure}[h]
+\centering
+\includegraphics{chapter_Asymptotics/img/contour_mellin}
+\caption{Шлях інтегрування аналітичної функції $F(s)$}
+\label{fig:contour_mellin}
+\end{figure}
+
 Позначимо $V(R)=\int\limits_{-iR + \delta}^{iR + \delta} F(s) e^{st} ds, ~\forall 0 < \delta < 1$. Нескладно переконатися, що 
 $|\int\limits_{iR}^{iR + \delta} F(s) e^{st} ds| \leq \delta e^{\delta t} \max\limits_{[0,1]} |F(\operatorname{\mathfrak{Re}} s)| \leq \delta \cdot const$. Тоді $\forall \delta > 0, ~\forall R > 0$
 \begin{equation*}
@@ -163,9 +168,18 @@ R \int\limits_{0}^{\frac{\pi}{2}} \left| e^{-2 \int\limits_{0}^{R} \frac{e^{re^{
 
 Оскільки $\sin \theta = \sin (r \sin \varphi)= O(r), ~ r \rightarrow 0$, то інтеграл
 \begin{equation*}
-i\int\limits_{0}^{R} \frac{(1-p)e^{-r \cos \varphi} \sin \theta}{r((\cos \theta - pe^{-r\cos \varphi})^{2} + \sin^2 \theta)} dr
+i \int\limits_{0}^{R} \frac{(1-p)e^{-r \cos \varphi} \sin \theta}{r((\cos \theta - pe^{-r\cos \varphi})^{2} + \sin^2 \theta)} dr
 \end{equation*}
 існує, і уявною частиною чисельника інтеграла під експонентою можна знехтувати через модуль.
+
+\begin{equation}
+\int\limits_{2\pi n + \pi / 2}^{2\pi (n + 1) + \pi / 2} \frac{e^{-\alpha r} (p e^{-\alpha r} - \cos r)}{1 - 2pe^{-\alpha r} \cos r + p^2 e^{-2 \alpha r}} dr \geq 0
+\end{equation}
+
+\begin{equation}
+	\int\limits_{0}^{2 \pi} \frac{\cos r -  p}{p^2 - 2 p \cos r + 1} dr = 0
+\end{equation}
+
 
 Отже, при $t>0$
 \begin{equation}
