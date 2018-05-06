@@ -369,8 +369,8 @@ m_{p}(x) - C_{p} x + \frac{1 - C_p}{1-p} - p\Psi_{p}(x-1) = \mathcal{O}\left(\fr
 \end{equation*}
 Це означає, що $\exists N \in \RR^{+}$ таке, що $|m_{p}(x) - C_{p} x + \frac{1 - C_p}{1-p} - p\Psi_{p}(x-1)| < N \left|\frac{1}{x}\right|$ при $x \geq 1$. Покажемо, що $\Psi_{p}(x) = \mathcal{O}(\frac{1}{x})$. Для $0<x<2$ це, очевидно, виконується -- наслідок \eqref{eq:psi_x_initial_values}. Нехай це виконується для усіх $1 \leq x \leq X$: $|\Psi_{p}(x)| < M\left|\frac{1}{x}\right|$. Будемо вважати, що $M \geq \frac{2N}{1 - p}$. Тоді
 \begin{gather*}
-|\Psi_{p}(X + 1)| = |m_{p}(X+1) - C_{p} (X+1) + \frac{1 - C_p}{1-p}| \leq p|\Psi_{p}(X)| + N \left|\frac{1}{X+1}\right| \leq \\
-\leq (p M \cdot \frac{X+1}{X} + N) \left|\frac{1}{X+1}\right|.
+|\Psi_{p}(X + 1)| = |m_{p}(X+1) - C_{p} (X+1) + \frac{1 - C_p}{1-p}| \leq \\
+ p|\Psi_{p}(X)| + N \left|\frac{1}{X+1}\right| \leq (p M \cdot \frac{X+1}{X} + N) \left|\frac{1}{X+1}\right|.
 \end{gather*}
 
 Якщо $M \leq p M \cdot \frac{X+1}{X} + N$, то покладемо $M \leftarrow p M \cdot \frac{X+1}{X} + N$. Така процедура обмежена, оскільки при фіксованному $p$ величина $X$ дійде до такої, що $\frac{X+1}{X} \leq \frac{1+p}{2p}$. Тоді

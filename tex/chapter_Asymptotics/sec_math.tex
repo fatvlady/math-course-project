@@ -26,14 +26,14 @@
 \subsection{Теорема Таубера}
 
 \begin{defin}
-Функція $L:[0, +\infty) \rightarrow \RR$ – слабо мінлива на нескінченності,
+Функція $L:[0, +\infty) \rightarrow \RR$ – повільно змінна на нескінченності,
 якщо для $\forall x > 0$
 $$\lim_{t \rightarrow \infty}\frac{L(tx)}{L(t)} =1$$
 \end{defin}
 
 \begin{defin}
-Функція $L:[0, +\infty) \rightarrow \RR$ – слабо мінлива в 0,
-якщо $L(\frac{1}{x})$ – слабо мінлива на нескінченності.
+Функція $L:[0, +\infty) \rightarrow \RR$ – повільно змінна в 0,
+якщо $L(\frac{1}{x})$ – повільно змінна на нескінченності.
 \end{defin}
 
 Нехай $u(t) \geq 0$ – така функція, що має зображення Лапласа. Нехай $U(t)=\int\limits_0^t u(s) ds$ і $\Lapl{u(t)}=\omega(\tau)$.
@@ -42,7 +42,7 @@ $$\lim_{t \rightarrow \infty}\frac{L(tx)}{L(t)} =1$$
 
 \begin{thm}[Тауберівська теорема Феллера]
 	\label{eq:tauber_thm}
-	Нехай $L$ – слабко мінлива на нескінченності і $0 ≤ \rho < +\infty$. Тоді наступні два твердження тотожні:
+	Нехай $L$ – повільно змінна на нескінченності і $0 ≤ \rho < +\infty$. Тоді наступні два твердження тотожні:
 	\begin{align}
 		\omega(\tau) \sim \tau^{-\rho} L(1/\tau),\qquad &\tau \rightarrow 0 \\
 		U(t) \sim \frac{1}{\Gamma(\rho + 1)} t^{\rho} L(t),\qquad &t \rightarrow +\infty
@@ -53,5 +53,5 @@ $$\lim_{t \rightarrow \infty}\frac{L(tx)}{L(t)} =1$$
 
 \begin{thm}
 	\label{eq:tauber_rev_thm}
-	Твердження теореми \eqref{eq:tauber_thm} залишається вірним, якщо поміняти місцями 0 та $\infty$, тобто $\tau \rightarrow \infty, ~ t \rightarrow 0$ (і, відповідно, L – слабко мінлива в 0).
+	Твердження теореми \eqref{eq:tauber_thm} залишається вірним, якщо поміняти місцями 0 та $\infty$, тобто $\tau \rightarrow \infty, ~ t \rightarrow 0$ (і, відповідно, L – повільно змінна в 0).
 \end{thm}
