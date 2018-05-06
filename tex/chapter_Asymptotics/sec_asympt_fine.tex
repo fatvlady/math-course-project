@@ -116,7 +116,7 @@ $|\int\limits_{iR}^{iR + \delta} F(s) e^{st} ds| \leq \delta e^{\delta t} \max\l
 
 Виходячи з рівняння \eqref{eq:model_laplace_taylor}, аналітичності $\psi_{p} (s)$ та наслідку \eqref{eq:mellin_analytic}, маємо наступне тверждення:
 \begin{equation}
-m_{p}(x) = \frac{1}{2\pi i} \int\limits_{\delta - i\infty}^{\delta + i\infty} M_{p}(s) e^{sx} ds = C_{p} x - \frac{1 - C_p}{1-p} + \frac{1}{2\pi} \int\limits_{-R}^{R} \psi_{p}(it) e^{itx} dt.
+m_{p}(x) = \frac{1}{2\pi i} \int\limits_{\delta - i\infty}^{\delta + i\infty} M_{p}(s) e^{sx} ds = C_{p} x - \frac{1 - C_p}{1-p} + \frac{1}{2\pi} \int\limits_{-\infty}^{\infty} \psi_{p}(it) e^{itx} dt.
 \end{equation}
 
 Для подальшого виведення знадобиться наступна лема.
@@ -159,7 +159,7 @@ m_{p}(x) = \frac{1}{2\pi i} \int\limits_{\delta - i\infty}^{\delta + i\infty} M_
 		\int\limits_{2\pi n + \arccos p}^{2\pi (n + 1) + \arccos p} \frac{\cos \theta - p}{\theta(p^2 - 2p\cos\theta + 1)} d \theta.
 	\end{equation*}
 	
-	Оскільки на проміжку $[2\pi n + \arccos p,~2\pi (n + 1) - \arccos p]$ функція $\cos\theta - p$ -- недодатня, а на проміжку $[2\pi (n + 1) - \arccos p,~2\pi (n + 1) + \arccos p]$ -- невід'ємна, то 
+	Оскільки на проміжку $[2\pi n + \arccos p,~2\pi (n + 1) - \arccos p]$ функція $(\cos\theta - p)$ -- недодатня, а на проміжку $[2\pi (n + 1) - \arccos p,~2\pi (n + 1) + \arccos p]$ -- невід'ємна, то 
 	\begin{gather*}
 	\int\limits_{2\pi n + \arccos p}^{2\pi (n + 1) + \arccos p} \frac{\cos \theta - p}{\theta(p^2 - 2p\cos\theta + 1)} d \theta \leq \\
 	\leq \frac{1}{2\pi (n + 1) - \arccos p} \int\limits_{2\pi n + \arccos p}^{2\pi (n + 1) + \arccos p} \frac{\cos \theta - p}{p^2 - 2p\cos\theta + 1} d \theta = 0.
@@ -179,24 +179,38 @@ m_{p}(x) = \frac{1}{2\pi i} \int\limits_{\delta - i\infty}^{\delta + i\infty} M_
 \end{proof}
 \end{corollary}
 
-Існує ще один наслідок, що доводиться аналогічно попередньому. \todo{Насправді не аналогічно. Хоча це правда, але я не знаю, як довести це гарно.}
+Існує ще один наслідок, що доводиться аналогічно попередньому. \todo{Насправді аналогічно доводиться лише поточкова обмеженість. Хоча наступне твердження майже напевне справедливе, але я не знаю, як довести рівномірну обмеженість.}
 \begin{corollary}
 	\label{lem:trig_exp_bound}
-	Нехай $p \in (0,~1)$, $\alpha \geq 0$, тоді наступний інтеграл існує:
+	Нехай $p \in (0,~1)$, $\alpha \geq 0$, тоді наступний інтеграл обмежений зверху не залежно від $\alpha$:
 	\begin{equation*}
-	\int\limits_{1}^{\infty} \frac{e^{\alpha\theta}\cos \theta - p}{\theta(p^2 - 2pe^{\alpha\theta}\cos\theta + e^{2\alpha\theta})} d \theta.
+	\int\limits_{1}^{\infty} \frac{e^{\alpha\theta}\cos \theta - p}{\theta(p^2 - 2pe^{\alpha\theta}\cos\theta + e^{2\alpha\theta})} d \theta \leq C.
 	\end{equation*}
 \end{corollary}
 
+У наступній лемі буде використанно поняття асимптотичного $\mathcal{O}$ для комплекснозначних функцій. У роботі \cite{de1970asymptotic} Ніколас де Брьойн визначив цю асимптотичну властивість наступним чином.
+\begin{defin}
+Нехай $S$ -- деяка множина. $f$ та $\varphi$ -- деякі дійснозначні або комплекснозначні функції, визначені на множині $S$. Тоді формула
+\begin{equation*}
+f(s) = \mathcal{O}(\varphi(s)), \quad s \in S
+\end{equation*}
+
+означає, що існує таке дотатнє число $A$, що не залижить від $s$, і
+\begin{equation*}
+|f(s)| = A |\varphi(s)|, \quad \forall s \in S.
+\end{equation*}
+\end{defin}
+
 \begin{lem}
+\label{lem:psi_im_ax_asympt}
 Для $\forall p \in [0; 1)$
 \begin{equation}
-\psi_{p}(it) \sim O\left(\frac{1}{|t|}\right)
+\psi_{p}(it) = \mathcal{O}\left(\frac{1}{|t|}\right)
 \end{equation}
 \begin{proof}
-Якщо показати, що $M_{p}(it) = O\left(\frac{1}{|t|}\right)$, то твердження леми випливає автоматично:
+Якщо показати, що $M_{p}(it) = \mathcal{O}\left(\frac{1}{|t|}\right)$, то твердження леми випливає автоматично:
 \begin{equation*}
-\psi_{p}(it)=M_{p}(it) + C_{p} t^{-2} - i \frac{1-C_{p}}{1 - p} t^{-1} = O\left(\frac{1}{|t|}\right)
+\psi_{p}(it)=M_{p}(it) + C_{p} t^{-2} - i \frac{1-C_{p}}{1 - p} t^{-1} = \mathcal{O}\left(\frac{1}{|t|}\right)
 \end{equation*}
 
 Залишається показати, що для
@@ -239,20 +253,58 @@ R \int\limits_{0}^{\frac{\pi}{2}} \left| e^{-2 \int\limits_{0}^{R} \frac{e^{re^{
 \end{gathered}
 \end{equation}
 
-Оскільки $\sin \theta = \sin (r \sin \varphi)= O(r), ~ r \rightarrow 0$, то інтеграл
+Оскільки $\sin \theta = \sin (r \sin \varphi)= \mathcal{O}(r), ~ r \rightarrow 0$, то інтеграл
 \begin{equation*}
 i \int\limits_{0}^{R} \frac{(1-p)e^{-r \cos \varphi} \sin \theta}{r((\cos \theta - pe^{-r\cos \varphi})^{2} + \sin^2 \theta)} dr
 \end{equation*}
 існує, і уявною частиною чисельника інтеграла під експонентою можна знехтувати через модуль.
 
-\begin{equation}
-\int\limits_{2\pi n + \pi / 2}^{2\pi (n + 1) + \pi / 2} \frac{e^{-\alpha r} (p e^{-\alpha r} - \cos r)}{1 - 2pe^{-\alpha r} \cos r + p^2 e^{-2 \alpha r}} dr \geq 0
-\end{equation}
+Розглянемо інтеграл
+\begin{equation*}
+\operatorname{I}(p, \varphi, R) = \int\limits_{0}^{R} \frac{1- (1+p)e^{-r \cos \varphi} \cos \theta + p e^{-2r \cos \varphi} }{r((\cos \theta - pe^{-r\cos \varphi})^{2} + \sin^2 \theta)}\,dr.
+\end{equation*}
 
-\begin{equation}
-	\int\limits_{0}^{2 \pi} \frac{\cos r -  p}{p^2 - 2 p \cos r + 1} dr = 0
-\end{equation}
+Якщо показати, що $(2\operatorname{I}(p, \varphi, R) - \ln R) \rightarrow \infty$ при $R \rightarrow \infty$ не залежно від $\varphi$, то інтеграл по $K_{R}$ є абсолютно збіжним. Дійсно, у такому випадку
+\begin{equation*}
+R \int\limits_{0}^{\frac{\pi}{2}} e^{-2\operatorname{I}(p, \varphi, R) }\, d\varphi = \int\limits_{0}^{\frac{\pi}{2}} e^{-2\operatorname{I}(p, \varphi, R) + \ln R}\, d\varphi \rightarrow 0, ~R \rightarrow \infty.
+\end{equation*}
 
+Спочатку покажемо, що можна знехтувати частиною інтегралу в межах від 0 до 1. По-перше,
+\begin{gather*}
+(\cos \theta - pe^{-r\cos \varphi})^{2} + \sin^2 \theta = 1 + p^2 e^{-2r \cos\varphi} - 2p e^{-r \cos\varphi} \cos\theta = \\
+= (p e^{-r \cos\varphi} -1)^2 + (1 - \cos\theta) 2p e^{-r \cos\varphi} \geq (1-p)^2.
+\end{gather*}
+
+Таким чином, порядок полюса в 0 підінтегральної функції не превищує одного. Розкладемо складові чисельника у ряд Тейлора в нулі:
+\begin{gather*}
+1- (1+p)e^{-r \cos \varphi} \cos \theta + p e^{-2r \cos \varphi} = 1 + p(1 - 2r\cos\varphi + o(r))  -\\
+ -(1 + p)(1 - r \cos\varphi + o(r))(1 + o(r)) = (1 - p) r \cos\varphi + o(r).
+\end{gather*}
+
+Отримали, що в нулі $r$ у чисельника і знаменника скорочується, і в нулі немає особливих точок. До того ж, і чисельник, і знаменник обмежені зверху і знизу не залежно від $\varphi$, тому далі можна не враховувати частину інтегралу від 0 до 1, і розглядати лише
+\begin{equation*}
+\operatorname{I}(p, \varphi, R) = \int\limits_{1}^{R} \frac{1- (1+p)e^{-r \cos \varphi} \cos \theta + p e^{-2r \cos \varphi} }{r((\cos \theta - pe^{-r\cos \varphi})^{2} + \sin^2 \theta)}\,dr, \quad R > 1.
+\end{equation*}
+
+Зрозуміло, що замість нижньої границі 1 можна узяти будь-яку фіксовану $R_{0} > 0$. Тепер розглянемо 2 випадки, $\varphi \in [0;~\frac{\pi}{4}]$ та  $\varphi \in [\frac{\pi}{4};~\frac{\pi}{2}]$ відповідно.
+
+Нехай $\varphi \in [0;~\frac{\pi}{4}]$. Візьмемо $R_{0} = \sqrt{2} \ln(\max\{10, 9p\})$. Тоді
+\begin{gather*}
+1 - 2p e^{-r\cos\varphi} \cos\theta + p^2 e^{-2r\cos\varphi} = 1 + p e^{-r\cos\varphi} (p e^{-r\cos\varphi} - 2 \cos\theta) \leq \\
+\leq 1 + 3p e^{-r\cos\varphi} \leq \langle \cos\varphi \geq \frac{1}{\sqrt{2}}, ~ r \geq \sqrt{2} \ln 9p \rangle \leq \frac{4}{3}, \\
+2\operatorname{I}(p, \varphi, R) \geq \int\limits_{R_{0}}^{R} \frac{(1 - p e^{-r\cos\varphi})(1-e^{-r\cos\varphi})}{\frac{2}{3}r} \geq \\ \geq \int\limits_{R_{0}}^{R} \frac{\frac{8}{9} \cdot \frac{9}{10}}{\frac{2}{3}r} = \frac{6}{5} \ln R + const.
+\end{gather*}
+
+Таким чином, якщо $\varphi \in [0;~\frac{\pi}{4}]$, то $2\operatorname{I}(p, \varphi, R) - \ln R = \frac{\ln R}{5} + const \rightarrow \infty$ при $R \rightarrow \infty$.
+
+Нехай тепер $\varphi \in [\frac{\pi}{4};~\frac{\pi}{2}]$. Розглянемо $\operatorname{I}(p, \varphi, R) - \ln R$:
+\begin{gather}
+\int\limits_{1}^{R} \frac{1- (1+p)e^{-r \cos \varphi} \cos \theta + p e^{-2r \cos \varphi} }{r(1 - 2p e^{-r\cos\varphi} \cos\theta + p^2 e^{-2r\cos\varphi})}\,dr - \int\limits_{1}^{R} \frac{1}{r} \, dr = \notag \\
+=\int\limits_{1}^{R} \frac{-(1-p)e^{-r \cos \varphi} \cos \theta + p(1-p) e^{-2r \cos \varphi} }{r(1 - 2p e^{-r\cos\varphi} \cos\theta + p^2 e^{-2r\cos\varphi})}\,dr = \langle \alpha = \ctg \varphi \rangle  =  \notag \\
+= (1 - p) \int\limits_{\frac{1}{\sin \varphi}}^{\frac{R}{\sin\varphi}} \frac{p e^{-2 \alpha \theta} - e^{-\alpha \theta} \cos \theta }{\theta (1 - 2p e^{-\alpha\theta} \cos\theta + p^2 e^{-2\alpha\theta})}\,d\theta \label{eq:kr_subexp_phi_pi4pi2}.
+\end{gather}
+
+Обмеженість інтегралу \eqref{eq:kr_subexp_phi_pi4pi2} знизу випливає з наслідку \eqref{lem:trig_exp_bound}. Таким чином, якщо $\varphi \in [\frac{\pi}{4};~\frac{\pi}{2}]$, то $2\operatorname{I}(p, \varphi, R) - 2 \ln R \leq const \Rightarrow 2\operatorname{I}(p, \varphi, R) - \ln R \rightarrow \infty$ при $R \rightarrow \infty$. \todo{Це достатньо суворе обмеження, для доведення властивості можна використати більш слабке, тоді, можливо, недоведена лема просто не буде використовуватися. Хоча перевірка чисельним наближенням каже, що факт має місце.}
 
 Отже, при $t>0$
 \begin{equation}
@@ -262,18 +314,77 @@ M_{p}(it) = -\frac{i t^{-2}}{e^{it}-p} \exp \left(2 \int\limits_{0}^{t} \frac{e^
 \cdot \int\limits_t^\infty \exp\left(-2 \int\limits_{0}^{u} \frac{e^{i\tau} -1}{\tau(e^{i\tau} - p)} d\tau\right) du.
 \end{split}
 \end{equation}
-Враховуючи, що інтеграл $\int\limits_{1}^{\infty} \frac{1-p}{u(e^{iu} - p)} du$ існує, з \eqref{eq:model_laplace_im_ax} негайно випливає
+
+З наслідку \eqref{lem:trig_bound} зрозуміло, що інтеграл $\int\limits_{1}^{\infty} \frac{1-p}{u(e^{iu} - p)} du$ існує, а тому з \eqref{eq:model_laplace_im_ax} негайно випливає
 \begin{equation}
 \label{eq:model_laplace_im_ax_asympt}
-M_{p}(it) = O\left(\frac{1}{|t|}\right)
+M_{p}(it) = \mathcal{O}\left(\frac{1}{|t|}\right)
 \end{equation}
 для $t > 0$. За властивістю перетворення Лапласа $M_{p}(-it) = \overline{M_{p}(it)}$, тому \eqref{eq:model_laplace_im_ax_asympt} виконується і для $t < 0$.
 \end{proof}
 \end{lem}
 
-\todo{Finish inference}
-Отримали, що
+Повернемося до вираження $m_{p}(x)$ через формулу Мелліна:
+
+\begin{gather*}
+m_{p}(x) = C_{p} x - \frac{1 - C_p}{1-p} + \frac{1}{2\pi} \int\limits_{-\infty}^{\infty} \psi_{p}(it) e^{itx} dt, \\
+m_{p}(x) - C_{p} x + \frac{1 - C_p}{1-p} = \frac{p}{2\pi} \int\limits_{-\infty}^{\infty} \psi_{p}(it) e^{it(x-1)} dt + \\
++ \frac{1}{2\pi} \int\limits_{-\infty}^{\infty} (e^{it} - p) \psi_{p}(it) e^{it(x-1)} dt.
+\end{gather*}
+
+Позначимо $\Psi_{p}(x) = \frac{1}{2\pi} \int\limits_{-\infty}^{\infty} \psi_{p}(it) e^{itx} dt$. Для $\Psi_{p}$ нескладно вивести початкові значення:
+\begin{equation}
+\label{eq:psi_x_initial_values}
+\begin{gathered}
+\Psi_{p}(x) = \frac{1 - C_p}{1-p} - C_{p} x, \quad 0 \leq x \leq 1, \\
+\Psi_{p}(x) = 1 + \frac{1 - C_p}{1-p} - C_{p} x, \quad 1 < x \leq 2.
+\end{gathered}
+\end{equation}
+
+За лемою \eqref{lem:psi_im_ax_asympt} можна застосувати інтегрування частинами до $\int\limits_{-\infty}^{\infty} (e^{it} - p) \psi_{p}(it) e^{it(x-1)} dt$.
+\begin{gather*}
+m_{p}(x) - C_{p} x + \frac{1 - C_p}{1-p} - p\Psi_{p}(x-1) = \\
+= -\frac{i}{2\pi (x-1)} \int\limits_{-\infty}^{\infty} \frac{\partial}{\partial t}((e^{it} - p) \psi_{p}(it)) e^{it(x-1)} dt.
+\end{gather*}
+
+Оскільки $\psi_{p}(it)=M_{p}(it) + C_{p} t^{-2} - i \frac{1-C_{p}}{1 - p} t^{-1}$, то
+\begin{equation*}
+\frac{\partial}{\partial t}((e^{it} - p) \psi_{p}(it)) = \frac{\partial}{\partial t}((e^{it} - p) M_{p}(it)) + \frac{1-C_{p}}{1 - p} e^{it} t^{-1} + \mathcal{O}(t^{-2}).
+\end{equation*}
+
+Використовуючи \eqref{eq:model_laplace_diff} нескладно переконатися, що $\frac{\partial}{\partial t}((e^{it} - p) M_{p}(it)) = \mathcal{O}(t^{-2})$:
+\begin{equation*}
+\frac{\partial}{\partial t}((e^{it} - p) M_{p}(it)) = -2(1-p) \frac{M_{p}(it)}{it} + \frac{1}{t^2} = \mathcal{O}(t^{-2}).
+\end{equation*}
+
+Тоді отримали, що
+\begin{gather*}
+\int\limits_{-\infty}^{\infty} \frac{\partial}{\partial t}((e^{it} - p) \psi_{p}(it)) e^{it(x-1)} dt = \int\limits_{-\infty}^{\infty} \left(\frac{1-C_{p}}{1 - p} e^{it} t^{-1} + \mathcal{O}(t^{-2}) \right) e^{it(x-1)} dt = \\
+= const + \frac{1-C_{p}}{1 - p} \int\limits_{-\infty}^{\infty} \frac{e^{itx}}{t} dt.
+\end{gather*}
+
+Тепер залишається спертися на відомий факт про збіжність та обмеженість інтегралу $\int\limits_{-\infty}^{\infty} \frac{e^{itx}}{t} dt$, і отримаємо, що 
+\begin{equation*}
+m_{p}(x) - C_{p} x + \frac{1 - C_p}{1-p} - p\Psi_{p}(x-1) = \mathcal{O}\left(\frac{1}{x-1}\right) = \mathcal{O}\left(\frac{1}{x}\right).
+\end{equation*}
+Це означає, що $\exists N \in \RR^{+}$ таке, що $|m_{p}(x) - C_{p} x + \frac{1 - C_p}{1-p} - p\Psi_{p}(x-1)| < N \left|\frac{1}{x}\right|$ при $x \geq 1$. Покажемо, що $\Psi_{p}(x) = \mathcal{O}(\frac{1}{x})$. Для $0<x<2$ це, очевидно, виконується -- наслідок \eqref{eq:psi_x_initial_values}. Нехай це виконується для усіх $1 \leq x \leq X$: $|\Psi_{p}(x)| < M\left|\frac{1}{x}\right|$. Будемо вважати, що $M \geq \frac{2N}{1 - p}$. Тоді
+\begin{gather*}
+|\Psi_{p}(X + 1)| = |m_{p}(X+1) - C_{p} (X+1) + \frac{1 - C_p}{1-p}| \leq p|\Psi_{p}(X)| + N \left|\frac{1}{X+1}\right| \leq \\
+\leq (p M \cdot \frac{X+1}{X} + N) \left|\frac{1}{X+1}\right|.
+\end{gather*}
+
+Якщо $M \leq p M \cdot \frac{X+1}{X} + N$, то покладемо $M \leftarrow p M \cdot \frac{X+1}{X} + N$. Така процедура обмежена, оскільки при фіксованному $p$ величина $X$ дійде до такої, що $\frac{X+1}{X} \leq \frac{1+p}{2p}$. Тоді
+\begin{equation*}
+p M \cdot \frac{X+1}{X} + N \leq \frac{1+p}{2} M + N \leq \frac{1+p}{2} M + \frac{1-p}{2} M = M.
+\end{equation*}
+
+Отримали, що $\Psi_{p}(x) = \mathcal{O}\left(\frac{1}{x}\right) ~ \forall x \geq 1$. За визначенням, 
+\begin{equation*}
+\Psi_{p}(x) = m_{p}(x) - C_{p} x + \frac{1 - C_p}{1-p},
+\end{equation*}
+
+тому, очевидно, 
 \begin{equation}
 \label{eq:uniform_right_as_enhanced}
-\lim\limits_{X \rightarrow \infty} \left( m(X) - C_{p} X - \frac{1 - C_{p}}{1 - p} \right) = O\left(\frac{1}{X^{n}}\right) \qquad \forall n \in \mathbb{N}
+\lim\limits_{x \rightarrow \infty} \left( m(x) - C_{p} x - \frac{1 - C_{p}}{1 - p} \right) = \mathcal{O}\left(\frac{1}{x}\right).
 \end{equation}

@@ -5,14 +5,14 @@
 Нехай $f$ та $g$ – дві функції, визначені в деякому проколотому околі $\dot U (x_0)$ точки $x_0$, причому в цьому околі $g$ не обертається в $0$.
 
 \begin{defin}
-	$f$ є "О" великим від $g$ \cite{spivak2006calculus} при $x \rightarrow x_0$, якщо
+	$f$ є  $\mathcal{O}$-великим від $g$ \cite{spivak2006calculus} при $x \rightarrow x_0$, якщо
 	\begin{equation}
 		\exists C > 0\forall x \in \dot U (x_0): |f(x)| < C|g(x)|
 	\end{equation}
 \end{defin}
 
 \begin{defin}
-	$f$ є "о" малим від $g$ \cite{spivak2006calculus} при $x \rightarrow x_0$, якщо
+	$f$ є $\mathcal{o}$-малим від $g$ \cite{spivak2006calculus} при $x \rightarrow x_0$, якщо
 	\begin{equation}
 		\forall \varepsilon > 0 \exists \dot U_{\varepsilon} (x_0) \forall x \in \dot U_{\varepsilon} (x_0): |f(x)| < \varepsilon |g(x)|
 	\end{equation}
@@ -40,7 +40,7 @@ $$\lim_{t \rightarrow \infty}\frac{L(tx)}{L(t)} =1$$
 
 Тоді має місце наступна теорема \cite[~ст. 445]{Feller}.
 
-\begin{thm}[Теорема Абеля-Таубера]
+\begin{thm}[Тауберівська теорема Феллера]
 	\label{eq:tauber_thm}
 	Нехай $L$ – слабко мінлива на нескінченності і $0 ≤ \rho < +\infty$. Тоді наступні два твердження тотожні:
 	\begin{align}
