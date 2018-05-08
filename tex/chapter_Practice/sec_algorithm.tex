@@ -18,28 +18,33 @@
 де $\gamma=0.5772156649$ – константа Ейлера-Маскероні, $\Gamma(0,s)$ – неповна гамма-функція.
 \end{lem}
 \begin{proof}
-\begin{align*}
-	\int\limits_0^s \frac{1 - e^{-\tau}}{\tau} d\tau &= \int\limits_0^1 \frac{1 - e^{-\tau}}{\tau} d\tau  + \int\limits_1^s \frac{1}{\tau} d\tau + \int\limits_s^\infty \frac{e^{-\tau}}{\tau} d\tau - \int\limits_1^\infty \frac{e^{-\tau}}{\tau} d\tau = \\
-	&= \int\limits_0^1 \frac{1 - e^{-\tau}}{\tau} d\tau  + \ln s + \Gamma(0,s) -\int\limits_1^\infty \frac{e^{-\tau}}{\tau} d\tau = \\
-	&= \ln s + \Gamma(0,s) + \lim\limits_{a \rightarrow 0} \left. (1-e^{-\tau}) \ln \tau \right|_0^1  - \int\limits_0^1 e^{-\tau} \ln \tau d\tau - \\
-	&- \underbrace{\left. e^{-\tau} \ln \tau \right|_1^\infty}_0 - \int\limits_1^\infty e^{-\tau} \ln \tau d\tau = \ln s + \Gamma(0,s) +  \\
-	&+ \lim\limits_{a \rightarrow 0} \left. (1-e^{-\tau}) \ln \tau \right|_0^1 - \int\limits_0^\infty e^{-\tau} \ln \tau d\tau = \lim\limits_{a \rightarrow 0} \left. (1-e^{-\tau}) \ln \tau \right|_0^1 + \\
-	&+ \ln s + \Gamma(0,s) + \gamma
-\end{align*}
+\begin{gather*}
+	\int\limits_0^s \frac{1 - e^{-\tau}}{\tau} d\tau = \int\limits_0^1 \frac{1 - e^{-\tau}}{\tau} d\tau  + \int\limits_1^s \frac{1}{\tau} d\tau + \int\limits_s^\infty \frac{e^{-\tau}}{\tau} d\tau - \int\limits_1^\infty \frac{e^{-\tau}}{\tau} d\tau = \\
+	= \int\limits_0^1 \frac{1 - e^{-\tau}}{\tau} d\tau  + \ln s + \Gamma(0,s) -\int\limits_1^\infty \frac{e^{-\tau}}{\tau} d\tau = \\
+	= \ln s + \Gamma(0,s) + \lim\limits_{a \rightarrow 0} \left. (1-e^{-\tau}) \ln \tau \right|_0^1  - \int\limits_0^1 e^{-\tau} \ln \tau d\tau - \\
+	- \underbrace{\left. e^{-\tau} \ln \tau \right|_1^\infty}_0 - \int\limits_1^\infty e^{-\tau} \ln \tau d\tau = \ln s + \Gamma(0,s) +  \\
+	+ \lim\limits_{a \rightarrow 0} \left. (1-e^{-\tau}) \ln \tau \right|_0^1 - \int\limits_0^\infty e^{-\tau} \ln \tau d\tau = \lim\limits_{a \rightarrow 0} \left. (1-e^{-\tau}) \ln \tau \right|_0^1 + \\
+	+ \ln s + \Gamma(0,s) + \gamma
+\end{gather*}
+
 Останній перехід випливає з тотожності
 $$
 \gamma = - \int\limits_0^\infty e^{-\tau} \ln \tau d\tau
 $$
+
 Якщо довести, що $\lim\limits_{a \rightarrow 0} \left. (1-e^{-\tau}) \ln \tau \right|_0^1 = 0$, то лему доведено.
 
 З озкладу у ряд Тейлора випливає, що
 $$
 	\lim\limits_{\tau \rightarrow 0}  \frac{1-e^{-\tau}}{ \tau} = 1.
 $$
+
 Тому 
-$$
-	\lim\limits_{\tau \rightarrow 0} (1-e^{-\tau}) \ln \tau = \lim\limits_{\tau \rightarrow 0} \frac{1-e^{-\tau}}{ \tau} \cdot \frac{\ln u}{u^{-1}} = \<\text{правило Лопіталя}\> = 1 \cdot \lim\limits_{\tau \rightarrow 0} \frac{u^{-1}}{-u^{-2}} = 0
-$$
+\begin{gather*}
+	\lim\limits_{\tau \rightarrow 0} (1-e^{-\tau}) \ln \tau = \lim\limits_{\tau \rightarrow 0} \frac{1-e^{-\tau}}{ \tau} \cdot \frac{\ln u}{u^{-1}} = \\
+	=\<\text{правило Лопіталя}\> = 1 \cdot \lim\limits_{\tau \rightarrow 0} \frac{u^{-1}}{-u^{-2}} = 0
+\end{gather*}
+
 Тому $\lim\limits_{a \rightarrow 0} \left. (1-e^{-\tau}) \ln \tau \right|_0^1 = 0$, а отже, лему доведено.
 \end{proof}
 
@@ -73,13 +78,15 @@ $$
 \subsection{Алгоритм моделювання на одновимірній парковці}
 
 Для моделювання одновимірної парковки виконується наступний алгоритм дій:
-\begin{enumerate}
+\begin{enumerate}[label={\arabic*.}]
 \item Створюється вектор довжин вільних проміжків, який ініціалізується однією довжиною – довжиною парковки. 
 \item Допоки вектор не пустий, виконується: 
-\subitem Вибирається поведінка водія використовуючи рандомізатор.
-\subitem Дістається остання довжина з вектору, і ділиться на частини відповідно до моделі поведінки водія.
-\subitem Кожна з частин додається до вектору, якщо її довжина не менша 1, тобто, довжини автомобіля.
-\subitem Інкрементується поточна кількість автомобілів.
+\begin{enumerate}[label={2.\arabic*.}]
+\item Вибирається поведінка водія використовуючи рандомізатор.
+\item Дістається остання довжина з вектору, і ділиться на частини відповідно до моделі поведінки водія.
+\item Кожна з частин додається до вектору, якщо її довжина не менша 1, тобто, довжини автомобіля.
+\item Інкрементується поточна кількість автомобілів.
+\end{enumerate}
 \end{enumerate}
 
 Цей процес повторюється задану кількість разів, і в кінці програма видає середнє значення автомобілів з усіх ітерацій, а також відношення до довжини парковки.

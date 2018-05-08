@@ -2,12 +2,12 @@
 \section{Покращення асимптотичної оцінки}
 
 Нескладно помітити, що $\mu_{p}(x) = C x - \frac{1-C}{1 - p}$ є розв'язком рівняння \eqref{eq:model_equation} $\forall C \in \RR$:
-\begin{align*}
-&1 + \frac{2 (1-p)}{x} \int_{0}^{x} \mu_{p}(t) dt + p\mu_{p}(x) = \\
-&=1 + \frac{2 (1-p)}{x} \int_{0}^{x} \left\{C t - \frac{1 - C}{1 - p} \right\} dt + p \left( C x - \frac{1 - C}{1 - p}\right) = \\
-&=1 + (1 - p) C x - 2(1 - C) + p C x - (\frac{1}{1 - p} - 1)(1 - C) = \\
-&= C(x + 1) - \frac{1 - C}{1 - p} = \mu_{p}(x+1).
-\end{align*}
+\begin{gather*}
+1 + \frac{2 (1-p)}{x} \int_{0}^{x} \mu_{p}(t) dt + p\mu_{p}(x) = \\
+=1 + \frac{2 (1-p)}{x} \int_{0}^{x} \left\{C t - \frac{1 - C}{1 - p} \right\} dt + p \left( C x - \frac{1 - C}{1 - p}\right) = \\
+=1 + (1 - p) C x - 2(1 - C) + p C x - (\frac{1}{1 - p} - 1)(1 - C) = \\
+= C(x + 1) - \frac{1 - C}{1 - p} = \mu_{p}(x+1).
+\end{gather*}
 
 Тому резонно апроксимувати досліджувану функцію $m_{p}(x)$ використовуючи функцію $\mu_{p}$. Далі буде доведено наступне твердження:
 \begin{equation}
@@ -21,10 +21,10 @@
 
 \begin{equation}
 \label{eq:q_p_transform}
-\begin{split}
-Q_{p}(s) = \int\limits_{1}^{s} \frac{1-p}{u(e^u - p)} du =& \int\limits_{1}^{s} \frac{1}{u} du - \int\limits_{1}^{s} \frac{e^u -1}{u(e^u - p)} du = \\
-=& \ln(s) - \int\limits_{1}^{s} \frac{e^u -1}{u(e^u - p)} du.
-\end{split}
+\begin{gathered}
+Q_{p}(s) = \int\limits_{1}^{s} \frac{1-p}{u(e^u - p)} du = \int\limits_{1}^{s} \frac{1}{u} du - \int\limits_{1}^{s} \frac{e^u -1}{u(e^u - p)} du = \\
+= \ln(s) - \int\limits_{1}^{s} \frac{e^u -1}{u(e^u - p)} du.
+\end{gathered}
 \end{equation}
 
 Тоді з \eqref{eq:q_p_transform} та \eqref{eq:model_laplace_sol} маємо
@@ -38,10 +38,8 @@ M_{p}(s) =\frac{e^{-2Q_p(s)}}{(e^s - p)} \int\limits_s^\infty \frac{e^{2Q_p(u)}}
 
 \begin{gather*}
 M_{p}(s) = \frac{s^{-2}}{e^s-p} \exp \left(2 \int\limits_{0}^{s} \frac{e^u -1}{u(e^u - p)} du\right) \int\limits_s^\infty \exp\left(-2 \int\limits_{0}^{u} \frac{e^\tau -1}{\tau(e^\tau - p)} d\tau\right) du = \\
-\begin{align*}
-=\frac{s^{-2}}{e^s-p} \exp \left(2 \int\limits_{0}^{s} \frac{e^u -1}{u(e^u - p)} du\right) & \left[\rule{0cm}{1.05cm} (1-p) C_{p} - \right. \\
-& \left.- \int\limits_0^s \exp\left(-2 \int\limits_{0}^{u} \frac{e^\tau -1}{\tau(e^\tau - p)} d\tau\right) du \right]
-\end{align*}
+=\frac{s^{-2}}{e^s-p} \exp \left(2 \int\limits_{0}^{s} \frac{e^u -1}{u(e^u - p)} du\right) \left[\rule{0cm}{1.05cm} (1-p) C_{p} - \right. \\
+\left.- \int\limits_0^s \exp\left(-2 \int\limits_{0}^{u} \frac{e^\tau -1}{\tau(e^\tau - p)} d\tau\right) du \right]
 \end{gather*}
 
 Оскільки $s^2 M_{p}(s)$ --- аналітична функція на $\operatorname{\mathfrak{Re}} s > \sigma$, де $\sigma < 0$ при $p < 1$, то з розкладу в ряд Тейлора випливає
@@ -309,10 +307,10 @@ R \int\limits_{0}^{\frac{\pi}{2}} e^{-2\operatorname{I}(p, \varphi, R) }\, d\var
 Отже, при $t>0$
 \begin{equation}
 \label{eq:model_laplace_im_ax}
-\begin{split}
+\begin{gathered}
 M_{p}(it) = -\frac{i t^{-2}}{e^{it}-p} \exp \left(2 \int\limits_{0}^{t} \frac{e^{iu} -1}{u(e^{iu} - p)} du\right) \cdot \\
 \cdot \int\limits_t^\infty \exp\left(-2 \int\limits_{0}^{u} \frac{e^{i\tau} -1}{\tau(e^{i\tau} - p)} d\tau\right) du.
-\end{split}
+\end{gathered}
 \end{equation}
 
 З наслідку \eqref{lem:trig_bound} зрозуміло, що інтеграл $\int\limits_{1}^{\infty} \frac{1-p}{u(e^{iu} - p)} du$ існує, а тому з \eqref{eq:model_laplace_im_ax} негайно випливає
