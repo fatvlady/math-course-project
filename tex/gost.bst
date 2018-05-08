@@ -289,10 +289,11 @@ FUNCTION {field.or.null}
   if$
 }
 
+%emphasize removed
 FUNCTION {emphasize}
 { duplicate$ empty$
     { pop$ "" }
-    { "\BibEmph{" swap$ * "}" * }
+    { "" swap$ * "" * }
   if$
 }
 
