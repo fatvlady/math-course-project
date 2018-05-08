@@ -28,7 +28,7 @@ $$\int\limits_0^{x-1} m_{p} (x − t − 1) dt = \< u=x - t - 1 \> = - \int\limi
 
 то
 \begin{equation}
-m_{p} (x) = 1 + p m_{p} (x - 1) + \frac{2q}{x - 1} \int\limits_0^{x - 1} m_{p} (t) d
+m_{p} (x) = 1 + p m_{p} (x - 1) + \frac{2q}{x - 1} \int\limits_0^{x - 1} m_{p} (t) dt.
 \end{equation}
 
 Для зручності зробимо заміну $x \rightarrow x + 1$. Отримаємо
@@ -41,19 +41,19 @@ m_{p} (x + 1) = 1 + p m_{p} (x) + \frac{2q}{x} \int\limits_0^{x} m_{p} (t) dt,\q
 Таким чином, отримали інтегральне рівняння. До того ж, відомо, що
 \begin{equation}
 \label{eq:zero_state}
-m_{p}(x) \equiv 0, \quad x \in [0; 1)
+m_{p}(x) \equiv 0, \quad x \in [0; 1).
 \end{equation}
 
 Спираючись на \eqref{eq:upperbound} та \eqref{eq:lowerbound}, маємо обмеження на $m(x)$:
 \begin{equation}
 \label{eq:bounds}
-\left[\frac{x+1}{2}\right] \leq m_{p}(x) \leq \left[x\right]
+\left[\frac{x+1}{2}\right] \leq m_{p}(x) \leq \left[x\right].
 \end{equation}
 
 З цієї нерівності випливає, що якщо є якась асимптотика у функції $m_{p}(x)$, то вона порядку $x$, тобто
 \begin{equation}
 \label{eq:bounds_inference}
-m_{p}(x) \sim C_{p}\cdot x \text{ при } x \rightarrow +\infty, \quad C_{p} \in [0.5; 1]
+m_{p}(x) \sim C_{p}\cdot x \text{ при } x \rightarrow +\infty, \quad C_{p} \in [0.5; 1].
 \end{equation}
 
 \subsection{Перехід до зображення Лапласа}
@@ -76,18 +76,18 @@ $$\Lapl{\frac{2}{x}\int\limits_0^x m_{p}(t) dt} = 2 \int\limits_s^\infty \frac{M
 Таким чином, отримали інтегральне рівняння в термінах зображення Лапласа, яке вже можна розв'язати, адже нема зсуву:
 \begin{equation}
 \label{eq:model_laplace_integral}
-e^s M_{p}(s) = p M_{p}(s) + 2q \int\limits_s^\infty \frac{M_{p}(u)}{u} du + \frac{1}{s}
+e^s M_{p}(s) = p M_{p}(s) + 2q \int\limits_s^\infty \frac{M_{p}(u)}{u} du + \frac{1}{s}.
 \end{equation}
 
 Продиференціюємо обидві частини рівняння відносно $s$:
 \begin{equation}
-e^s M_{p}(s) + e^s \dot M_{p}(s) =p \dot M_{p}(s) - 2 q \frac{M_{p}(s)}{s}  - \frac1{s^2}
+e^s M_{p}(s) + e^s \dot M_{p}(s) =p \dot M_{p}(s) - 2 q \frac{M_{p}(s)}{s}  - \frac1{s^2}.
 \end{equation}
 
 Виразимо $\dot M_{p}(s)$ з цього рівняння:
 \begin{equation}
 \label{eq:model_laplace_diff}
-\dot M_{p}(s) = - M_{p}(s)\left(\frac{e^s}{e^s - p} + \frac{2q}{s(e^s - p)}\right) - \frac{1}{s^2(e^s - p)}
+\dot M_{p}(s) = - M_{p}(s)\left(\frac{e^s}{e^s - p} + \frac{2q}{s(e^s - p)}\right) - \frac{1}{s^2(e^s - p)}.
 \end{equation}
 
 Розв'яжемо отримане диференційне рівняння. Спочатку розв'яжемо однорідну частину:
@@ -95,13 +95,13 @@ e^s M_{p}(s) + e^s \dot M_{p}(s) =p \dot M_{p}(s) - 2 q \frac{M_{p}(s)}{s}  - \f
 \dot M_{p}^{h} (s) = - M_{p}^{h} (s)\left(\frac{e^s}{e^s - p} + \frac{2q}{s(e^s - p)}\right) \\
 \frac{\dot M_{p}^{h} (s)}{M_{p}^{h} (s)} = -\left(\frac{e^s}{e^s - p} + \frac{2q}{s(e^s - p)}\right) \\
 \int\limits_1^s \frac{\dot M_{p}^{h} (u)}{M_{p}^{h} (u)} du = -\int\limits_1^s \left(\frac{e^u}{e^u - p} + \frac{2q}{u(e^u - p)}\right) du \\
-\left. \ln{M_{p}^{h} (u)}\right|_1^s = - \int\limits_1^s \frac{e^u}{e^u - p} du  - 2 \int\limits_1^s \frac{q}{u(e^u - p)} du
+\left. \ln{M_{p}^{h} (u)}\right|_1^s = - \int\limits_1^s \frac{e^u}{e^u - p} du  - 2 \int\limits_1^s \frac{q}{u(e^u - p)} du.
 \end{gather*}
 
 Позначимо
 \begin{equation}
 \label{eq:partial_li_p}
-Q_p(s) := \int\limits_1^s \frac{q}{u(e^u - p)} du
+Q_p(s) := \int\limits_1^s \frac{q}{u(e^u - p)} du.
 \end{equation}
 
 Оскільки
@@ -114,14 +114,14 @@ Q_p(s) := \int\limits_1^s \frac{q}{u(e^u - p)} du
 
 то
 \begin{gather*}
-\ln{M_{p}^{h} (s)} = \ln{M_{p}^{h} (1)} - \log \frac{e^s - p}{e - p} - 2Q_p(s) \\
-M_{p}^{h} (s) = M_{p}^{h} (1) \cdot \frac{e - p}{e^s - p} \cdot e^{- 2Q_p(s)} \cdot const
+\ln{M_{p}^{h} (s)} = \ln{M_{p}^{h} (1)} - \log \frac{e^s - p}{e - p} - 2Q_p(s), \\
+M_{p}^{h} (s) = M_{p}^{h} (1) \cdot \frac{e - p}{e^s - p} \cdot e^{- 2Q_p(s)} \cdot const.
 \end{gather*}
 
 Оскільки $M(1)$ та $(e-p)$ можна включити в константу, то маємо розв'язок
 \begin{equation}
 \label{eq:model_laplace_homogen_sol}
-M_{p}^{h} (s) = C \cdot \left((e^s - p)  e^{2Q_p(s)}\right)^{-1}, \quad \forall C \in \RR
+M_{p}^{h} (s) = C \cdot \left((e^s - p)  e^{2Q_p(s)}\right)^{-1}, \quad \forall C \in \RR.
 \end{equation}
 
 Дійсно, перевіримо цей розв'язок:
@@ -130,39 +130,40 @@ M_{p}^{h} (s) = C \cdot \left((e^s - p)  e^{2Q_p(s)}\right)^{-1}, \quad \forall 
 \dot M_{p}^{h} (s) = C \cdot \frac{\partial}{\partial s} \left(\frac{1}{(e^s - p)  e^{2Q_p(s)}}\right)=\\
 = - C \cdot \left(\frac{1}{(e^s - p)  e^{2Q_p(s)}}\right)^2 \cdot \left(e^s  + (e^s - p) \frac{2q}{s(e^s - p)}   \right) e^{2Q_p(s)} =\\
 = -C \left((e^s - p)  e^{2Q_p(s)}\right)^{-1} \cdot \left(\frac{e^s}{e^s - p}  + \frac{2q}{s(e^s - p)}   \right) =\\
-= - M_{p}^{h}(s) \cdot \left(\frac{e^s}{e^s - p}  + \frac{2q}{s(e^s - p)}   \right)
+= - M_{p}^{h}(s) \cdot \left(\frac{e^s}{e^s - p}  + \frac{2q}{s(e^s - p)}   \right).
 \end{gather*}
 
 Нескладно помітити, що отримали вихідне рівняння. Тепер застосуємо метод варіації довільних сталих:
 $$
-M_{p}(s) = C(s) \cdot \left((e^s - p)  e^{2Q_p(s)}\right)^{-1} 
+M_{p}(s) = C(s) \cdot \left((e^s - p)  e^{2Q_p(s)}\right)^{-1}. 
 $$
 
 Продиференціювавши відносно $s$, отримаємо:
 \begin{gather*}
-\dot M_{p}(s) = \dot C(s) \cdot \left((e^s - p)  e^{2Q_p(s)}\right)^{-1} -C(s) \left((e^s - p)  e^{2Q_p(s)}\right)^{-1} \cdot \\
-\cdot \left(\frac{e^s}{e^s - p}  + \frac{2q}{s(e^s - p)}   \right) 
+\dot M_{p}(s) = \dot C(s) \cdot \left((e^s - p)  e^{2Q_p(s)}\right)^{-1} - \\
+-C(s) \left((e^s - p)  e^{2Q_p(s)}\right)^{-1}  
+ \left(\frac{e^s}{e^s - p}  + \frac{2q}{s(e^s - p)}   \right).
 \end{gather*}
 
 З іншої сторони, з \eqref{eq:model_laplace_diff} маємо
 $$
-\dot M_{p}(s) = - C(s) \left((e^s - p)  e^{2Q_p(s)}\right)^{-1}  \left(\frac{e^s}{e^s - p} + \frac{2q}{s(e^s - p)}\right) - \frac{1}{s^2(e^s - p)} \quad	
+\dot M_{p}(s) = - C(s) \left((e^s - p)  e^{2Q_p(s)}\right)^{-1}  \left(\frac{e^s}{e^s - p} + \frac{2q}{s(e^s - p)}\right) - \frac{1}{s^2(e^s - p)}.
 $$
 
 Тому
 $$
-\dot C(s) = - \left((e^s - p)  e^{2Q_p(s)}\right) \cdot  \frac{1}{s^2(e^s - p)} =  - \frac{e^{2Q_p(s)}}{s^2}
+\dot C(s) = - \left((e^s - p)  e^{2Q_p(s)}\right) \cdot  \frac{1}{s^2(e^s - p)} =  - \frac{e^{2Q_p(s)}}{s^2}.
 $$
 
 Тоді простим інтегруванням в межах від 1 до $s$ отримуємо:
 \begin{equation}
-C(s) = -  \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + const
+C(s) = -  \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + const.
 \end{equation}
 
 І тоді отримуємо вираз для $M_{p}(s)$:
 \begin{gather*}
 M_{p}(s)=- \left( \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + const \right) \left((e^s - p)  e^{2Q_p(s)}\right)^{-1}  =\\
-= - \left( \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + K \right) \frac{1}{(e^s - p)  e^{2Q_p(s)}}, \quad K \in \RR
+= - \left( \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + K \right) \frac{1}{(e^s - p)  e^{2Q_p(s)}}, \quad K \in \RR.
 \end{gather*}
 
 Перевіримо отриманий результат:
@@ -171,13 +172,13 @@ M_{p}(s)=- \left( \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + const \right) \le
 -\left( \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + K \right) \left(\frac{1}{(e^s - p)  e^{2Q_p(s)}}\right)' = -\frac{e^{2Q_p(s)}}{s^2} \frac{1}{(e^s - p)  e^{2Q_p(s)}}  +\\
 - \left( \int\limits_1^s \frac{e^{2Q_p(u)}}{u^2} du + K \right) 
  \left((e^s - p)  e^{2Q_p(s)}\right)^{-1} \cdot \left(\frac{e^s}{e^s - p}  + \frac{2q}{s(e^s - p)}   \right)=\\
- = -\frac{1}{s^2(e^s - p)} - M_{p}(s)\left(\frac{e^s}{e^s - p}  + \frac{2q}{s(e^s - p)}   \right)
+ = -\frac{1}{s^2(e^s - p)} - M_{p}(s)\left(\frac{e^s}{e^s - p}  + \frac{2q}{s(e^s - p)}   \right).
 \end{gather*}
 
 Перевірено. Тоді остаточний результат без вирахування константи:
 \begin{equation}
 \label{eq:model_laplace_sol_initial}
-M_p(s)= \left( \int\limits_s^1 \frac{e^{2Q_p(u)}}{u^2} du + K \right) \frac{1}{(e^s - p)  e^{2Q_p(s)}}
+M_p(s)= \left( \int\limits_s^1 \frac{e^{2Q_p(u)}}{u^2} du + K \right) \frac{1}{(e^s - p)  e^{2Q_p(s)}}.
 \end{equation}
 
 Спираючись на \eqref{eq:model_shifted_laplace}, маємо
@@ -193,18 +194,18 @@ M_p(s)= \left( \int\limits_s^1 \frac{e^{2Q_p(u)}}{u^2} du + K \right) \frac{1}{(
 \label{eq:q_p_s_major}
 Q_p(s) = \int\limits_1^s \frac{1-p}{u(e^u - p)} du <  \int\limits_1^\infty \frac{1 - p}{u(e^u - p)} du < 
 \int\limits_1^\infty \frac{1- p}{e^u - p} du<\\
-< \int\limits_1^\infty \frac{1}{e^u} du = \exp(-1) - \exp(-\infty) = \exp(-1)
+< \int\limits_1^\infty \frac{1}{e^u} du = \exp(-1) - \exp(-\infty) = \exp(-1).
 \end{gathered}
 \end{equation}
 
 Останній перехід нерівності пояснюється досить просто:
 $$
-\frac{1-p}{u - p} < \frac{1}{p}, \; u > 1 \Leftrightarrow u - u p = u(1-p) < u - p, \; u > 1
+\frac{1-p}{u - p} < \frac{1}{p}, \; u > 1 \Leftrightarrow u - u p = u(1-p) < u - p, \; u > 1.
 $$
 
 Тобто $Q_p(s)$ - обмежена на $[1; \infty]$. Тому обмеженими на цій вісі будуть і $e^{\pm 2Q_p(s)}$. Також зрозуміло, що якщо інтегрувати по дійсній вісі, то $Q_p(s)$ – монотонно зростаюча за $s$. Тому
 \begin{equation}
-0 = \tilde M_p(\infty) = \lim_{s\rightarrow \infty} \tilde M_p(s) = \left( \int\limits_\infty^1 \frac{e^{2Q_p(u)}}{u^2} du + K \right) \lim_{s\rightarrow \infty} e^{- 2Q_p(s)}
+0 = \tilde M_p(\infty) = \lim_{s\rightarrow \infty} \tilde M_p(s) = \left( \int\limits_\infty^1 \frac{e^{2Q_p(u)}}{u^2} du + K \right) \lim_{s\rightarrow \infty} e^{- 2Q_p(s)}.
 \end{equation}
 
 Тут $\lim\limits_{s\rightarrow \infty} e^{- 2Q_p(s)} = const > 0$, тому маємо, що
@@ -218,7 +219,7 @@ K = -  \int\limits_\infty^1 \frac{e^{2Q_p(u)}}{u^2} du =  \int\limits_1^\infty \
 \label{eq:model_laplace_sol}
 M_p(s)= \left( \int\limits_s^1 \frac{e^{2Q_p(u)}}{u^2} du + K \right) \frac{1}{(e^s - p)  e^{2Q_p(s)}}
 = \\
-=\frac{1}{(e^s - p)  e^{2Q_p(s)}} \int\limits_s^\infty \frac{e^{2Q_p(u)}}{u^2} du
+=\frac{1}{(e^s - p)  e^{2Q_p(s)}} \int\limits_s^\infty \frac{e^{2Q_p(u)}}{u^2} du.
 \end{gathered}
 \end{equation}
 
@@ -241,19 +242,19 @@ M_p(s)=\frac{1}{(e^s - p)} \cdot \frac{1}{ e^{2Q_p(s)}} \cdot \int\limits_s^\inf
 	\label{eq:exp_q_p_s_asymptotics}
 	$e^{-2Q_{p}(s)}$ поводиться як $s^{-2}$ в 0, з точністю до константи, а саме:
 	\begin{equation}
-	\lim\limits_{s \rightarrow 0} \frac{e^{-2Q_{p}(s)}}{s^{-2}} = \exp\left(-2\int\limits_0^1 \frac{e^u  - 1}{u(e^u - p)} du\right)
+	\lim\limits_{s \rightarrow 0} \frac{e^{-2Q_{p}(s)}}{s^{-2}} = \exp\left(-2\int\limits_0^1 \frac{e^u  - 1}{u(e^u - p)} du\right).
 	\end{equation}
 \end{lem}
 \begin{proof}
 	Для знаходження границі прологарифмуємо вираз. Отримаємо:
 	\begin{gather*}
 	2 \ln s - 2 Q_p(s) = 2 \ln s - 2 \int\limits_1^s \frac{1 - p}{u(e^u - p)} du = 2 \int\limits_1^s \frac{1}{u} du - \\
-	- 2 \int\limits_1^s \frac{1 - p}{u(e^u - p)} du = 2  \int\limits_1^s \frac{e^u - 1}{u(e^u - p)} du = -2 \int\limits_s^1 \frac{e^u - 1}{u(e^u - p)} du
+	- 2 \int\limits_1^s \frac{1 - p}{u(e^u - p)} du = 2  \int\limits_1^s \frac{e^u - 1}{u(e^u - p)} du = -2 \int\limits_s^1 \frac{e^u - 1}{u(e^u - p)} du.
 	\end{gather*}
 	
 	Тепер, підвівши до експоненти обидві частини, отримаємо:
 	$$
-	\frac{e^{-2Q_p(s)}}{s^{-2}} = \exp\left(-2 \int\limits_s^1 \frac{e^u - 1}{u(e^u - p)} du\right)
+	\frac{e^{-2Q_p(s)}}{s^{-2}} = \exp\left(-2 \int\limits_s^1 \frac{e^u - 1}{u(e^u - p)} du\right).
 	$$
 	
 	Якщо довести, що інтеграл
@@ -269,13 +270,13 @@ M_p(s)=\frac{1}{(e^s - p)} \cdot \frac{1}{ e^{2Q_p(s)}} \cdot \int\limits_s^\inf
 	
 	збігається для $\forall s \in (0;~1]$. Дійсно, оскільки $e^u - 1 < e^u - p$, підінтегральна функція $ \frac{1 - e^{-u}}{u}$ мажорується $\frac{1}{u}$, яка, в свою чергу, має скінченне значення інтегралу:
 	$$
-	\int\limits_s^1 \frac{1}{u} du = \ln 1 - \ln s = -\ln s,\quad s > 0
+	\int\limits_s^1 \frac{1}{u} du = \ln 1 - \ln s = -\ln s,\quad s > 0.
 	$$
 	
 	Невизначеність виникає лише в точці 0. Знайдемо границю підінтегральної функції в точці 0:
 	\begin{gather*}
 	\lim\limits_{s\rightarrow 0} \frac{e^u - 1}{u(e^u - p)} = \<\text{правило Лопіталя для невизначенності 0/0}\> = \\
-	= \lim\limits_{s\rightarrow 0} \frac{e^u}{u e^u + (e^u-p)} = \frac{1}{1-p}
+	= \lim\limits_{s\rightarrow 0} \frac{e^u}{u e^u + (e^u-p)} = \frac{1}{1-p}.
 	\end{gather*}
 	
 	Таким чином, підінтегральна функція обмежена в деякому $\varepsilon$-околі 0, тому інтеграл також збіжний, і лему доведено.
@@ -293,8 +294,8 @@ M_p(s)=\frac{1}{(e^s - p)} \cdot \frac{1}{ e^{2Q_p(s)}} \cdot \int\limits_s^\inf
 \begin{proof}
 	На проміжку $[1; ~\infty]$ підінтегральна функція мажорується функцією $e^{-u}$ (див. \eqref{eq:q_p_s_major}), а на проміжку $[w; ~1]$ – функцією $\frac{1}{u}$, адже $1- p < e^u - p, ~ u > 0$. Тому, аналогічно доведенню попередньої леми, інтеграл буде збіжний, і:
 	\begin{align*}
-	Q_p(s) \leq \int\limits_1^\infty e^{-u} du = \exp(-1) &,\quad s \geq 1 \\
-	Q_p(s) \leq \int\limits_w^1 \frac{1}{u} du = - \ln w &, \quad s \in [w;~1]
+	Q_p(s) \leq \int\limits_1^\infty e^{-u} du = \exp(-1) &,\quad s \geq 1, \\
+	Q_p(s) \leq \int\limits_w^1 \frac{1}{u} du = - \ln w &, \quad s \in [w;~1].
 	\end{align*}
 	
 	Таким чином, $Q_p(s) \leq \max\{-\ln w, \exp(-1)\}$.
@@ -326,7 +327,7 @@ M_p(s) \sim \frac{s^{-2}}{1-p} \cdot \exp\left(-2\int\limits_0^1 \frac{e^u  - 1}
  \times \int\limits_0^\infty \exp\left(2\int\limits_1^u \frac{1- p}{\tau(e^\tau - p)} d\tau - 2  \int\limits_1^u  \frac{1}{\tau} d\tau \right) du = \\
  = \frac{s^{-2}}{1-p} \cdot \exp\left(-2\int\limits_0^1 \frac{e^u  - 1}{u(e^u - p)} du\right)\times \\
  \times \int\limits_0^\infty \exp\left(-2\int\limits_1^u \frac{e^{\tau} - 1}{\tau(e^\tau - p)} d\tau  \right) du = \\
- = \frac{s^{-2}}{1-p} \cdot \int\limits_0^\infty \exp\left( -2\int\limits_0^1 \frac{e^{\tau} - 1}{\tau(e^\tau - p)} d\tau -2\int\limits_1^u \frac{e^{\tau} - 1}{\tau(e^\tau - p)} d\tau  \right) du 
+ = \frac{s^{-2}}{1-p} \cdot \int\limits_0^\infty \exp\left( -2\int\limits_0^1 \frac{e^{\tau} - 1}{\tau(e^\tau - p)} d\tau -2\int\limits_1^u \frac{e^{\tau} - 1}{\tau(e^\tau - p)} d\tau  \right) du.
 \end{gather*}
 
 Склавши інтеграли під експонентою, отримаємо:
@@ -352,5 +353,5 @@ m_p(x) \sim \frac{1}{1-p} \int\limits_0^\infty \exp\left( -2\int\limits_0^u \fra
 
 Таким чином було доведено, що $m_{p}(x) \sim C_{p} \cdot x$ при $x \rightarrow \infty$, де
 \begin{equation}
-C_{p} = \frac{1}{1-p} \int\limits_0^\infty \exp\left( -2\int\limits_0^u \frac{e^{\tau} - 1}{\tau(e^\tau - p)} d\tau  \right) du
+C_{p} = \frac{1}{1-p} \int\limits_0^\infty \exp\left( -2\int\limits_0^u \frac{e^{\tau} - 1}{\tau(e^\tau - p)} d\tau  \right) du.
 \end{equation}

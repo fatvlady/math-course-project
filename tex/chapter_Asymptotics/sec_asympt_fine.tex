@@ -39,7 +39,7 @@ M_{p}(s) =\frac{e^{-2Q_p(s)}}{(e^s - p)} \int\limits_s^\infty \frac{e^{2Q_p(u)}}
 \begin{gather*}
 M_{p}(s) = \frac{s^{-2}}{e^s-p} \exp \left(2 \int\limits_{0}^{s} \frac{e^u -1}{u(e^u - p)} du\right) \int\limits_s^\infty \exp\left(-2 \int\limits_{0}^{u} \frac{e^\tau -1}{\tau(e^\tau - p)} d\tau\right) du = \\
 =\frac{s^{-2}}{e^s-p} \exp \left(2 \int\limits_{0}^{s} \frac{e^u -1}{u(e^u - p)} du\right) \left[\rule{0cm}{1.05cm} (1-p) C_{p} - \right. \\
-\left.- \int\limits_0^s \exp\left(-2 \int\limits_{0}^{u} \frac{e^\tau -1}{\tau(e^\tau - p)} d\tau\right) du \right]
+\left.- \int\limits_0^s \exp\left(-2 \int\limits_{0}^{u} \frac{e^\tau -1}{\tau(e^\tau - p)} d\tau\right) du \right].
 \end{gather*}
 
 Оскільки $s^2 M_{p}(s)$ --- аналітична функція на $\operatorname{\mathfrak{Re}} s > \sigma$, де $\sigma < 0$ при $p < 1$, то з розкладу в ряд Тейлора випливає
@@ -50,7 +50,7 @@ M_{p}(s) = \frac{C_{p}}{s^2} + \frac{\frac{\partial}{\partial s}(s^2 M_{p}(s))}{
 де $\psi_{p}(s)$ --- аналітична на $\operatorname{\mathfrak{Re}} s > \sigma$. Позначимо через $R_{p}(s)=\int\limits_{0}^{s} \frac{e^u -1}{u(e^u - p)} du$, тоді
 \begin{gather*}
 \frac{\partial}{\partial s}(s^2 M_{p}(s)) = -\frac{e^s}{(e^s - p)^2} \left[(1-p) C_{p} e^{2 R_{p}(s)} - \int\limits_{0}^{s} e^{2(R_{p}(s) - R_{p}(u))} du\right] + \\
-+ \frac{1}{e^s - p} \left[ \left((1 - p) C_{p} - \int\limits_{0}^{s} e^{- R_{p}(u))} du\right) e^{2R_{p}(s)} \frac{2(e^s - 1)}{s(e^s - p)} - e^{2(R_{p}(s) - R_{p}(s))} \right] 
++ \frac{1}{e^s - p} \left[ \left((1 - p) C_{p} - \int\limits_{0}^{s} e^{- R_{p}(u))} du\right) e^{2R_{p}(s)} \frac{2(e^s - 1)}{s(e^s - p)} - e^{2(R_{p}(s) - R_{p}(s))} \right].
 \end{gather*}
 Підставивши $s = 0$, отримаємо
 \begin{equation*}
@@ -194,7 +194,7 @@ m_{p}(x) = \frac{1}{2\pi i} \int\limits_{\delta - i\infty}^{\delta + i\infty} M_
 \begin{defin}
 Нехай $S$ -- деяка множина. $f$ та $\varphi$ -- деякі дійснозначні або комплекснозначні функції, визначені на множині $S$. Тоді формула
 \begin{equation*}
-f(s) = \mathcal{O}(\varphi(s)), \quad s \in S
+f(s) = \mathcal{O}(\varphi(s)), \quad s \in S,
 \end{equation*}
 
 означає, що існує таке дотатнє число $A$, що не залижить від $s$, і
@@ -207,12 +207,12 @@ f(s) = \mathcal{O}(\varphi(s)), \quad s \in S
 \label{lem:psi_im_ax_asympt}
 Для $\forall p \in [0; 1)$
 \begin{equation}
-\psi_{p}(it) = \mathcal{O}\left(\frac{1}{|t|}\right)
+\psi_{p}(it) = \mathcal{O}\left(\frac{1}{|t|}\right).
 \end{equation}
 \begin{proof}
 Якщо показати, що $M_{p}(it) = \mathcal{O}\left(\frac{1}{|t|}\right)$, то твердження леми випливає автоматично:
 \begin{equation*}
-\psi_{p}(it)=M_{p}(it) + C_{p} t^{-2} - i \frac{1-C_{p}}{1 - p} t^{-1} = \mathcal{O}\left(\frac{1}{|t|}\right)
+\psi_{p}(it)=M_{p}(it) + C_{p} t^{-2} - i \frac{1-C_{p}}{1 - p} t^{-1} = \mathcal{O}\left(\frac{1}{|t|}\right).
 \end{equation*}
 
 Залишається показати, що для

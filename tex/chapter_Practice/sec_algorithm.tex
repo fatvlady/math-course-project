@@ -25,12 +25,12 @@
 	= \ln s + \Gamma(0,s) + \lim\limits_{a \rightarrow 0} \left. (1-e^{-\tau}) \ln \tau \right|_0^1  - \int\limits_0^1 e^{-\tau} \ln \tau d\tau - \\
 	- \underbrace{\left. e^{-\tau} \ln \tau \right|_1^\infty}_0 - \int\limits_1^\infty e^{-\tau} \ln \tau d\tau = \ln s + \Gamma(0,s) +  \\
 	+ \lim\limits_{a \rightarrow 0} \left. (1-e^{-\tau}) \ln \tau \right|_0^1 - \int\limits_0^\infty e^{-\tau} \ln \tau d\tau = \lim\limits_{a \rightarrow 0} \left. (1-e^{-\tau}) \ln \tau \right|_0^1 + \\
-	+ \ln s + \Gamma(0,s) + \gamma
+	+ \ln s + \Gamma(0,s) + \gamma.
 \end{gather*}
 
 Останній перехід випливає з тотожності
 $$
-\gamma = - \int\limits_0^\infty e^{-\tau} \ln \tau d\tau
+\gamma = - \int\limits_0^\infty e^{-\tau} \ln \tau d\tau.
 $$
 
 Якщо довести, що $\lim\limits_{a \rightarrow 0} \left. (1-e^{-\tau}) \ln \tau \right|_0^1 = 0$, то лему доведено.
@@ -43,7 +43,7 @@ $$
 Тому 
 \begin{gather*}
 	\lim\limits_{\tau \rightarrow 0} (1-e^{-\tau}) \ln \tau = \lim\limits_{\tau \rightarrow 0} \frac{1-e^{-\tau}}{ \tau} \cdot \frac{\ln u}{u^{-1}} = \\
-	=\<\text{правило Лопіталя}\> = 1 \cdot \lim\limits_{\tau \rightarrow 0} \frac{u^{-1}}{-u^{-2}} = 0
+	=\<\text{правило Лопіталя}\> = 1 \cdot \lim\limits_{\tau \rightarrow 0} \frac{u^{-1}}{-u^{-2}} = 0.
 \end{gather*}
 
 Тому $\lim\limits_{a \rightarrow 0} \left. (1-e^{-\tau}) \ln \tau \right|_0^1 = 0$, а отже, лему доведено.
@@ -51,7 +51,7 @@ $$
 
 Таким чином отримали, що
 \begin{equation}
-\kappa = e^{-2\gamma} \int\limits_0^\infty \frac{\exp(-2\Gamma(0,s))}{s^2} ds
+\kappa = e^{-2\gamma} \int\limits_0^\infty \frac{\exp(-2\Gamma(0,s))}{s^2} ds.
 \end{equation}
 
 Для підрахунку невласного інтегралу можна оцінити його залишок, і знайти такі межі інтегрування, щоб залишок не перевищував деякого $\varepsilon$.
@@ -68,9 +68,9 @@ $$
 
 Оскілки беремо $\delta \geq 0$, то
 \begin{align*}
-	\int\limits_\delta^\infty \frac{1}{s^2} &< \varepsilon e^{2\gamma}\\
-	-\left. \frac{1}{s} \right|_\delta^\infty &< \varepsilon e^{2\gamma} \\
-	\delta^{-1} &< \varepsilon e^{2\gamma}  \\
+	\int\limits_\delta^\infty \frac{1}{s^2} &< \varepsilon e^{2\gamma},\\
+	-\left. \frac{1}{s} \right|_\delta^\infty &< \varepsilon e^{2\gamma}, \\
+	\delta^{-1} &< \varepsilon e^{2\gamma},  \\
 	\varepsilon^{-1} e^{-2\gamma} &< \delta.
 \end{align*}
 
