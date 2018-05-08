@@ -229,11 +229,9 @@ M_p(s)= \left( \int\limits_s^1 \frac{e^{2Q_p(u)}}{u^2} du + K \right) \frac{1}{(
 Якщо знайти такі $C \in \RR$ та $\delta \in \RR^+$, що $M_p(s) \sim C \cdot s^{-\delta}, \; s \rightarrow 0$, то можна стверджувати, що $\int\limits_0^x m_p(x) dx \sim \frac{1}{\Gamma(\delta + 1)} C x^\delta, \; x \rightarrow \infty$. Вже зараз зрозуміло, що $\delta = 2$, адже теорема справедлива в обидва боки і виконується \eqref{eq:bounds_inference}.
 
 Для цього розглянему поведінку в нулі трьох множників, з яких складається $M_p(s)$, а саме:
-\begin{enumerate}
-	\item $\displaystyle\frac{1}{e^s - p}$;
-	\item $e^{-2Q_p(s)}$;
-	\item $\displaystyle\int\limits_s^\infty \frac{e^{2Q_p(u)}}{u^2} du$.
-\end{enumerate}
+\begin{equation*}
+M_p(s)=\frac{1}{(e^s - p)} \cdot \frac{1}{ e^{2Q_p(s)}} \cdot \int\limits_s^\infty \frac{e^{2Q_p(u)}}{u^2} du.
+\end{equation*}
 
 Щодо першого множнику, то в 0 він, очевидно, прямує до $\frac{1}{1-p}$.
 
