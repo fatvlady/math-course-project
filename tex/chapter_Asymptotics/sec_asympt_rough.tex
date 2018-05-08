@@ -3,7 +3,7 @@
 \label{sec:model}
 %TODO:
 
-В цій моделі водії вибирають місце для автомобіля, керуючись наступним правилом
+В цій моделі водії вибирають місце для автомобіля, керуючись наступним правилом:
 \begin{itemize}
 	\item з ймовірністю $p$ водій ставить автомобіль в правому кінці вільного проміжку, 
 	\item з ймовірністю $q = 1 - p$ водій вибирає місце керуючись рівномірним розподілом.
@@ -148,6 +148,7 @@ $$
 $$
 \dot M_{p}(s) = - C(s) \left((e^s - p)  e^{2Q_p(s)}\right)^{-1}  \left(\frac{e^s}{e^s - p} + \frac{2q}{s(e^s - p)}\right) - \frac{1}{s^2(e^s - p)} \quad	
 $$
+
 Тому
 $$
 \dot C(s) = - \left((e^s - p)  e^{2Q_p(s)}\right) \cdot  \frac{1}{s^2(e^s - p)} =  - \frac{e^{2Q_p(s)}}{s^2}
@@ -251,28 +252,34 @@ M_p(s)= \left( \int\limits_s^1 \frac{e^{2Q_p(u)}}{u^2} du + K \right) \frac{1}{(
 	2 \ln s - 2 Q_p(s) = 2 \ln s - 2 \int\limits_1^s \frac{1 - p}{u(e^u - p)} du = 2 \int\limits_1^s \frac{1}{u} du - \\
 	- 2 \int\limits_1^s \frac{1 - p}{u(e^u - p)} du = 2  \int\limits_1^s \frac{e^u - 1}{u(e^u - p)} du = -2 \int\limits_s^1 \frac{e^u - 1}{u(e^u - p)} du
 	\end{gather*}
+	
 	Тепер, підвівши до експоненти обидві частини, отримаємо:
 	$$
 	\frac{e^{-2Q_p(s)}}{s^{-2}} = \exp\left(-2 \int\limits_s^1 \frac{e^u - 1}{u(e^u - p)} du\right)
 	$$
+	
 	Якщо довести, що інтеграл
 	$$
 	-2 \int\limits_0^1 \frac{e^u - 1}{u(e^u - p)} du
 	$$
+	
 	збігається, то лему буде доведено, адже експонента – неперервна функція, і можна переходити до границі під експонентою.
 	Зрозуміло, що
 	$$
 	-2 \int\limits_s^1 \frac{e^u - 1}{u(e^u - p)} du
 	$$
+	
 	збігається для $\forall s \in (0;~1]$. Дійсно, оскільки $e^u - 1 < e^u - p$, підінтегральна функція $ \frac{1 - e^{-u}}{u}$ мажорується $\frac{1}{u}$, яка, в свою чергу, має скінченне значення інтегралу:
 	$$
 	\int\limits_s^1 \frac{1}{u} du = \ln 1 - \ln s = -\ln s,\quad s > 0
 	$$
+	
 	Невизначеність виникає лише в точці 0. Знайдемо границю підінтегральної функції в точці 0:
 	\begin{gather*}
 	\lim\limits_{s\rightarrow 0} \frac{e^u - 1}{u(e^u - p)} = \<\text{правило Лопіталя для невизначенності 0/0}\> = \\
 	= \lim\limits_{s\rightarrow 0} \frac{e^u}{u e^u + (e^u-p)} = \frac{1}{1-p}
 	\end{gather*}
+	
 	Таким чином, підінтегральна функція обмежена в деякому $\varepsilon$-околі 0, тому інтеграл також збіжний, і лему доведено.
 \end{proof}
 
@@ -282,6 +289,7 @@ M_p(s)= \left( \int\limits_s^1 \frac{e^{2Q_p(u)}}{u^2} du + K \right) \frac{1}{(
 	$$
 	Q_p(s) = \int\limits_1^s \frac{1- p}{u(e^u - p)} du
 	$$
+	
 	– обмежена на $[w; ~\infty], \; w>0$.
 \end{lem}
 \begin{proof}
@@ -290,6 +298,7 @@ M_p(s)= \left( \int\limits_s^1 \frac{e^{2Q_p(u)}}{u^2} du + K \right) \frac{1}{(
 	Q_p(s) \leq \int\limits_1^\infty e^{-u} du = \exp(-1) &,\quad s \geq 1 \\
 	Q_p(s) \leq \int\limits_w^1 \frac{1}{u} du = - \ln w &, \quad s \in [w;~1]
 	\end{align*}
+	
 	Таким чином, $Q_p(s) \leq \max\{-\ln w, \exp(-1)\}$.
 \end{proof}
 
@@ -298,6 +307,7 @@ M_p(s)= \left( \int\limits_s^1 \frac{e^{2Q_p(u)}}{u^2} du + K \right) \frac{1}{(
 	$$
 	\int\limits_0^\infty \frac{e^{2Q_p(u)}}{u^2} du
 	$$
+	
 	– збіжний.
 \end{lem}
 \begin{proof}
@@ -305,6 +315,7 @@ M_p(s)= \left( \int\limits_s^1 \frac{e^{2Q_p(u)}}{u^2} du + K \right) \frac{1}{(
 	\[
 	\int\limits_\varepsilon^\infty \frac{1}{u^2} du.
 	\]
+	
 	А його збіжність – відомий факт.
 \end{proof}
 

@@ -46,6 +46,7 @@ M_{p}(s) = \frac{s^{-2}}{e^s-p} \exp \left(2 \int\limits_{0}^{s} \frac{e^u -1}{u
 \begin{equation}
 M_{p}(s) = \frac{C_{p}}{s^2} + \frac{\frac{\partial}{\partial s}(s^2 M_{p}(s))}{s} + \psi_{p}(s),
 \end{equation}
+
 де $\psi_{p}(s)$ --- аналітична на $\operatorname{\mathfrak{Re}} s > \sigma$. Позначимо через $R_{p}(s)=\int\limits_{0}^{s} \frac{e^u -1}{u(e^u - p)} du$, тоді
 \begin{gather*}
 \frac{\partial}{\partial s}(s^2 M_{p}(s)) = -\frac{e^s}{(e^s - p)^2} \left[(1-p) C_{p} e^{2 R_{p}(s)} - \int\limits_{0}^{s} e^{2(R_{p}(s) - R_{p}(u))} du\right] + \\
@@ -82,6 +83,7 @@ f(t) = \frac{1}{2\pi i}\int\limits_{- i\infty}^{+ i\infty} e^{st} F(s) ds.
 \begin{equation*}
 |F(s)| = \left| \int\limits_{0}^{\infty}  f(t) e^{-st} dt \right| \leq \int\limits_{0}^{\infty} \left|f(t) e^{-st} \right| dt = \int\limits_{0}^{\infty} f(t)  e^{-t\operatorname{\mathfrak{Re}} s}  dt = F(\operatorname{\mathfrak{Re}} s).
 \end{equation*}
+
 Тепер, оскільки $F$ --- аналітична в правій півплощині відносно $\sigma$, то за теоремою Коші \cite{lavrentiev1965} інтеграл по контуру, зображеному на \imref{fig:contour_mellin} дорівнює нулю:
 
 
@@ -101,10 +103,12 @@ $|\int\limits_{iR}^{iR + \delta} F(s) e^{st} ds| \leq \delta e^{\delta t} \max\l
 \begin{equation*}
 \left|~\int\limits_{-iR}^{iR} F(s) e^{st} ds - V(R)\right| \leq \delta \cdot const.
 \end{equation*}
+
 Зробимо граничний перехід $\delta \rightarrow 0$: оскільки через аналітичність $F(s)$ інтеграл $\int\limits_{-iR}^{iR} F(s) e^{st} ds$ існує, то
 \begin{equation*}
 \int\limits_{-iR}^{iR} F(s) e^{st} ds = V(R).
 \end{equation*}
+
 Завершується доведення граничним переходом $R \rightarrow \infty$:
 \begin{equation*}
 \lim\limits_{R \rightarrow \infty} \frac{1}{2\pi i} \int\limits_{-iR}^{iR} F(s) e^{st} ds =\lim\limits_{R \rightarrow \infty}\frac{1}{2\pi i} V(R) = f(t).
@@ -255,6 +259,7 @@ R \int\limits_{0}^{\frac{\pi}{2}} \left| e^{-2 \int\limits_{0}^{R} \frac{e^{re^{
 \begin{equation*}
 i \int\limits_{0}^{R} \frac{(1-p)e^{-r \cos \varphi} \sin \theta}{r((\cos \theta - pe^{-r\cos \varphi})^{2} + \sin^2 \theta)} dr
 \end{equation*}
+
 існує, і уявною частиною чисельника інтеграла під експонентою можна знехтувати через модуль.
 
 Розглянемо інтеграл
@@ -365,6 +370,7 @@ m_{p}(x) - C_{p} x + \frac{1 - C_p}{1-p} - p\Psi_{p}(x-1) = \\
 \begin{equation*}
 m_{p}(x) - C_{p} x + \frac{1 - C_p}{1-p} - p\Psi_{p}(x-1) = \mathcal{O}\left(\frac{1}{x-1}\right) = \mathcal{O}\left(\frac{1}{x}\right).
 \end{equation*}
+
 Це означає, що $\exists N \in \RR^{+}$ таке, що $|m_{p}(x) - C_{p} x + \frac{1 - C_p}{1-p} - p\Psi_{p}(x-1)| < N \left|\frac{1}{x}\right|$ при $x \geq 1$. Покажемо, що $\Psi_{p}(x) = \mathcal{O}(\frac{1}{x})$. Для $0<x<2$ це, очевидно, виконується -- наслідок \eqref{eq:psi_x_initial_values}. Нехай це виконується для усіх $1 \leq x \leq X$: $|\Psi_{p}(x)| < M\left|\frac{1}{x}\right|$. Будемо вважати, що $M \geq \frac{2N}{1 - p}$. Тоді
 \begin{gather*}
 |\Psi_{p}(X + 1)| = |m_{p}(X+1) - C_{p} (X+1) + \frac{1 - C_p}{1-p}| \leq \\
