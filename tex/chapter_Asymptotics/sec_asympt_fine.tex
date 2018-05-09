@@ -362,7 +362,8 @@ m_{p}(x) - C_{p} x + \frac{1 - C_p}{1-p} - p\Psi_{p}(x-1) = \\
 
 Тоді отримали, що
 \begin{gather*}
-\int\limits_{-\infty}^{\infty} \frac{\partial}{\partial t}((e^{it} - p) \psi_{p}(it)) e^{it(x-1)} dt = \int\limits_{-\infty}^{\infty} \left(\frac{1-C_{p}}{1 - p} e^{it} t^{-1} + \mathcal{O}(t^{-2}) \right) e^{it(x-1)} dt = \\
+\int\limits_{-\infty}^{\infty} \frac{\partial}{\partial t}((e^{it} - p) \psi_{p}(it)) e^{it(x-1)} dt =\\
+= \int\limits_{-\infty}^{\infty} \left(\frac{1-C_{p}}{1 - p} e^{it} t^{-1} + \mathcal{O}(t^{-2}) \right) e^{it(x-1)} dt = \\
 = const + \frac{1-C_{p}}{1 - p} \int\limits_{-\infty}^{\infty} \frac{e^{itx}}{t} dt.
 \end{gather*}
 
@@ -388,7 +389,38 @@ p M \cdot \frac{X+1}{X} + N \leq \frac{1+p}{2} M + N \leq \frac{1+p}{2} M + \fra
 \end{equation*}
 
 тому, очевидно, 
+\begin{equation*}
+\lim\limits_{x \rightarrow \infty} \left( m(x) - C_{p} x - \frac{1 - C_{p}}{1 - p} \right) = \mathcal{O}\left(\frac{1}{x}\right).
+\end{equation*}
+
+Нескладно переконатися з \eqref{eq:model_laplace_diff}, що
+\begin{equation*}
+\frac{\partial^2}{\partial t^2}((e^{it} - p) m_{p}(it))= \mathcal{O}\left(\frac{1}{t^2}\right).
+\end{equation*}
+
+Тоді, очевидно,
+\begin{gather*}
+\int\limits_{-\infty}^{\infty}  \frac{\partial^2}{\partial t^2}((e^{it} - p) \psi_{p}(it)) e^{it(x-1)} dt = \\
+= \int\limits_{-\infty}^{\infty} \left(i \frac{1-C_{p}}{1 - p} e^{it} t^{-1} + \mathcal{O}(t^{-2}) \right) e^{it(x-1)} dt = \\
+= const + i\frac{1-C_{p}}{1 - p} \int\limits_{-\infty}^{\infty} \frac{e^{itx}}{t} dt.
+\end{gather*}
+
+Тому, інтегруючи частинами ще раз і повторюючи прийом вище, але з більш жосткою оцінкою асимптотики справа, можна показати, що
+\begin{equation*}
+\lim\limits_{x \rightarrow \infty} \left( m(x) - C_{p} x - \frac{1 - C_{p}}{1 - p} \right) = \mathcal{O}\left(\frac{1}{x^2}\right).
+\end{equation*}
+
+За допомогою ММІ можна показати, що
+\begin{equation*}
+\frac{\partial^n}{\partial t^n}((e^{it} - p) m_{p}(it))= \mathcal{O}\left(\frac{1}{t^2}\right),  \quad \forall n \in \NN.
+\end{equation*}
+
+Тоді для $\forall n \in \NN$ можна показати, що
 \begin{equation}
 \label{eq:uniform_right_as_enhanced}
-\lim\limits_{x \rightarrow \infty} \left( m(x) - C_{p} x - \frac{1 - C_{p}}{1 - p} \right) = \mathcal{O}\left(\frac{1}{x}\right).
+\lim\limits_{x \rightarrow \infty} \left( m(x) - C_{p} x - \frac{1 - C_{p}}{1 - p} \right) = \mathcal{O}\left(\frac{1}{x^n}\right), \quad n \in \NN.
 \end{equation}
+
+\subsection{Застосування асимптотики для виведення закону великих чисел}
+
+
