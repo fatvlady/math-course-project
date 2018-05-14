@@ -1,0 +1,39 @@
+\begin{tikzpicture}
+\begin{axis}[
+height=9cm,
+width=9cm,
+grid=major,
+xlabel=$p$,
+ylabel=$C_{p}$,
+legend pos=north west
+]
+
+%\addplot[blue,mark=diamond*] coordinates {
+%    (0,  0.747598)
+%    (0.1,0.76351)
+%    (0.2,0.780574)
+%    (0.3,0.798962)
+%    (0.4,0.818896)
+%    (0.5,0.84066)
+%    (0.6,0.864638)
+%    (0.7,0.891365)
+%    (0.8,0.92165)
+%    (0.9,0.956849)
+%};
+%\addlegendentry{Integration}
+
+\addplot[red,mark=diamond*]  coordinates {
+    (0,  0.747588)
+    (0.1,0.76352)
+    (0.2,0.780569)
+    (0.3,0.798959)
+    (0.4,0.818891)
+    (0.5,0.84055)
+    (0.6,0.863658)
+    (0.7,0.891214)
+    (0.8,0.92158)
+    (0.9,0.95693)
+};
+\addlegendentry{Simulation}
+\end{axis}
+\end{tikzpicture}

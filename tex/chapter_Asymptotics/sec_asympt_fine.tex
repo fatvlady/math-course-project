@@ -181,7 +181,8 @@ m_{p}(x) = \frac{1}{2\pi i} \int\limits_{\delta - i\infty}^{\delta + i\infty} M_
 \end{proof}
 \end{corollary}
 
-Існує ще один наслідок, що доводиться аналогічно попередньому. \todo{Насправді аналогічно доводиться лише поточкова обмеженість. Хоча наступне твердження майже напевне справедливе, але я не знаю, як довести рівномірну обмеженість.}
+Справедливим є ще один наслідок, що доводиться аналогічно попередньому.
+
 \begin{corollary}
 	\label{lem:trig_exp_bound}
 	Нехай $p \in (0,~1)$, $\alpha \geq 0$, тоді наступний інтеграл обмежений зверху не залежно від $\alpha$:
@@ -190,14 +191,14 @@ m_{p}(x) = \frac{1}{2\pi i} \int\limits_{\delta - i\infty}^{\delta + i\infty} M_
 	\end{equation*}
 \end{corollary}
 
-У наступній лемі буде використанно поняття асимптотичного $\mathcal{O}$ для комплекснозначних функцій. У роботі \cite{de1970asymptotic} Ніколас де Брьойн визначив цю асимптотичну властивість наступним чином.
+У наступній лемі буде використано поняття асимптотичного $\mathcal{O}$ для комплекснозначних функцій. У роботі \cite{de1970asymptotic} Ніколас де Брьойн визначив цю асимптотичну властивість наступним чином.
 \begin{defin}
 Нехай $S$ -- деяка множина. $f$ та $\varphi$ -- деякі дійснозначні або комплекснозначні функції, визначені на множині $S$. Тоді формула
 \begin{equation*}
 f(s) = \mathcal{O}(\varphi(s)), \quad s \in S,
 \end{equation*}
 
-означає, що існує таке дотатнє число $A$, що не залижить від $s$, і
+означає, що існує таке дотатне число $A$, що не залежить від $s$, і
 \begin{equation*}
 |f(s)| = A |\varphi(s)|, \quad \forall s \in S.
 \end{equation*}
@@ -307,7 +308,7 @@ R \int\limits_{0}^{\frac{\pi}{2}} e^{-2\operatorname{I}(p, \varphi, R) }\, d\var
 = (1 - p) \int\limits_{\frac{1}{\sin \varphi}}^{\frac{R}{\sin\varphi}} \frac{p e^{-2 \alpha \theta} - e^{-\alpha \theta} \cos \theta }{\theta (1 - 2p e^{-\alpha\theta} \cos\theta + p^2 e^{-2\alpha\theta})}\,d\theta \label{eq:kr_subexp_phi_pi4pi2}.
 \end{gather}
 
-Обмеженість інтегралу \eqref{eq:kr_subexp_phi_pi4pi2} знизу випливає з наслідку \eqref{lem:trig_exp_bound}. Таким чином, якщо $\varphi \in [\frac{\pi}{4};~\frac{\pi}{2}]$, то $2\operatorname{I}(p, \varphi, R) - 2 \ln R \leq const \Rightarrow 2\operatorname{I}(p, \varphi, R) - \ln R \rightarrow \infty$ при $R \rightarrow \infty$. \todo{Це достатньо суворе обмеження, для доведення властивості можна використати більш слабке, тоді, можливо, недоведена лема просто не буде використовуватися. Хоча перевірка чисельним наближенням каже, що факт має місце.}
+Обмеженість інтегралу \eqref{eq:kr_subexp_phi_pi4pi2} знизу випливає з наслідку \eqref{lem:trig_exp_bound}. Таким чином, якщо $\varphi \in [\frac{\pi}{4};~\frac{\pi}{2}]$, то $2\operatorname{I}(p, \varphi, R) - 2 \ln R \leq const \Rightarrow 2\operatorname{I}(p, \varphi, R) - \ln R \rightarrow \infty$ при $R \rightarrow \infty$.
 
 Отже, при $t>0$
 \begin{equation}
@@ -390,7 +391,7 @@ p M \cdot \frac{X+1}{X} + N \leq \frac{1+p}{2} M + N \leq \frac{1+p}{2} M + \fra
 
 тому, очевидно, 
 \begin{equation*}
-\lim\limits_{x \rightarrow \infty} \left( m(x) - C_{p} x - \frac{1 - C_{p}}{1 - p} \right) = \mathcal{O}\left(\frac{1}{x}\right).
+m_{p}(x) - C_{p} x + \frac{1 - C_{p}}{1 - p}= \mathcal{O}\left(\frac{1}{x}\right).
 \end{equation*}
 
 Нескладно переконатися з \eqref{eq:model_laplace_diff}, що
@@ -407,7 +408,7 @@ p M \cdot \frac{X+1}{X} + N \leq \frac{1+p}{2} M + N \leq \frac{1+p}{2} M + \fra
 
 Тому, інтегруючи частинами ще раз і повторюючи прийом вище, але з більш жосткою оцінкою асимптотики справа, можна показати, що
 \begin{equation*}
-\lim\limits_{x \rightarrow \infty} \left( m(x) - C_{p} x - \frac{1 - C_{p}}{1 - p} \right) = \mathcal{O}\left(\frac{1}{x^2}\right).
+m(x) - C_{p} x + \frac{1 - C_{p}}{1 - p} = \mathcal{O}\left(\frac{1}{x^2}\right).
 \end{equation*}
 
 За допомогою ММІ можна показати, що
@@ -418,9 +419,72 @@ p M \cdot \frac{X+1}{X} + N \leq \frac{1+p}{2} M + N \leq \frac{1+p}{2} M + \fra
 Тоді для $\forall n \in \NN$ можна показати, що
 \begin{equation}
 \label{eq:uniform_right_as_enhanced}
-\lim\limits_{x \rightarrow \infty} \left( m(x) - C_{p} x - \frac{1 - C_{p}}{1 - p} \right) = \mathcal{O}\left(\frac{1}{x^n}\right), \quad n \in \NN.
+ m(x) - C_{p} x + \frac{1 - C_{p}}{1 - p} = \mathcal{O}\left(\frac{1}{x^n}\right), \quad n \in \NN.
 \end{equation}
 
-\subsection{Застосування асимптотики для виведення закону великих чисел}
+\subsection{Застосування асимптотики для виведення аналогу закону великих чисел}
 
+Розглянемо випадкову величину $N_{p}(x+1)$, що позначає кількість автомобілів на парковці довжини $x+1$ в момент заповнення. При умові паркування з краю, $N_{p}(x+1) = 1 + N_{p}(x)$. А при умові рівномірного розподілу з вибором точки паркування, $N_{p}(x+1) = 1 + N_{p}(t) + N_{p}(x - t)$, де $N_{p}(t)$ і $N_{p}(x - t)$ -- незалежні. Тоді, оскільки $\EE\left(\EE (f(\xi) | \theta) \right) = \EE f(\xi)$ \cite{kremer2004}, то
+\begin{equation}
+\begin{gathered}
+\EE N_{p}^{2}(x+1) = p \EE N_{p}^{2}(x) + 2p \EE N_{p}(x) + p + \\
++ \frac{1-p}{x} \int\limits_{0}^{x} (1 + \EE N_{p}^{2}(t) + \EE N_{p}^{2}(x - t)) \, dt + \\
++ \frac{1-p}{x} \int\limits_{0}^{x} (2\EE N_{p}(t) + 2\EE N_{p}(x- t) + 2\EE N_{p}(t) \EE N_{p}(x-t))\, dt.
+\end{gathered}
+\end{equation}
 
+Тепер, оскільки $\EE N_{p}^{2}(x) = \DD N_{p}(x) + (\EE N_{p}(x))^2 = \DD N_{p}(x) + m_{p}^{2}(x)$, то маємо:
+\begin{gather*}
+\DD N_{p}(x+1) = - m_{p}^{2}(x+1) + p \DD N_{p}(x) + p (m_{p}(x) + 1)^2 + (1-p) + \\
++ \frac{2(1-p)}{x} \int\limits_{0}^{x} (\DD N_{p}(t) + m_{p}^{2}(t) + 2 m_{p}(t) + m_{p}(t)m_{p}(x-t)) \, dt.
+\end{gather*}
+
+У попередньому пункті було доведено \eqref{eq:uniform_right_as_enhanced}, а точніше, що
+\begin{equation}
+m(x) = C_{p} x - \frac{1 - C_{p}}{1 - p}  + \Psi_{p}(x),
+\end{equation}
+
+де $\Psi_{p}(x) \leq \gamma < \infty$ і $\Psi_{p}(x) = \mathcal{O}\left(\frac{1}{t^n}\right) ~ \forall n \in \NN$.
+
+Розглянемо $p (m_{p}(x) + 1)^2 - p m_{p}^{2}(x+1)$. 
+\begin{gather*}
+(m_{p}(x) + 1)^2 - m_{p}^{2}(x+1) \leq C_{p}^{2} x^2 - 2 C_p  \frac{1 - C_{p}}{1 - p} x + 2 C_{p} x -\\
+- C_{p}^{2} (x+1)^2 + 2 C_p \frac{1 - C_{p}}{1 - p} (x + 1) + const = \\
+= 2C_{p}(1-C_{p}) x + const.
+\end{gather*}
+Таким чином, $p (m_{p}(x) + 1)^2 - p m_{p}^{2}(x+1) \leq 2pC_{p}(1-C_{p}) x + const$.
+
+Нескладно переконатися, що $\left|\int\limits_{0}^{X} \Psi_{p}(t)\, dt \right| < const$, аналогічно $\left|\int\limits_{0}^{X} t \Psi_{p}(t)\, dt \right| < const$. Спираючись на ці дві нерівності, тривіально доводиться, що інтеграл
+\begin{equation*}
+\frac{2}{x}\int\limits_{0}^{x} \left(m_{p}^{2}(t) + 2 m_{p}(t) + m_{p}(t)m_{p}(x-t) - \frac{m_{p}^2(x+1)}{2} \right) \, dt
+\end{equation*}
+
+обмежений. Тоді маємо нерівність
+\begin{equation}
+\begin{gathered}
+\DD N_{p}(x+1) \leq p \DD N_{p}(x) + 2pC_{p}(1-C_{p}) x ~+\\
++ \frac{2(1-p)}{x} \int\limits_{0}^{x} \DD N_{p}(t) \, dt + K.
+\end{gathered}
+\end{equation}
+
+Нескладно переконатися, що для функції $\delta_{p}(x) = K m_{p}(x)$ виконується
+\begin{equation*}
+\delta_{p}(x+1) = p \delta_{p}(x) + \frac{2(1-p)}{x} \int\limits_{0}^{x} \delta_{p}(t) \, dt + K.
+\end{equation*}
+
+Також зрозуміло, що існує така $\gamma_{p}(x) = \alpha x^{\rho}$,  де $\alpha > 0$ і $\rho \in (1,~2)$, що
+\begin{equation*}
+    \gamma_{p}(x+1) \geq p \gamma_{p}(x) + \frac{2(1-p)}{x} \int\limits_{0}^{x} \gamma_{p}(t) \, dt + 2pC_{p}(1-C_{p}) x.
+\end{equation*}
+
+Оскільки на відрізку $[0,~1]$ дисперсія $\DD N_{p}(x) \equiv 0$, то $\DD N_{p}(x) \leq \delta_{p}(x) + \gamma_p(x)$, тобто
+\begin{equation}
+\DD N_{p}(x) = \mathcal{o}(x^2).
+\end{equation}
+
+Тоді, за нерівністю Чебишова маємо
+\begin{equation}
+\Prob{\left|\frac{N_{p}(x)}{m_{p}(x)} - 1\right| > \varepsilon} \leq \frac{\DD N_{p}(x)}{\varepsilon^2 m_{p}^2(x)}.
+\end{equation}
+
+Оскільки права частина прямує до нуля при $x \rightarrow \infty$, то ймовірність виходу відношення за межі епсілон-околу 1 прямує до нуля. Це можна трактувати наступним чином: якщо розмір парковки $x$ достатньо великий, то можна практично вважати, що $N_{p}(x) \approx C_{p}x$, тобто значення $\frac{N_{p}(x)}{x}$ будуть дуже близькими до $C_{p}$.
